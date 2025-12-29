@@ -1,0 +1,19 @@
+{
+  "HomePage": {
+    "title": "Hello world!",
+    "about": "Go to the about page"
+  },
+  "AboutPage" : {
+    "title": "Halo About!",
+    "about": "Pergi ke home page"
+  },
+   "Navbar": {
+    "items": [
+    { "label": "MODELS", "link": "/models" },
+    { "label": "AFTER SALES", "link": "/after-sales" },
+    { "label": "NEWS & PROMO", "link": "/news" },
+    { "label": "DEALER LOCATIONS", "link": "/dealer-locations" },
+    { "label": "DISCOVER GWM", "link": "/about-gwm" }
+    ]
+  }
+}

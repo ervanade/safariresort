@@ -1,0 +1,19 @@
+{
+  "HomePage": {
+    "title": "Halo Dunia!",
+    "about": "Pergi ke about page"
+  },
+  "AboutPage" : {
+    "title": "Halo About!",
+    "about": "Pergi ke home page"
+  },
+   "Navbar": {
+    "items": [
+      { "label": "MODELS", "link": "/models" },
+      { "label": "AFTER SALES", "link": "/after-sales" },
+      { "label": "NEWS & PROMO", "link": "/news" },
+      { "label": "LOKASI DEALER", "link": "/dealer-locations" },
+      { "label": "TENTANG GWM", "link": "/about-gwm" }
+    ]
+  }
+}
