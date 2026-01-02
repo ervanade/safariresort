@@ -18,8 +18,8 @@ const navigationData = [
           {
             name: "Room Collection",
             items: [
-              { name: "Standard Room", href: "#rooms" },
-              { name: "Deluxe Room", href: "#rooms" },
+              { name: "Standard Room", href: "/rooms/h1" },
+              { name: "Deluxe Room", href: "/rooms/h2" },
               { name: "Suite Room", href: "#rooms" }
             ]
           }

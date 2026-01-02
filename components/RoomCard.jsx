@@ -20,7 +20,8 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
+
 
 const featureIcons = {
   "guests": Users,
@@ -111,7 +112,7 @@ const RoomCard = ({ room, ...props }) => {
         </div>
 
         <div className="flex gap-3 mt-auto pt-4 pb-4 border-t border-[#7C3B1F]/10">
-          <Link href={`/room/${room.id}`} className="flex-1">
+          <Link href={`/rooms/${room.id}`} className="flex-1">
             <Button
               variant="outline"
               className="w-full h-10 text-xs font-bold border-[#F06934] text-[#F06934] hover:bg-[#F06934] hover:text-white transition-colors"

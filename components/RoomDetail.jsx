@@ -1,5 +1,5 @@
+'use client'
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   ArrowLeft, Heart, ShowerHead, ShieldCheck, Mountain, 
@@ -8,40 +8,38 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
-import { roomsData } from '@/data/roomsData';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import { roomsData } from './data/roomsData';
+import Link from 'next/link';
+
 
 const IconMap = {
   ShowerHead, ShieldCheck, Mountain, ConciergeBell, Clock, 
   Bath, Luggage, Sun, Flower2, Wind, BedDouble, Coffee
 };
 
-const RoomDetail = () => {
-  const { id } = useParams();
+const RoomDetail = ({roomSlug}) => {
+  console.log(roomSlug)
   const { toast } = useToast();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   
-  const room = roomsData.find(r => r.id === id);
+  const room = roomsData.find(r => r.id === roomSlug);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [id]);
+  }, [roomSlug]);
 
   if (!room) {
     return (
       <div className="min-h-screen flex flex-col bg-[#faf7f5]">
-        <Header />
         <div className="flex-1 flex items-center justify-center">
           <div className="text-center">
             <h2 className="text-2xl font-bold text-[#7C3B1F]">Room not found</h2>
-            <Link to="/">
+            <Link href="/">
               <Button className="mt-4 bg-[#7C3B1F]">Return Home</Button>
             </Link>
           </div>
         </div>
-        <Footer />
       </div>
     );
   }
@@ -108,7 +106,6 @@ const RoomDetail = () => {
 
   return (
     <div className="bg-[#FDFBF9]">
-      <Header />
       
       <main className="min-h-screen flex flex-col md:flex-row relative pt-20">
         {/* Left: Image Slider Section */}
@@ -177,7 +174,7 @@ const RoomDetail = () => {
               ))}
           </div>
 
-          <Link to="/" className="absolute top-6 left-6 z-20">
+          <Link href="/" className="absolute top-6 left-6 z-20">
             <div className="bg-white/80 backdrop-blur-md p-3 rounded-full hover:bg-white transition-all shadow-lg group">
               <ArrowLeft className="w-6 h-6 text-[#7C3B1F] group-hover:-translate-x-1 transition-transform" />
             </div>
@@ -293,7 +290,6 @@ const RoomDetail = () => {
         </motion.div>
       </main>
       
-      <Footer />
     </div>
   );
 };

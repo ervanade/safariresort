@@ -1,3 +1,6 @@
+import Footer from '@/components/Footer';
+import Header from '@/components/header/Header';
+import { Toaster } from '@/components/ui/toaster';
 import { NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';
 
@@ -13,7 +16,10 @@ export default async function LocaleLayout({ children, params }) {
   return (
  
         <NextIntlClientProvider locale={locale}>
+          <Header />
           {children}
+          <Footer />
+          <Toaster />
         </NextIntlClientProvider>
    
   );

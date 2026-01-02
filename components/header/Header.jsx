@@ -8,7 +8,8 @@ import {
   ChevronDown,
   ChevronRight
 } from "lucide-react";
-import { useRouter, usePathname } from "next/navigation";
+import { usePathname, useRouter } from "@/i18n/navigation";
+import { useParams } from "next/navigation";
 import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
@@ -22,10 +23,13 @@ import {
 
 import navigationData from "./navigationData";
 import { FlagUK, FlagID } from "./flags";
+import { useLocale } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
 export default function Header() {
   const router = useRouter();
   const pathname = usePathname();
+  const params = useParams();
   const { toast } = useToast();
 
   const [isScrolled, setIsScrolled] = useState(false);
@@ -33,6 +37,8 @@ export default function Header() {
   const [activeHover, setActiveHover] = useState(null);
   const [expandedMobileItem, setExpandedMobileItem] = useState(null);
   const [language, setLanguage] = useState("en");
+  const locale = useLocale();
+
 
   /* ================= SCROLL ================= */
   useEffect(() => {
@@ -103,6 +109,7 @@ export default function Header() {
 
   const handleLanguageChange = (lang) => {
     setLanguage(lang);
+    router.replace({ pathname, params }, { locale: lang });
     toast({
       title: "Language Changed",
       description: `Language switched to ${
@@ -206,16 +213,13 @@ export default function Header() {
                                       {sub.name}
                                     </h4>
                                     {sub.items.map((s) => (
-                                      <a
+                                      <Link
                                         key={s.name}
                                         href={s.href}
-                                        onClick={(e) =>
-                                          handleItemClick(e, s.href, s.external)
-                                        }
                                         className="block text-sm text-gray-600 hover:text-[#F06934] px-2 py-1 hover:bg-orange-50"
                                       >
                                         {s.name}
-                                      </a>
+                                      </Link>
                                     ))}
                                   </div>
                                 ))}
@@ -229,7 +233,7 @@ export default function Header() {
                           <div className="p-6 w-[500px]">
                             <div className="grid grid-cols-2 gap-3">
                               {item.items.map((i) => (
-                                <a
+                                <Link
                                   key={i.name}
                                   href={i.href}
                                   onClick={(e) =>
@@ -238,7 +242,7 @@ export default function Header() {
                                   className="text-sm text-gray-700 hover:text-[#F06934] p-2 hover:bg-orange-50"
                                 >
                                   {i.name}
-                                </a>
+                                </Link>
                               ))}
                             </div>
                           </div>
@@ -248,7 +252,7 @@ export default function Header() {
                         {item.type === "dropdown" && (
                           <div className="p-2 min-w-[200px]">
                             {item.items.map((i) => (
-                              <a
+                              <Link
                                 key={i.name}
                                 href={i.href}
                                 onClick={(e) =>
@@ -257,7 +261,7 @@ export default function Header() {
                                 className="block px-4 py-2 text-sm text-gray-700 hover:text-[#F06934] hover:bg-orange-50"
                               >
                                 {i.name}
-                              </a>
+                              </Link>
                             ))}
                           </div>
                         )}
@@ -273,9 +277,9 @@ export default function Header() {
           <div className="hidden lg:flex items-center gap-4">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="gap-2">
-                  {language === "en" ? <FlagUK /> : <FlagID />}
-                  {language}
+                <Button variant="ghost" className="gap-2 uppercase">
+                  {locale === "en" ? <FlagUK /> : <FlagID />}
+                  {locale}
                   <ChevronDown size={14} />
                 </Button>
               </DropdownMenuTrigger>
