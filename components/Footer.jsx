@@ -6,10 +6,11 @@ import { ChevronLeft, ChevronRight, Instagram } from 'lucide-react';
 import { FaFacebook, FaInstagram, FaTwitter, FaWhatsapp } from 'react-icons/fa';
 import { SiTripadvisor } from 'react-icons/si';
 import { useToast } from '@/components/ui/use-toast';
-import Link from 'next/link';
+
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
+import { Link } from '@/i18n/navigation';
 
 export default function Footer() {
   const { toast } = useToast();
