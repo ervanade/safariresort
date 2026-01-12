@@ -25,6 +25,7 @@ import navigationData from "./navigationData";
 import { FlagUK, FlagID } from "./flags";
 import { useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import BookingModal from "../BookingModal";
 
 export default function Header() {
   const router = useRouter();
@@ -34,10 +35,17 @@ export default function Header() {
 
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+
   const [activeHover, setActiveHover] = useState(null);
   const [expandedMobileItem, setExpandedMobileItem] = useState(null);
   const [language, setLanguage] = useState("en");
   const locale = useLocale();
+
+  const handleBookNow = () => {
+    setIsBookingModalOpen(true);
+    setIsMobileMenuOpen(false);
+  };
 
 
   /* ================= SCROLL ================= */
@@ -99,13 +107,6 @@ export default function Header() {
     handleNavClick(href.replace("#", ""));
   };
 
-  const handleBookNow = () => {
-    toast({
-      title: "Booking System",
-      description: "Redirecting to booking engine..."
-    });
-    setIsMobileMenuOpen(false);
-  };
 
   const handleLanguageChange = (lang) => {
     setLanguage(lang);
@@ -125,6 +126,7 @@ export default function Header() {
 
   /* ================= RENDER ================= */
   return (
+    <>
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -385,5 +387,10 @@ export default function Header() {
         </AnimatePresence>
       </nav>
     </motion.header>
+       <BookingModal 
+       isOpen={isBookingModalOpen} 
+       onClose={() => setIsBookingModalOpen(false)} 
+     />
+     </>
   );
 }

@@ -26,13 +26,13 @@ export default function Home() {
         <Experiences />
         <Packages />
         <Facilities />
-        <FAQ />
+        {/* <FAQ /> */}
         <Awards />
         <MapSection />
       </main>
       {/* <MobileFooter onChatToggle={() => setIsChatOpen(!isChatOpen)} /> */}
       <PromoPopup />
-      {/* <Chatbot isOpen={isChatOpen} setIsOpen={setIsChatOpen} /> */}
+      <Chatbot />
     </div>
   );
 }

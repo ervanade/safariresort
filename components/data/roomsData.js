@@ -7,6 +7,7 @@ export const roomsData = [
     description: 'Add a fun twist to your stay, this treehouse includes a slide, making it an exciting option for families with children. Elevated among the trees, it offers a unique perspective of the surrounding wilderness.',
     image: 'https://horizons-cdn.hostinger.com/b05a0347-ff2a-4d3e-b189-510345403291/6e317251b19d78979aab5f16d2258404.jpg',
     price: 'IDR 2.788.000',
+    bestSeller: true, // Added bestSeller property
     originalPrice: 'IDR 3.500.000',
     promoPrice: 'IDR 2.788.000',
     savings: 'IDR 712.000',
@@ -32,6 +33,7 @@ export const roomsData = [
     description: 'Offers a cozy retreat, our room is perfect for travelers seeking comfort and simplicity. Equipped with modern amenities, guests can enjoy a restful stay amidst nature with easy access to all resort facilities.',
     image: 'https://horizons-cdn.hostinger.com/b05a0347-ff2a-4d3e-b189-510345403291/bf045d7e062fc7bd32841690d4248e9a.jpg',
     price: 'IDR 1.788.000',
+    bestSeller: true, // Added bestSeller property
     originalPrice: 'IDR 2.500.000',
     promoPrice: 'IDR 1.788.000',
     savings: 'IDR 712.000',
@@ -124,6 +126,7 @@ export const roomsData = [
     name: 'Deluxe Room',
     category: 'hotel',
     size: '36m²',
+    bestSeller: true, // Added bestSeller property
     description: 'The comfortable rooms larger than the Standard Room. Equipped with modern amenities, this room offers a simple yet warm atmosphere.',
     image: 'https://horizons-cdn.hostinger.com/b05a0347-ff2a-4d3e-b189-510345403291/b0ce2a2d153633757ae40284db0795a8.jpg',
     price: 'IDR 2.888.000',

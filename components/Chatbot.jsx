@@ -1,12 +1,13 @@
 'use client'
-import React from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Send } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa'; // Import WhatsApp icon
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
 
-const Chatbot = ({ isOpen, setIsOpen }) => {
+const Chatbot = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const { toast } = useToast();
   const whatsappNumber = "+1234567890"; // Placeholder WhatsApp number
 
