@@ -9,7 +9,7 @@ import { useToast } from '@/components/ui/use-toast';
 const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { toast } = useToast();
-  const whatsappNumber = "+1234567890"; // Placeholder WhatsApp number
+  const whatsappNumber = "+6282125222756"; // Placeholder WhatsApp number
 
   const handleToggleChat = () => {
     if (isOpen) {
@@ -95,7 +95,7 @@ const Chatbot = () => {
       >
         {/* WhatsApp icon using img tag for the provided URL */}
         <img 
-          src="/assets/icon/icon-wa.png" 
+          src="/assets/icon/icon-wa2.png" 
           alt="WhatsApp icon" 
           className="w-full h-full object-contain p-1" // Adjusted padding to fit
         />

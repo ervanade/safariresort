@@ -70,7 +70,7 @@ const PromoPopup = () => {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 50, scale: 0.95 }}
           transition={{ duration: 0.4, ease: "easeOut" }}
-          className="fixed bottom-8 left-1/2 -translate-x-1/2 md:left-5 md:translate-x-0 z-[100] w-[90vw] max-w-[420px]"
+          className="fixed bottom-8 left-5 -translate-x-1/2 md:left-5 md:translate-x-0 z-[100] w-[90vw] max-w-[420px]"
         >
           <div className="relative bg-white rounded-xl shadow-2xl overflow-hidden border border-gray-100/50 backdrop-blur-xl flex h-[180px] md:h-[200px]">
             {/* Close Button */}
