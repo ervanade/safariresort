@@ -21,7 +21,7 @@ const Caravan = () => {
         <section className="relative h-[60vh] min-h-[500px] overflow-hidden">
             <div className="absolute inset-0">
                 <img 
-                    src="https://horizons-cdn.hostinger.com/b05a0347-ff2a-4d3e-b189-510345403291/ca48ecbddd2a09957d29c839545a2aee.jpg" 
+                    src="/assets/caravan/caravan-hero.jpg" 
                     alt="Caravan Adventure" 
                     className="w-full h-full object-cover"
                 />

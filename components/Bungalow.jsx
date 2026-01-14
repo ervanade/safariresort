@@ -1,17 +1,19 @@
 'use client'
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import MobileFooter from '@/components/MobileFooter';
+import Chatbot from '@/components/Chatbot';
 import RoomCard from '@/components/RoomCard';
 
-import { TreeDeciduous, Wind, CloudSun } from 'lucide-react';
+import { Home, Users, Coffee } from 'lucide-react';
 import { roomsData } from './data/roomsData';
 
-const TreeHouse = () => {
-
+const Bungalow = () => {
+  const [isChatOpen, setIsChatOpen] = useState(false);
   
-  // Filter only Treehouse type rooms
-  const treehouseRooms = roomsData.filter(room => 
-    room.name.toLowerCase().includes('treehouse')
+  // Filter only Bungalow type rooms
+  const bungalowRooms = roomsData.filter(room => 
+    room.name.toLowerCase().includes('bungalow')
   );
 
   return (
@@ -22,8 +24,8 @@ const TreeHouse = () => {
         <section className="relative h-[60vh] min-h-[500px] overflow-hidden">
             <div className="absolute inset-0">
                 <img 
-                    src="/assets/resort/Treehouse Slider-1.jpg" 
-                    alt="Treehouse Experience" 
+                    src="/assets/bungalow/Zebra Lake View-1.jpg" 
+                    alt="Bungalow Stay" 
                     className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-black/40" />
@@ -34,7 +36,7 @@ const TreeHouse = () => {
                     animate={{ opacity: 1, y: 0 }}
                     className="text-[#F06934] font-bold tracking-widest uppercase mb-4 bg-black/50 w-fit px-4 py-1 rounded-full backdrop-blur-sm"
                 >
-                    Nature Lodges
+                    Resort Collection
                 </motion.span>
                 <motion.h1 
                     initial={{ opacity: 0, y: 20 }}
@@ -43,7 +45,7 @@ const TreeHouse = () => {
                     className="text-5xl md:text-7xl font-bold mb-6 max-w-4xl leading-tight"
                     style={{ fontFamily: 'Mikado, sans-serif' }}
                 >
-                    Treehouse Collection
+                    Bungalow
                 </motion.h1>
                 <motion.p 
                     initial={{ opacity: 0, y: 20 }}
@@ -52,7 +54,7 @@ const TreeHouse = () => {
                     className="text-lg md:text-2xl max-w-2xl font-medium text-white/90"
                     style={{ fontFamily: 'Nunito, sans-serif' }}
                 >
-                    Elevate your stay among the canopies. Experience the magic of waking up to the sounds of nature in our signature treehouses.
+                    Your home away from home. Discover spacious living and modern comforts in the heart of nature, perfect for the whole family.
                 </motion.p>
             </div>
         </section>
@@ -63,29 +65,29 @@ const TreeHouse = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
                     <div className="bg-white p-8 shadow-sm border border-[#7C3B1F]/10 text-center group hover:bg-[#7C3B1F] transition-colors duration-300">
                         <div className="bg-[#faf7f5] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-white/10 transition-colors">
-                            <TreeDeciduous className="text-[#7C3B1F] group-hover:text-white" size={32} />
+                            <Home className="text-[#7C3B1F] group-hover:text-white" size={32} />
                         </div>
-                        <h3 className="text-xl font-bold text-[#7C3B1F] mb-3 group-hover:text-white" style={{ fontFamily: 'Mikado, sans-serif' }}>Immersive Nature</h3>
+                        <h3 className="text-xl font-bold text-[#7C3B1F] mb-3 group-hover:text-white" style={{ fontFamily: 'Mikado, sans-serif' }}>Spacious Living</h3>
                         <p className="text-[#7C3B1F]/70 group-hover:text-white/80" style={{ fontFamily: 'Nunito, sans-serif' }}>
-                            Built respectfully around existing trees, offering a true jungle immersion experience.
+                            Generous floor plans designed for families and groups to spread out and relax together in comfort.
                         </p>
                     </div>
                     <div className="bg-white p-8 shadow-sm border border-[#7C3B1F]/10 text-center group hover:bg-[#7C3B1F] transition-colors duration-300">
                         <div className="bg-[#faf7f5] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-white/10 transition-colors">
-                            <Wind className="text-[#7C3B1F] group-hover:text-white" size={32} />
+                            <Users className="text-[#7C3B1F] group-hover:text-white" size={32} />
                         </div>
-                        <h3 className="text-xl font-bold text-[#7C3B1F] mb-3 group-hover:text-white" style={{ fontFamily: 'Mikado, sans-serif' }}>Fresh Mountain Air</h3>
+                        <h3 className="text-xl font-bold text-[#7C3B1F] mb-3 group-hover:text-white" style={{ fontFamily: 'Mikado, sans-serif' }}>Family Friendly</h3>
                         <p className="text-[#7C3B1F]/70 group-hover:text-white/80" style={{ fontFamily: 'Nunito, sans-serif' }}>
-                            Located at a higher altitude, enjoy the crisp, cool breeze of the Puncak mountains.
+                            Multiple bedrooms and common areas foster connection while ensuring privacy for every guest.
                         </p>
                     </div>
                     <div className="bg-white p-8 shadow-sm border border-[#7C3B1F]/10 text-center group hover:bg-[#7C3B1F] transition-colors duration-300">
                         <div className="bg-[#faf7f5] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-white/10 transition-colors">
-                            <CloudSun className="text-[#7C3B1F] group-hover:text-white" size={32} />
+                            <Coffee className="text-[#7C3B1F] group-hover:text-white" size={32} />
                         </div>
-                        <h3 className="text-xl font-bold text-[#7C3B1F] mb-3 group-hover:text-white" style={{ fontFamily: 'Mikado, sans-serif' }}>Unique Perspectives</h3>
+                        <h3 className="text-xl font-bold text-[#7C3B1F] mb-3 group-hover:text-white" style={{ fontFamily: 'Mikado, sans-serif' }}>Modern Comforts</h3>
                         <p className="text-[#7C3B1F]/70 group-hover:text-white/80" style={{ fontFamily: 'Nunito, sans-serif' }}>
-                            Enjoy panoramic views of the resort and surrounding wilderness from your private balcony.
+                            Fully equipped with modern amenities, smart TVs, and refreshment facilities for a worry-free stay.
                         </p>
                     </div>
                 </div>
@@ -93,13 +95,13 @@ const TreeHouse = () => {
                 <div className="text-center mb-12">
                     <span className="text-[#F06934] font-bold text-sm tracking-widest uppercase mb-3 block">Accommodations</span>
                     <h2 className="text-4xl md:text-5xl font-bold text-[#7C3B1F]" style={{ fontFamily: 'Mikado, sans-serif' }}>
-                        Choose Your Treehouse
+                        Select Your Bungalow
                     </h2>
                 </div>
 
                 {/* Room Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-                    {treehouseRooms.map((room, index) => (
+                    {bungalowRooms.map((room, index) => (
                         <motion.div
                             key={room.id}
                             initial={{ opacity: 0, y: 30 }}
@@ -118,4 +120,4 @@ const TreeHouse = () => {
   );
 };
 
-export default TreeHouse;
+export default Bungalow;

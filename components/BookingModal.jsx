@@ -15,21 +15,17 @@ const BookingModal = ({ isOpen, onClose }) => {
 
     document.body.style.overflow = 'hidden';
 
-    /** -----------------------------
-     * 1. Load CSS (once)
-     ------------------------------ */
+    // 1. Load CSS (Cukup sekali saja)
     const cssId = 'dedge-widget-css';
     if (!document.getElementById(cssId)) {
       const link = document.createElement('link');
       link.id = cssId;
       link.rel = 'stylesheet';
-      link.href = '//websdk.fastbooking-services.com/widgets/app.css';
+      link.href = 'https://websdk.fastbooking-services.com/widgets/app.css';
       document.head.appendChild(link);
     }
 
-    /** -----------------------------
-     * 2. Inject Config JSON
-     ------------------------------ */
+    // 2. Inject Config JSON (Selalu inject saat modal buka)
     const configScript = document.createElement('script');
     configScript.type = 'application/json';
     configScript.className = 'fb-widget-config';
@@ -41,7 +37,7 @@ const BookingModal = ({ isOpen, onClose }) => {
             nbMonths2display: 2,
             title: 'BOOK YOUR STAY',
             showBestPrice: true,
-            openBookingFunnel: false // 🔥 OPEN POPUP
+            openBookingFunnel: false 
           },
           currency: 'IDR',
           locale: 'en_GB',
@@ -54,24 +50,26 @@ const BookingModal = ({ isOpen, onClose }) => {
       version: '1.76.0',
       baseHost: 'websdk.fastbooking-services.com'
     });
-
     document.body.appendChild(configScript);
 
-    /** -----------------------------
-     * 3. Load JS (once)
-     ------------------------------ */
+    // 3. Re-inject JS (Hapus yang lama jika ada, lalu tambah baru)
     const jsId = 'dedge-widget-js';
-    if (!document.getElementById(jsId)) {
-      const script = document.createElement('script');
-      script.id = jsId;
-      script.src = '//websdk.fastbooking-services.com/widgets/app.js';
-      script.async = true;
-      document.body.appendChild(script);
+    const existingScript = document.getElementById(jsId);
+    if (existingScript) {
+      existingScript.remove(); // Hapus script lama agar bisa re-trigger
     }
+
+    const script = document.createElement('script');
+    script.id = jsId;
+    script.src = `https://websdk.fastbooking-services.com/widgets/app.js?t=${new Date().getTime()}`; // Gunakan timestamp agar tidak cache
+    script.async = true;
+    document.body.appendChild(script);
 
     return () => {
       document.body.style.overflow = 'unset';
       configScript.remove();
+      // Jangan hapus script JS di sini agar transisi keluar tetap smooth, 
+      // tapi dia akan dihapus & ditambah lagi saat useEffect dijalankan berikutnya.
     };
   }, [isOpen]);
 
@@ -79,9 +77,8 @@ const BookingModal = ({ isOpen, onClose }) => {
 
   return createPortal(
     <AnimatePresence>
+      {/* ... (Sisa kode UI modal Anda tetap sama) ... */}
       <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6">
-
-        {/* Backdrop */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -89,36 +86,27 @@ const BookingModal = ({ isOpen, onClose }) => {
           onClick={onClose}
           className="absolute inset-0 bg-black/70 backdrop-blur-sm"
         />
-
-        {/* Modal */}
         <motion.div
           initial={{ opacity: 0, scale: 0.96, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.96, y: 20 }}
-          transition={{ duration: 0.3 }}
           className="relative w-full max-w-full bg-white rounded-xl shadow-2xl flex flex-col max-h-[90vh]"
         >
-
-          {/* Header */}
           <div className="flex items-center justify-between p-4 border-b bg-gray-50">
-            <h3 className="font-bold text-[#7C3B1F] text-lg">
-              Book Your Stay
-            </h3>
-            <button onClick={onClose} className="p-2 hover:bg-gray-200 rounded-full">
-              <X size={20} />
-            </button>
+            <h3 className="font-bold text-[#7C3B1F] text-lg">Book Your Stay</h3>
+            <button onClick={onClose} className="p-2 hover:bg-gray-200 rounded-full"><X size={20} /></button>
           </div>
 
-          {/* Widget */}
           <div className="flex-1 overflow-y-auto p-4 md:p-6">
+            {/* Widget Container */}
             <div
+              key={isOpen ? 'open' : 'closed'} // Force re-render container
               id="fb-widget-modal"
               className="fb-widget w-full"
               data-fbconfig="0"
             />
           </div>
-
-          {/* Footer */}
+          
           <div className="p-3 text-center text-xs text-gray-400 border-t">
             Secure booking powered by D-EDGE
           </div>

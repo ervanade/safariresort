@@ -95,7 +95,7 @@ const Chatbot = () => {
       >
         {/* WhatsApp icon using img tag for the provided URL */}
         <img 
-          src="https://i.imgur.com/kRdv0Fb.png" 
+          src="/assets/icon/icon-wa.png" 
           alt="WhatsApp icon" 
           className="w-full h-full object-contain p-1" // Adjusted padding to fit
         />

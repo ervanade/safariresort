@@ -20,7 +20,8 @@ const navigationData = [
             items: [
               { name: "Standard Room", href: "/rooms/h1" },
               { name: "Deluxe Room", href: "/rooms/h2" },
-              { name: "Suite Room", href: "#rooms" }
+              { name: "Junior Suite Room", href: "/rooms/h3" },
+              { name: "Executive Suite Room", href: "/rooms/h4" }
             ]
           }
         ]
@@ -33,7 +34,7 @@ const navigationData = [
             items: [
               { name: "Treehouse", href: "/stay/treehouse" },
               { name: "Caravan", href: "/stay/caravan" },
-              { name: "Bungalow", href: "#rooms" }
+            { name: "Bungalow", href: "/stay/bungalow" }
             ]
           }
         ]
