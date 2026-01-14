@@ -73,7 +73,17 @@ export const roomsData = [
      '/assets/resort/Treehouse Non Slider-1.jpg',
     ],
     price: 'IDR 2.788.000',
-    features: ['Cozy bedroom with double bed','Mezzanine bedroom','Private Bathroom','Smart TV','Coffee & tea-making facilities','Mini refrigerator','Complimentary Wi-Fi','Balcony with jungle views']
+    features: ['Cozy bedroom with double bed','Mezzanine bedroom','Private Bathroom','Smart TV','Coffee & tea-making facilities','Mini refrigerator','Complimentary Wi-Fi','Balcony with jungle views'],
+    amenities: [
+      { name: 'Shower', icon: 'ShowerHead' },
+      { name: 'Safe', icon: 'ShieldCheck' },
+      { name: 'Mountain view', icon: 'Mountain' },
+      { name: 'Concierge', icon: 'ConciergeBell' },
+      { name: '24/7 service', icon: 'Clock' },
+      { name: 'Towel service', icon: 'Bath' },
+      { name: 'Luggage', icon: 'Luggage' },
+      { name: 'Sunlight', icon: 'Sun' }
+    ],
   },
   {
     id: 'r9',
@@ -87,7 +97,17 @@ export const roomsData = [
      '/assets/resort/Treehouse Non Slider-1.jpg',
     ],
     price: 'IDR 2.788.000',
-    features: ['Cozy bedroom with double bed','Mezzanine bedroom','Private Bathroom','Smart TV','Coffee & tea-making facilities','Mini refrigerator','Complimentary Wi-Fi','Balcony with jungle views']
+    features: ['Cozy bedroom with double bed','Mezzanine bedroom','Private Bathroom','Smart TV','Coffee & tea-making facilities','Mini refrigerator','Complimentary Wi-Fi','Balcony with jungle views'],
+    amenities: [
+      { name: 'Shower', icon: 'ShowerHead' },
+      { name: 'Safe', icon: 'ShieldCheck' },
+      { name: 'Mountain view', icon: 'Mountain' },
+      { name: 'Concierge', icon: 'ConciergeBell' },
+      { name: '24/7 service', icon: 'Clock' },
+      { name: 'Towel service', icon: 'Bath' },
+      { name: 'Luggage', icon: 'Luggage' },
+      { name: 'Sunlight', icon: 'Sun' }
+    ],
   },
   {
     id: 'r3',
@@ -102,7 +122,17 @@ export const roomsData = [
      '/assets/caravan/Caravan-3.jpg',
     ],
     price: 'IDR 4.388.000',
-    features: ['Queen-size bed & Bunk beds','Bathroom','LED TV','Coffee & tea-making facilities','Mini refrigerator','Complimentary Wi-Fi','Terrace area']
+    features: ['Queen-size bed & Bunk beds','Bathroom','LED TV','Coffee & tea-making facilities','Mini refrigerator','Complimentary Wi-Fi','Terrace area'],
+    amenities: [
+      { name: 'Shower', icon: 'ShowerHead' },
+      { name: 'Safe', icon: 'ShieldCheck' },
+      { name: 'Mountain view', icon: 'Mountain' },
+      { name: 'Concierge', icon: 'ConciergeBell' },
+      { name: '24/7 service', icon: 'Clock' },
+      { name: 'Towel service', icon: 'Bath' },
+      { name: 'Luggage', icon: 'Luggage' },
+      { name: 'Sunlight', icon: 'Sun' }
+    ],
   },
   {
     id: 'r4',
@@ -117,7 +147,17 @@ export const roomsData = [
      '/assets/caravan/Caravan Rhino-3.jpg',
     ],
     price: 'IDR 3.188.000',
-    features: ['Queen-size bed','Bathroom','LED TV','Coffee & tea-making facilities','Mini refrigerator','Complimentary Wi-Fi','Terrace area']
+    features: ['Queen-size bed','Bathroom','LED TV','Coffee & tea-making facilities','Mini refrigerator','Complimentary Wi-Fi','Terrace area'],
+    amenities: [
+      { name: 'Shower', icon: 'ShowerHead' },
+      { name: 'Safe', icon: 'ShieldCheck' },
+      { name: 'Mountain view', icon: 'Mountain' },
+      { name: 'Concierge', icon: 'ConciergeBell' },
+      { name: '24/7 service', icon: 'Clock' },
+      { name: 'Towel service', icon: 'Bath' },
+      { name: 'Luggage', icon: 'Luggage' },
+      { name: 'Sunlight', icon: 'Sun' }
+    ],
   },
   {
     id: 'r5',
@@ -133,7 +173,17 @@ export const roomsData = [
       '/assets/caravan/Caravan Bus-5.jpg',
     ],
     price: 'IDR 3.188.000',
-    features: ['Queen-size bed & Bunk beds','Bathroom','LED TV','Coffee & tea-making facilities','Mini refrigerator','Complimentary Wi-Fi','Terrace area']
+    features: ['Queen-size bed & Bunk beds','Bathroom','LED TV','Coffee & tea-making facilities','Mini refrigerator','Complimentary Wi-Fi','Terrace area'],
+    amenities: [
+      { name: 'Shower', icon: 'ShowerHead' },
+      { name: 'Safe', icon: 'ShieldCheck' },
+      { name: 'Mountain view', icon: 'Mountain' },
+      { name: 'Concierge', icon: 'ConciergeBell' },
+      { name: '24/7 service', icon: 'Clock' },
+      { name: 'Towel service', icon: 'Bath' },
+      { name: 'Luggage', icon: 'Luggage' },
+      { name: 'Sunlight', icon: 'Sun' }
+    ],
   },
   {
     id: 'r6',
@@ -150,7 +200,17 @@ export const roomsData = [
       '/assets/bungalow/Zebra 2BR-5.jpg',
     ],
     price: 'IDR 4.988.000',
-    features: ['Two separate bedrooms','Private Bathroom','Living area','Smart TV','Coffee & tea-making facilities','Refrigerator','Complimentary Wi-Fi','Terrace area']
+    features: ['Two separate bedrooms','Private Bathroom','Living area','Smart TV','Coffee & tea-making facilities','Refrigerator','Complimentary Wi-Fi','Terrace area'],
+    amenities: [
+      { name: 'Shower', icon: 'ShowerHead' },
+      { name: 'Safe', icon: 'ShieldCheck' },
+      { name: 'Mountain view', icon: 'Mountain' },
+      { name: 'Concierge', icon: 'ConciergeBell' },
+      { name: '24/7 service', icon: 'Clock' },
+      { name: 'Towel service', icon: 'Bath' },
+      { name: 'Luggage', icon: 'Luggage' },
+      { name: 'Sunlight', icon: 'Sun' }
+    ],
   },
   {
     id: 'r7',
@@ -168,7 +228,17 @@ export const roomsData = [
       '/assets/bungalow/Zebra Grand 3BR-6.jpg',
     ],
     price: 'IDR 7.588.000',
-    features: ['Three separate bedrooms','Private Bathroom','Living area','Smart TV','Coffee & tea-making facilities','Refrigerator','Complimentary Wi-Fi','Terrace area']
+    features: ['Three separate bedrooms','Private Bathroom','Living area','Smart TV','Coffee & tea-making facilities','Refrigerator','Complimentary Wi-Fi','Terrace area'],
+    amenities: [
+      { name: 'Shower', icon: 'ShowerHead' },
+      { name: 'Safe', icon: 'ShieldCheck' },
+      { name: 'Mountain view', icon: 'Mountain' },
+      { name: 'Concierge', icon: 'ConciergeBell' },
+      { name: '24/7 service', icon: 'Clock' },
+      { name: 'Towel service', icon: 'Bath' },
+      { name: 'Luggage', icon: 'Luggage' },
+      { name: 'Sunlight', icon: 'Sun' }
+    ],
   },
   {
     id: 'r8',
@@ -185,7 +255,17 @@ export const roomsData = [
       '/assets/bungalow/Zebra Suite 2BR-5.jpg',
     ],
     price: 'IDR 7.988.000',
-    features: ['Two spacious bedrooms','One mezzanine bedroom','Private Bathroom','Living area & slide','Smart TV','Coffee & tea-making facilities','Refrigerator','Complimentary Wi-Fi','Terrace area']
+    features: ['Two spacious bedrooms','One mezzanine bedroom','Private Bathroom','Living area & slide','Smart TV','Coffee & tea-making facilities','Refrigerator','Complimentary Wi-Fi','Terrace area'],
+    amenities: [
+      { name: 'Shower', icon: 'ShowerHead' },
+      { name: 'Safe', icon: 'ShieldCheck' },
+      { name: 'Mountain view', icon: 'Mountain' },
+      { name: 'Concierge', icon: 'ConciergeBell' },
+      { name: '24/7 service', icon: 'Clock' },
+      { name: 'Towel service', icon: 'Bath' },
+      { name: 'Luggage', icon: 'Luggage' },
+      { name: 'Sunlight', icon: 'Sun' }
+    ],
   },
   {
     id: 'r10',
@@ -202,7 +282,17 @@ export const roomsData = [
       '/assets/bungalow/Zebra Executive 3BR-5.jpg',
     ],
     price: 'IDR 7.988.000',
-    features: ['Two spacious bedrooms','One mezzanine bedroom','Private Bathroom','Living area & slide','Smart TV','Coffee & tea-making facilities','Refrigerator','Complimentary Wi-Fi','Terrace area']
+    features: ['Two spacious bedrooms','One mezzanine bedroom','Private Bathroom','Living area & slide','Smart TV','Coffee & tea-making facilities','Refrigerator','Complimentary Wi-Fi','Terrace area'],
+    amenities: [
+      { name: 'Shower', icon: 'ShowerHead' },
+      { name: 'Safe', icon: 'ShieldCheck' },
+      { name: 'Mountain view', icon: 'Mountain' },
+      { name: 'Concierge', icon: 'ConciergeBell' },
+      { name: '24/7 service', icon: 'Clock' },
+      { name: 'Towel service', icon: 'Bath' },
+      { name: 'Luggage', icon: 'Luggage' },
+      { name: 'Sunlight', icon: 'Sun' }
+    ],
   },
   {
     id: 'h2',
@@ -218,7 +308,17 @@ export const roomsData = [
       '/assets/hotel/Hotel Deluxe-3.jpg',
     ],
     price: 'IDR 2.888.000',
-    features: ['Queen-size or Twin beds', 'Bathroom', 'Hair Dryer', 'LED TV','Sofa','Private balcony','Complimentary Wi-Fi','Coffee & tea making facilities','Mini refrigerator']
+    features: ['Queen-size or Twin beds', 'Bathroom', 'Hair Dryer', 'LED TV','Sofa','Private balcony','Complimentary Wi-Fi','Coffee & tea making facilities','Mini refrigerator'],
+    amenities: [
+      { name: 'Shower', icon: 'ShowerHead' },
+      { name: 'Safe', icon: 'ShieldCheck' },
+      { name: 'Mountain view', icon: 'Mountain' },
+      { name: 'Concierge', icon: 'ConciergeBell' },
+      { name: '24/7 service', icon: 'Clock' },
+      { name: 'Towel service', icon: 'Bath' },
+      { name: 'Luggage', icon: 'Luggage' },
+      { name: 'Sunlight', icon: 'Sun' }
+    ],
   },
   {
     id: 'h3',
@@ -233,7 +333,17 @@ export const roomsData = [
       '/assets/hotel/Hotel Suite-3.jpg',
     ],
     price: 'IDR 5.250.000',
-    features: ['King-size bed','Separate living area','Private balcony','Bathroom','Hair Dryer','Smart TV','Complimentary Wi-Fi','Coffee & tea-making facilities','Mini refrigerator']
+    features: ['King-size bed','Separate living area','Private balcony','Bathroom','Hair Dryer','Smart TV','Complimentary Wi-Fi','Coffee & tea-making facilities','Mini refrigerator'],
+    amenities: [
+      { name: 'Shower', icon: 'ShowerHead' },
+      { name: 'Safe', icon: 'ShieldCheck' },
+      { name: 'Mountain view', icon: 'Mountain' },
+      { name: 'Concierge', icon: 'ConciergeBell' },
+      { name: '24/7 service', icon: 'Clock' },
+      { name: 'Towel service', icon: 'Bath' },
+      { name: 'Luggage', icon: 'Luggage' },
+      { name: 'Sunlight', icon: 'Sun' }
+    ],
   },
   {
     id: 'h4',
@@ -248,6 +358,16 @@ export const roomsData = [
       '/assets/hotel/Hotel Suite-3.jpg',
     ],
     price: 'IDR 5.250.000',
-    features: ['King-size bed','Separate living area','Private balcony','Bathroom','Hair Dryer','Smart TV','Complimentary Wi-Fi','Coffee & tea-making facilities','Mini refrigerator']
+    features: ['King-size bed','Separate living area','Private balcony','Bathroom','Hair Dryer','Smart TV','Complimentary Wi-Fi','Coffee & tea-making facilities','Mini refrigerator'],
+    amenities: [
+      { name: 'Shower', icon: 'ShowerHead' },
+      { name: 'Safe', icon: 'ShieldCheck' },
+      { name: 'Mountain view', icon: 'Mountain' },
+      { name: 'Concierge', icon: 'ConciergeBell' },
+      { name: '24/7 service', icon: 'Clock' },
+      { name: 'Towel service', icon: 'Bath' },
+      { name: 'Luggage', icon: 'Luggage' },
+      { name: 'Sunlight', icon: 'Sun' }
+    ],
   }
 ];
