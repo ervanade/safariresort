@@ -87,5 +87,63 @@ export const restaurantsData = [
         image: 'https://horizons-cdn.hostinger.com/b05a0347-ff2a-4d3e-b189-510345403291/3545945ccd442b84f3229a568bc747c1.png'
       }
     ]
+  },
+  {
+    id: 'rimba',
+    slug: 'rimba-foodcourt',
+    name: 'Rimba Foodcourt',
+    description: 'Enjoy a delightful meal with a view of our adorable pandas. A perfect spot for families to dine and relax.',
+    mainImage: '/assets/restaurant/rimba-food.jpg',
+    romanticDinnerPackage: {
+      title: 'Intimate Dining Experience',
+      description: 'Savor a special menu in a cozy, nature-inspired setting.',
+      image: 'https://horizons-cdn.hostinger.com/b05a0347-ff2a-4d3e-b189-510345403291/301ba70228dd795ef4f5dbbb8db21f60.jpg'
+    },
+    menuHighlights: [
+       {
+        title: 'Dim Sum Platter',
+        description: 'A selection of steamed dumplings served with soy sauce.',
+        image: 'https://horizons-cdn.hostinger.com/b05a0347-ff2a-4d3e-b189-510345403291/a1e07f27def567889f384d4c778f5c2e.png'
+      },
+      {
+        title: 'Steamed Buns',
+        description: 'Soft, fluffy buns filled with savory seasoned meat.',
+        image: 'https://horizons-cdn.hostinger.com/b05a0347-ff2a-4d3e-b189-510345403291/7841371152c4c0d47924d950e47424c9.png'
+      },
+       {
+        title: 'Satay Platter',
+        description: 'Traditional grilled skewers served with rice cakes and peanut sauce.',
+        image: 'https://horizons-cdn.hostinger.com/b05a0347-ff2a-4d3e-b189-510345403291/3545945ccd442b84f3229a568bc747c1.png'
+      }
+    ]
+  },
+  {
+    id: 'rainforest',
+    slug: 'rain-forest',
+    name: 'Rain Forest',
+    description: 'Enjoy a delightful meal with a view of our adorable pandas. A perfect spot for families to dine and relax.',
+    mainImage: '/assets/restaurant/rainforest.jpg',
+    romanticDinnerPackage: {
+      title: 'Intimate Dining Experience',
+      description: 'Savor a special menu in a cozy, nature-inspired setting.',
+      image: 'https://horizons-cdn.hostinger.com/b05a0347-ff2a-4d3e-b189-510345403291/301ba70228dd795ef4f5dbbb8db21f60.jpg'
+    },
+    menuHighlights: [
+       {
+        title: 'Dim Sum Platter',
+        description: 'A selection of steamed dumplings served with soy sauce.',
+        image: 'https://horizons-cdn.hostinger.com/b05a0347-ff2a-4d3e-b189-510345403291/a1e07f27def567889f384d4c778f5c2e.png'
+      },
+      {
+        title: 'Steamed Buns',
+        description: 'Soft, fluffy buns filled with savory seasoned meat.',
+        image: 'https://horizons-cdn.hostinger.com/b05a0347-ff2a-4d3e-b189-510345403291/7841371152c4c0d47924d950e47424c9.png'
+      },
+       {
+        title: 'Satay Platter',
+        description: 'Traditional grilled skewers served with rice cakes and peanut sauce.',
+        image: 'https://horizons-cdn.hostinger.com/b05a0347-ff2a-4d3e-b189-510345403291/3545945ccd442b84f3229a568bc747c1.png'
+      }
+    ]
   }
 ];

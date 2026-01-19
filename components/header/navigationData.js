@@ -65,8 +65,8 @@ const navigationData = [
     items: [
       { name: "Gathering Package", href: "/packages/gathering" },
       { name: "Meeting Package", href: "#packages" },
-      { name: "Buggy Journey", href: "#packages" },
-      { name: "Stay & Explore", href: "#packages" }
+      // { name: "Buggy Journey", href: "#packages" },
+      // { name: "Stay & Explore", href: "#packages" }
     ]
   },
   {
@@ -82,9 +82,10 @@ const navigationData = [
     type: "dropdown",
     icon: <Camera size={16} />,
     items: [
-      { name: "Virtual Tour 360", href: "/gallery/virtual-tour" },
+      // { name: "Virtual Tour 360", href: "/gallery/virtual-tour" },
       { name: "Guest Stories", href: "/guest-stories" },
-      { name: "Video Highlight", href: "#" }
+      { name: "Frequently Asked Questions", href: "/faq" },
+      // { name: "Video Highlight", href: "#" }
     ]
   }
 ];
