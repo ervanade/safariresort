@@ -58,7 +58,7 @@ const Dining = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 }}
-                    className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 tracking-tight drop-shadow-lg"
+                    className="text-5xl md:text-7xl font-bold mb-8 tracking-tight drop-shadow-lg"
                     style={{ fontFamily: 'Mikado, sans-serif' }}
                 >
                     Dining at Safari Resort
