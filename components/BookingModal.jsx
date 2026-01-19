@@ -1,15 +1,17 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import { createPortal } from 'react-dom';
 
-const BookingModal = ({ isOpen, onClose }) => {
+const BookingModal = ({ isOpen, onClose, adults = 1,  checkin = '',checkout = '' }) => {
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     if (!isOpen) {
       document.body.style.overflow = 'unset';
+      setIsLoading(true); // Reset loading saat ditutup
       return;
     }
 
@@ -39,6 +41,9 @@ const BookingModal = ({ isOpen, onClose }) => {
             showBestPrice: true,
             openBookingFunnel: false 
           },
+          ad: adults,           // Jumlah Dewasa
+          checkin: checkin,     // Tanggal Check-in
+          checkout: checkout,   // Tanggal Check-out
           currency: 'IDR',
           locale: 'en_GB',
           property: 'idbog27674',
@@ -50,6 +55,8 @@ const BookingModal = ({ isOpen, onClose }) => {
       version: '1.76.0',
       baseHost: 'websdk.fastbooking-services.com'
     });
+
+    
     document.body.appendChild(configScript);
 
     // 3. Re-inject JS (Hapus yang lama jika ada, lalu tambah baru)
@@ -63,6 +70,11 @@ const BookingModal = ({ isOpen, onClose }) => {
     script.id = jsId;
     script.src = `https://websdk.fastbooking-services.com/widgets/app.js?t=${new Date().getTime()}`; // Gunakan timestamp agar tidak cache
     script.async = true;
+    // Matikan loading setelah script termuat
+    script.onload = () => {
+      // Beri sedikit delay agar transisi skeleton ke widget lebih mulus
+      setTimeout(() => setIsLoading(false), 0);
+    };
     document.body.appendChild(script);
 
     return () => {
@@ -74,6 +86,24 @@ const BookingModal = ({ isOpen, onClose }) => {
   }, [isOpen]);
 
   if (!isOpen) return null;
+
+  const SkeletonLoader = () => (
+    <div className="animate-pulse space-y-6">
+      <div className="h-8 bg-gray-200 rounded w-1/3 mx-auto"></div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {[1, 2].map((i) => (
+          <div key={i} className="space-y-4">
+            <div className="h-6 bg-gray-200 rounded w-1/2 mx-auto"></div>
+            <div className="grid grid-cols-7 gap-2">
+              {[...Array(35)].map((_, j) => (
+                <div key={j} className="h-8 bg-gray-100 rounded-sm"></div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 
   return createPortal(
     <AnimatePresence>
@@ -99,6 +129,7 @@ const BookingModal = ({ isOpen, onClose }) => {
 
           <div className="flex-1 overflow-y-auto p-4 md:p-6">
             {/* Widget Container */}
+            {isLoading && <SkeletonLoader />}
             <div
               key={isOpen ? 'open' : 'closed'} // Force re-render container
               id="fb-widget-modal"

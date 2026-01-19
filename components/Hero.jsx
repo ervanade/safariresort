@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Calendar, Users, Home } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
+import BookingModal from './BookingModal';
 
 const swipeConfidenceThreshold = 10000;
 const swipePower = (offset, velocity) => {
@@ -13,6 +14,7 @@ const swipePower = (offset, velocity) => {
 const Hero = () => {
   const { toast } = useToast();
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({
     checkIn: '',
     checkOut: '',
@@ -59,15 +61,23 @@ const Hero = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    toast({
-      title: "Reservation Form",
-      description: "🚧 This feature isn't implemented yet—but don't worry! You can request it in your next prompt! 🚀"
-    });
+    setIsModalOpen(true);
+    // toast({
+    //   title: "Reservation Form",
+    //   description: "🚧 This feature isn't implemented yet—but don't worry! You can request it in your next prompt! 🚀"
+    // });
   };
 
   return (
     <section id="hero" className="relative min-h-screen flex items-end pb-12 md:pb-12 justify-center overflow-hidden">
       {/* Slider Background */}
+      <BookingModal 
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        adults={parseInt(formData.guests)} // Konversi string ke number
+        checkin={formData.checkIn}
+        checkout={formData.checkOut}
+      />
       <AnimatePresence mode="wait">
         <motion.div
           key={currentSlide}

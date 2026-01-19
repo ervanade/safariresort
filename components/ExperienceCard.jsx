@@ -59,7 +59,7 @@ const ExperienceCard = ({ experience, index }) => {
           {experience.description}
         </p>
 
-        <div className="space-y-2 mb-6">
+        {/* <div className="space-y-2 mb-6">
           <div className="flex items-center gap-2 text-sm" style={{ color: '#7C3B1F', fontFamily: 'Mikado, sans-serif' }}>
             <Clock size={16} />
             <span>{experience.duration}</span>
@@ -68,7 +68,7 @@ const ExperienceCard = ({ experience, index }) => {
             <Users2 size={16} />
             <span>{experience.groupSize}</span>
           </div>
-        </div>
+        </div> */}
 
         <Button
           onClick={handleBookExperience}

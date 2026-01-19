@@ -26,9 +26,9 @@ const FacilityCard = ({
         return 'https://horizons-cdn.hostinger.com/b05a0347-ff2a-4d3e-b189-510345403291/screen-shot-2025-12-19-at-04.21.32-52Ox8.png';
       case 'Paddle Boat':
         return 'https://horizons-cdn.hostinger.com/b05a0347-ff2a-4d3e-b189-510345403291/screen-shot-2025-12-19-at-04.21.39-VjiAP.png';
-      case 'Exhibit Siamang':
+      case 'Siamang Voice Experience':
         return 'https://horizons-cdn.hostinger.com/b05a0347-ff2a-4d3e-b189-510345403291/screen-shot-2025-12-19-at-04.21.55-zu3LR.png';
-      case 'Exhibit Rusa':
+      case 'Meet & Feed Rusa':
         return 'https://horizons-cdn.hostinger.com/b05a0347-ff2a-4d3e-b189-510345403291/screen-shot-2025-12-19-at-04.21.45-08OnI.png';
       case 'Pelican Island':
         return 'https://horizons-cdn.hostinger.com/b05a0347-ff2a-4d3e-b189-510345403291/screen-shot-2025-12-19-at-04.22.04-3AapP.png';

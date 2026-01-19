@@ -13,7 +13,7 @@ const Experiences = () => {
       id: 1,
       name: 'Safari Journey',
       description: 'Embark on an unforgettable journey through the wild savanna.',
-      image: 'https://horizons-cdn.hostinger.com/b05a0347-ff2a-4d3e-b189-510345403291/f5334b26f3107204a4869fcbdf1da606.webp', 
+      image: '/assets/experiences/safari-journey.png', 
       duration: '3 hours',
       groupSize: 'Up to 6 guests',
       bookingUrl: 'https://tamansafari.com/'
@@ -22,7 +22,7 @@ const Experiences = () => {
       id: 2,
       name: 'Night Safari',
       description: 'Experience the thrill of the jungle after dark.',
-      image: 'https://horizons-cdn.hostinger.com/b05a0347-ff2a-4d3e-b189-510345403291/52d8ec7fa6dfeda390409c40c14883b0.webp',
+      image: '/assets/experiences/safari-night.png',
       duration: '2 hours',
       groupSize: 'Up to 8 guests',
       bookingUrl: 'https://tamansafari.com/'
@@ -31,7 +31,7 @@ const Experiences = () => {
       id: 3,
       name: 'Buggy Explorer',
       description: 'Drive your own buggy through challenging off-road trails.',
-      image: 'https://horizons-cdn.hostinger.com/b05a0347-ff2a-4d3e-b189-510345403291/c417dbfc22239254582c605ab6e0448b.png', 
+      image: '/assets/experiences/buggy.png', 
       duration: '1.5 hours',
       groupSize: '2 guests per buggy',
       whatsappMessage: 'Halo saya ingin mengetahui lebih lanjut tentang Buggy Explorer'
@@ -40,7 +40,7 @@ const Experiences = () => {
       id: 6,
       name: 'Feeding Animal',
       description: 'Participate in feeding sessions for giraffes and elephants.',
-      image: 'https://horizons-cdn.hostinger.com/b05a0347-ff2a-4d3e-b189-510345403291/23c9addd0f21fd970944ff14654f1a64.png',
+      image: '/assets/experiences/feeding-animal.png',
       duration: '30 mins',
       groupSize: 'Open',
       whatsappMessage: 'Halo saya ingin mengetahui lebih lanjut tentang Feeding Animal'
@@ -49,7 +49,7 @@ const Experiences = () => {
       id: 7,
       name: 'Animal Ride',
       description: 'Gentle rides on ponies or camels for a unique perspective.',
-      image: 'https://horizons-cdn.hostinger.com/b05a0347-ff2a-4d3e-b189-510345403291/f1c6f67e20aa2fe4b9f5004af897fe57.png',
+      image: '/assets/experiences/animal-ride.png',
       duration: '20 mins',
       groupSize: 'Individual',
       whatsappMessage: 'Halo saya ingin mengetahui lebih lanjut tentang Animal Ride'
@@ -58,16 +58,16 @@ const Experiences = () => {
       id: 8,
       name: 'Safari Trek',
       description: 'Guided walking tour to explore flora and fauna on foot.',
-      image: 'https://horizons-cdn.hostinger.com/b05a0347-ff2a-4d3e-b189-510345403291/a29fa7aa47458db0e396c1b983750f87.png', 
+      image: '/assets/experiences/safari-trek.png', 
       duration: '2 hours',
       groupSize: 'Up to 10 guests',
       whatsappMessage: 'Halo saya ingin mengetahui lebih lanjut tentang Safari Trek'
     },
     {
       id: 9,
-      name: 'Breakfast With Dolphin',
-      description: 'Enjoy a delightful breakfast while watching dolphins play.',
-      image: 'https://horizons-cdn.hostinger.com/b05a0347-ff2a-4d3e-b189-510345403291/9a62bec4b9e11f5807e97d564db3f377.png',
+      name: 'Meet & Feed Rusa',
+      description: 'Enjoy a delightful Meet & Feed Rusa.',
+      image: '/assets/experiences/feeding-rusa.png',
       duration: '1.5 hours',
       groupSize: 'Reservation only',
       whatsappMessage: 'Halo saya ingin mengetahui lebih lanjut tentang Breakfast With Dolphin'
@@ -76,7 +76,7 @@ const Experiences = () => {
       id: 10,
       name: 'Dine Experience',
       description: 'Exclusive dining surrounded by the sights and sounds of nature.',
-      image: 'https://images.unsplash.com/photo-1616874421110-85f099553b47',
+      image: '/assets/experiences/restaurant-caravan.jpg',
       duration: '2 hours',
       groupSize: 'Couples or Families',
       whatsappMessage: 'Halo saya ingin mengetahui lebih lanjut tentang Dine Experience'

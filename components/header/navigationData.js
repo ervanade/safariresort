@@ -70,16 +70,11 @@ const navigationData = [
     ]
   },
   {
-    name: "Dining",
-    id: "dining",
-    type: "dropdown",
+    name: 'Dining',
+    id: 'dining',
+    type: 'link', // Changed to simple link
     icon: <Utensils size={16} />,
-    items: [
-      { name: "Barbeque", href: "#" },
-      { name: "Romantic Dinner", href: "/dining/romantic-dinner" },
-      { name: "Seasonal Dinner", href: "#" },
-      { name: "Jungle Hot Pot", href: "#" }
-    ]
+    href: '/dining'
   },
   {
     name: "Gallery & Stories",

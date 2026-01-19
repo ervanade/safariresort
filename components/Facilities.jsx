@@ -29,7 +29,7 @@ const Facilities = () => {
     color: '#F06934' // Primary color
   }, {
     id: 4,
-    name: 'Exhibit Siamang',
+    name: 'Siamang Voice Experience',
     description: 'Observe the majestic Siamang in their natural-like habitat, an engaging wildlife experience.',
     icon: Trees,
     // Using Trees icon to represent natural habitat/wildlife
@@ -37,7 +37,7 @@ const Facilities = () => {
     color: '#7C3B1F' // Secondary color
   }, {
     id: 5,
-    name: 'Exhibit Rusa',
+    name: 'Meet & Feed Rusa',
     description: 'Encounter Rusa deer in a spacious exhibit designed to mimic their native environment.',
     icon: UserSquare2,
     // Using a generic user icon for animal exhibits, or perhaps an animal-specific one if available

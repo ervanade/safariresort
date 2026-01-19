@@ -51,13 +51,13 @@ const About = () => {
                 <p className="text-lg leading-relaxed italic">"Find peace and adventure in one stunning place."</p>
               </div>
 
-            <p className="leading-relaxed">Safari Resort, is a unique accommodation destination located within Taman Safari Indonesia, Bogor. Nestled amidst majestic mountains and lush tropical forests, the resort offers guests a one-of-a-kind stay that combines modern comfort with the authentic charm of the wilderness.</p>
+            <p className="leading-relaxed">Safari Resort is a 4-star resort with unique room types of Caravan & Treehouse, building rooms and spacious rooms of Bungalows in the highland of Puncak. Standing on 8 hectares of land on the slopes of Mount Gede Pangrango, sensation of staying in a resort surrounded by Pines Forest, and inside The Great Taman Safari Bogor.</p>
 
-            <p className="leading-relaxed">The resort features diverse accommodation options, including hotel rooms, cozy bungalows for families, couples, or groups, as well as Indonesia's only caravan style lodgings and exclusive tree houses.</p>
+            {/* <p className="leading-relaxed">The resort features diverse accommodation options, including hotel rooms, cozy bungalows for families, couples, or groups, as well as Indonesia's only caravan style lodgings and exclusive tree houses.</p>
 
             <p className="leading-relaxed">To complete the experience, Safari Resort provides a wide range of facilities, such as swimming pools, restaurants, animal exhibits, animal rides, and other amenities, all set against breathtaking natural backdrops. Guests also enjoy exclusive access to Taman Safari, making the resort an ideal destination for both recreation and education.</p>
 
-            <p className="leading-relaxed">Perfect for nature lovers, families, and adventurers alike, Safari Resort invites guests to relax in nature, interact with animals, and breathe in the refreshing mountain air. Every stay promises unforgettable memories where adventure and relaxation meet in harmony.</p>
+            <p className="leading-relaxed">Perfect for nature lovers, families, and adventurers alike, Safari Resort invites guests to relax in nature, interact with animals, and breathe in the refreshing mountain air. Every stay promises unforgettable memories where adventure and relaxation meet in harmony.</p> */}
                             
             </div>
 

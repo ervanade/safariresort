@@ -56,7 +56,13 @@ export default function Header() {
   }, []);
 
   /* ================= NAVIGATION ================= */
-  const handleNavClick = (id) => {
+  const handleNavClick = (id, href) => {
+    if (href) {
+      router.push(href);
+      setIsMobileMenuOpen(false);
+      setActiveHover(null);
+      return;
+  }
     if (pathname !== "/") {
       router.push(`/#${id}`);
       return;
@@ -167,7 +173,7 @@ export default function Header() {
               >
                 <button
                   onClick={() =>
-                    item.type === "link" && handleNavClick(item.id)
+                    item.type === "link" && handleNavClick(item.id, item.href)
                   }
                   className={`px-3 py-2 text-sm font-bold flex items-center gap-1 transition-colors ${
                     activeHover === item.name
