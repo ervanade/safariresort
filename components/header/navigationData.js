@@ -64,7 +64,7 @@ const navigationData = [
     icon: <Gift size={16} />,
     items: [
       { name: "Gathering Package", href: "/packages/gathering" },
-      { name: "Meeting Package", href: "#packages" },
+      { name: "Meeting Package", href: "/packages/meeting" },
       // { name: "Buggy Journey", href: "#packages" },
       // { name: "Stay & Explore", href: "#packages" }
     ]
@@ -84,7 +84,7 @@ const navigationData = [
     items: [
       // { name: "Virtual Tour 360", href: "/gallery/virtual-tour" },
       { name: "Guest Stories", href: "/guest-stories" },
-      { name: "Frequently Asked Questions", href: "/faq" },
+      { name: "Information", href: "/faq" },
       // { name: "Video Highlight", href: "#" }
     ]
   }

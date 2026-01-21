@@ -60,7 +60,7 @@ const DiningDetail = ({diningSlug}) => {
         {restaurant.romanticDinnerPackage && (
           <section className="py-16 bg-white">
             <div className="container mx-auto px-4">
-              <div className="bg-[#FAF7F5] rounded-3xl overflow-hidden shadow-lg">
+              <div className="bg-[#FAF7F5] overflow-hidden shadow-lg">
                 <div className="grid grid-cols-1 md:grid-cols-2">
                   <div className="h-64 md:h-auto">
                     <img 
@@ -106,7 +106,7 @@ const DiningDetail = ({diningSlug}) => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
-                    className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300"
+                    className="bg-white overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300"
                   >
                     <div className="h-64 overflow-hidden">
                       <img 
@@ -126,7 +126,7 @@ const DiningDetail = ({diningSlug}) => {
               <div className="mt-16 text-center">
                 <Button 
                   variant="outline" 
-                  className="border-2 border-[#7C3B1F] text-[#7C3B1F] hover:bg-[#7C3B1F] hover:text-white rounded-full px-8 py-6 text-lg font-bold transition-all"
+                  className="border-2 border-[#7C3B1F] text-[#7C3B1F] hover:bg-[#7C3B1F] hover:text-white px-8 py-6 text-lg font-bold transition-all"
                 >
                   Download Full Menu
                 </Button>

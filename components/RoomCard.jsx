@@ -56,7 +56,7 @@ const RoomCard = ({ room, ...props }) => {
 
   return (
     <motion.div
-      className="bg-white overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-[#7C3B1F]/10 h-full flex flex-col group relative rounded-2xl"
+      className="bg-white overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-[#7C3B1F]/10 h-full flex flex-col group relative "
       initial={{ y: 0 }}
       whileHover={{ y: -5 }}
       {...props}
@@ -73,7 +73,7 @@ const RoomCard = ({ room, ...props }) => {
         {/* Existing Badge (Left) */}
         {room.badge && (
           <div
-            className="absolute top-4 left-4 px-3 py-1 font-bold shadow-lg backdrop-blur-sm bg-[#F06934] text-white rounded-lg border border-white/20 z-20"
+            className="absolute top-4 left-4 px-3 py-1 font-bold shadow-lg backdrop-blur-sm bg-[#F06934] text-white  border border-white/20 z-20"
             style={{ fontFamily: "Nunito, sans-serif" }}
           >
             <span className="text-xs tracking-wider">{room.badge}</span>
@@ -88,7 +88,7 @@ const RoomCard = ({ room, ...props }) => {
             transition={{ delay: 0.2 }}
             className="absolute top-4 right-4 z-20"
           >
-            <div className="bg-amber-400 text-[#7C3B1F] text-[10px] font-extrabold px-3 py-1.5 rounded-full shadow-lg uppercase tracking-wider flex items-center gap-1 border border-white/30">
+            <div className="bg-amber-400 text-[#7C3B1F] text-[10px] font-extrabold px-3 py-1.5 shadow-lg uppercase tracking-wider flex items-center gap-1 border border-white/30">
               <Star size={10} fill="currentColor" /> Best Seller
             </div>
           </motion.div>
@@ -96,7 +96,7 @@ const RoomCard = ({ room, ...props }) => {
 
         {/* Price Overlay */}
         <div
-          className="absolute bottom-3 right-3 px-3 py-1.5 font-bold shadow-lg backdrop-blur-sm bg-white/95 text-[#F06934] rounded-lg border border-[#F06934]/20"
+          className="absolute bottom-3 right-3 px-3 py-1.5 font-bold shadow-lg backdrop-blur-sm bg-white/95 text-[#F06934] border border-[#F06934]/20"
           style={{ fontFamily: "Nunito, sans-serif" }}
         >
           <span className="text-sm md:text-base">{room.price}</span>
@@ -140,7 +140,7 @@ const RoomCard = ({ room, ...props }) => {
 
         <div className="mt-2">
           <Link href={`/rooms/${room?.id}`} className="block w-full">
-            <Button className="w-full h-9 text-xs font-bold bg-[#F06934] hover:bg-[#d65523] text-white transition-colors shadow-md rounded-lg">
+            <Button className="w-full h-9 text-xs font-bold bg-[#F06934] hover:bg-[#d65523] text-white transition-colors shadow-md ">
               <Calendar size={14} className="mr-2" />
               Book Now
             </Button>

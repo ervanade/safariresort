@@ -25,22 +25,22 @@ const Packages = () => {
       imageAlt: "Modern conference room with glass walls overlooking a forest, featuring a long table and presentation equipment.",
       imageTerm: "https://pix8.agoda.net/property/335864/0/b071a9cc36875b5623b78b60ff87c2ea.jpeg"
     },
-    {
-      id: 'buggy',
-      label: 'Buggy Journey',
-      title: 'Buggy Journey',
-      description: 'Explore the vast landscapes of our resort with a guided Buggy Journey. Discover hidden trails, scenic viewpoints, and local wildlife in comfort. A perfect adventure for guests of all ages looking to see more of our beautiful grounds.',
-      imageAlt: "A rugged buggy vehicle driving along a dirt path through a lush tropical forest.",
-      imageTerm: "https://horizons-cdn.hostinger.com/b05a0347-ff2a-4d3e-b189-510345403291/c417dbfc22239254582c605ab6e0448b.png"
-    },        
-    {
-      id: 'stay',
-      label: 'Stay & Explore',
-      title: 'Stay & Explore',
-      description: 'The ultimate getaway package combining luxury accommodation with guided exploration. Enjoy a premium stay in our lodges or treehouses, complete with inclusive tours, dining credits, and exclusive access to resort activities.',
-      imageAlt: "A luxurious glamping tent interior with a cozy bed, looking out onto a peaceful morning forest scene.",
-      imageTerm: "https://q-xx.bstatic.com/xdata/images/hotel/max1024x768/194259582.jpg?k=d96cd6e90cc3911bf995b1af523f9423230f3359cd79363168443f3e658990d2&o=&s=1024x"
-    }
+    // {
+    //   id: 'buggy',
+    //   label: 'Buggy Journey',
+    //   title: 'Buggy Journey',
+    //   description: 'Explore the vast landscapes of our resort with a guided Buggy Journey. Discover hidden trails, scenic viewpoints, and local wildlife in comfort. A perfect adventure for guests of all ages looking to see more of our beautiful grounds.',
+    //   imageAlt: "A rugged buggy vehicle driving along a dirt path through a lush tropical forest.",
+    //   imageTerm: "https://horizons-cdn.hostinger.com/b05a0347-ff2a-4d3e-b189-510345403291/c417dbfc22239254582c605ab6e0448b.png"
+    // },        
+    // {
+    //   id: 'stay',
+    //   label: 'Stay & Explore',
+    //   title: 'Stay & Explore',
+    //   description: 'The ultimate getaway package combining luxury accommodation with guided exploration. Enjoy a premium stay in our lodges or treehouses, complete with inclusive tours, dining credits, and exclusive access to resort activities.',
+    //   imageAlt: "A luxurious glamping tent interior with a cozy bed, looking out onto a peaceful morning forest scene.",
+    //   imageTerm: "https://q-xx.bstatic.com/xdata/images/hotel/max1024x768/194259582.jpg?k=d96cd6e90cc3911bf995b1af523f9423230f3359cd79363168443f3e658990d2&o=&s=1024x"
+    // }
   ];
 
   // Ensure activeContent is never undefined by falling back to the first tab

@@ -50,7 +50,7 @@ const Dining = () => {
                 <motion.span 
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-[#F06934] font-bold tracking-[0.2em] uppercase mb-6 bg-black/40 px-6 py-2 rounded-full backdrop-blur-md border border-white/10"
+                    className="text-[#F06934] font-bold tracking-[0.2em] uppercase mb-6 bg-black/40 px-6 py-2 backdrop-blur-md border border-white/10"
                 >
                     Taste of Nature
                 </motion.span>
@@ -86,7 +86,7 @@ const Dining = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.2 }}
-                                className="group relative h-[500px] rounded-3xl overflow-hidden shadow-2xl bg-white"
+                                className="group relative h-[500px] overflow-hidden shadow-2xl bg-white"
                             >
                                 <img
                                     src={restaurant.mainImage}
@@ -102,7 +102,7 @@ const Dining = () => {
                                     <p className="text-white/80 line-clamp-2 mb-8 text-lg font-medium leading-relaxed">
                                         {restaurant.description}
                                     </p>
-                                    <span className="inline-flex items-center gap-2 bg-[#F06934] text-white px-6 py-3 rounded-full font-bold text-sm tracking-widest uppercase hover:bg-[#d65523] transition-colors shadow-lg">
+                                    <span className="inline-flex items-center gap-2 bg-[#F06934] text-white px-6 py-3 font-bold text-sm tracking-widest uppercase hover:bg-[#d65523] transition-colors shadow-lg">
                                         Explore Menu <ArrowRight size={16} />
                                     </span>
                                 </div>
@@ -132,9 +132,9 @@ const Dining = () => {
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
                             whileHover={{ scale: 1.05 }}
-                            className="bg-[#faf7f5] p-10 rounded-3xl text-center shadow-lg border border-[#7C3B1F]/5 hover:border-[#F06934]/30 hover:shadow-xl transition-all duration-300 group"
+                            className="bg-[#faf7f5] p-10 text-center shadow-lg border border-[#7C3B1F]/5 hover:border-[#F06934]/30 hover:shadow-xl transition-all duration-300 group"
                         >
-                            <div className="w-20 h-20 mx-auto mb-8 bg-white rounded-2xl flex items-center justify-center text-[#F06934] shadow-md group-hover:bg-[#F06934] group-hover:text-white transition-colors duration-300">
+                            <div className="w-20 h-20 mx-auto mb-8 bg-white flex items-center justify-center text-[#F06934] shadow-md group-hover:bg-[#F06934] group-hover:text-white transition-colors duration-300">
                                 {item.icon}
                             </div>
                             <h3 className="text-xl font-bold text-[#7C3B1F] mb-4" style={{ fontFamily: 'Mikado, sans-serif' }}>

@@ -10,6 +10,33 @@ const Experiences = () => {
 
   const experiences = [
     {
+      id: 6,
+      name: 'Deer Feeding',
+      description: 'Participate in feeding sessions for deer.',
+      image: '/assets/experiences/feeding-animal.png',
+      duration: '30 mins',
+      groupSize: 'Open',
+      whatsappMessage: 'Halo saya ingin mengetahui lebih lanjut tentang Feeding Animal'
+    },
+    {
+      id: 7,
+      name: 'Poni Ride',
+      description: 'Gentle rides on ponies or camels for a unique perspective.',
+      image: '/assets/experiences/animal-ride.png',
+      duration: '20 mins',
+      groupSize: 'Individual',
+      whatsappMessage: 'Halo saya ingin mengetahui lebih lanjut tentang Animal Ride'
+    },
+    {
+      id: 3,
+      name: 'Explore TSI Buggy Car',
+      description: 'Drive your own buggy through challenging off-road trails.',
+      image: '/assets/experiences/buggy.png', 
+      duration: '1.5 hours',
+      groupSize: '2 guests per buggy',
+      whatsappMessage: 'Halo saya ingin mengetahui lebih lanjut tentang Buggy Explorer'
+    },
+    {
       id: 1,
       name: 'Safari Journey',
       description: 'Embark on an unforgettable journey through the wild savanna.',
@@ -26,33 +53,6 @@ const Experiences = () => {
       duration: '2 hours',
       groupSize: 'Up to 8 guests',
       bookingUrl: 'https://tamansafari.com/'
-    },
-    {
-      id: 3,
-      name: 'Buggy Explorer',
-      description: 'Drive your own buggy through challenging off-road trails.',
-      image: '/assets/experiences/buggy.png', 
-      duration: '1.5 hours',
-      groupSize: '2 guests per buggy',
-      whatsappMessage: 'Halo saya ingin mengetahui lebih lanjut tentang Buggy Explorer'
-    },
-    {
-      id: 6,
-      name: 'Feeding Animal',
-      description: 'Participate in feeding sessions for giraffes and elephants.',
-      image: '/assets/experiences/feeding-animal.png',
-      duration: '30 mins',
-      groupSize: 'Open',
-      whatsappMessage: 'Halo saya ingin mengetahui lebih lanjut tentang Feeding Animal'
-    },
-    {
-      id: 7,
-      name: 'Animal Ride',
-      description: 'Gentle rides on ponies or camels for a unique perspective.',
-      image: '/assets/experiences/animal-ride.png',
-      duration: '20 mins',
-      groupSize: 'Individual',
-      whatsappMessage: 'Halo saya ingin mengetahui lebih lanjut tentang Animal Ride'
     },
     {
       id: 8,
