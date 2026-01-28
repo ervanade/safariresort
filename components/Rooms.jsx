@@ -6,6 +6,7 @@ import RoomCard from '@/components/RoomCard';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { roomsData } from './data/roomsData';
+import { mapAccommodationsToRooms } from '@/lib/utils';
 
 
 // Improved helper for mobile detection with immediate initialization
@@ -114,13 +115,15 @@ const RoomSlider = ({
     </div>;
 };
 
-const Rooms = () => {
+const Rooms = ({accomodations}) => {
   const [resortPage, setResortPage] = useState(0);
   const [hotelPage, setHotelPage] = useState(0);
 
+  const rooms = accomodations?.length ? mapAccommodationsToRooms(accomodations) : roomsData
+
   // Filter data from shared source
-  const resortRooms = roomsData.filter(r => r.category === 'resort');
-  const hotelRooms = roomsData.filter(r => r.category === 'hotel');
+  const resortRooms = rooms.filter(r => r.category === 'resort');
+  const hotelRooms = rooms.filter(r => r.category === 'hotel');
 
   return <section id="stay" className="py-20 md:py-32 relative overflow-hidden bg-[#faf7f5]">
       <div className="bg-zebra-pattern opacity-10 absolute inset-0 z-0 pointer-events-none"></div>

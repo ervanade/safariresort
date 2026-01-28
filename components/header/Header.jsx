@@ -27,7 +27,7 @@ import { useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import BookingModal from "../BookingModal";
 
-export default function Header() {
+export default function Header({navigation}) {
   const router = useRouter();
   const pathname = usePathname();
   const params = useParams();
@@ -165,7 +165,7 @@ export default function Header() {
 
           {/* DESKTOP MENU */}
           <div className="hidden lg:flex items-center gap-1 xl:gap-2">
-            {navigationData.map((item) => (
+            {navigation?.map((item) => (
               <div
                 key={item.name}
                 onMouseEnter={() => setActiveHover(item.name)}
@@ -328,7 +328,7 @@ export default function Header() {
               className="lg:hidden bg-white border-t"
             >
               <div className="p-4 space-y-2 h-[calc(100vh-80px)] overflow-y-auto">
-                {navigationData.map((item) => (
+                {navigation?.map((item) => (
                   <div key={item.name}>
                     {item.type === "link" ? (
                       <button

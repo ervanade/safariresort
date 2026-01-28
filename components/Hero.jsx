@@ -11,7 +11,7 @@ const swipePower = (offset, velocity) => {
   return Math.abs(offset) * velocity;
 };
 
-const Hero = () => {
+const Hero = ({banners}) => {
   const { toast } = useToast();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -22,20 +22,31 @@ const Hero = () => {
     roomType: 'treehouse'
   });
 
-  const slides = [
+  const slidesDummy = [
     {
       id: 1,
       image: "https://horizons-cdn.hostinger.com/b05a0347-ff2a-4d3e-b189-510345403291/54630fb92081fec3b2304da74a9222c2.png", 
+      image_mobile: "https://horizons-cdn.hostinger.com/b05a0347-ff2a-4d3e-b189-510345403291/54630fb92081fec3b2304da74a9222c2.png", 
       alt: "Family with an elephant on a wooden deck overlooking the forest", 
       heading: "Find Your Wild Escape"
     },
     {
       id: 2,
       image: "https://horizons-cdn.hostinger.com/b05a0347-ff2a-4d3e-b189-510345403291/cd199248e24c139d05253e41c8651d47.png",
+      image_mobile: "https://horizons-cdn.hostinger.com/b05a0347-ff2a-4d3e-b189-510345403291/cd199248e24c139d05253e41c8651d47.png",
       alt: "Luxury resort bedroom with panoramic views",
       heading: "Wake Up to Nature"
     }
   ];
+
+  const slides = banners.map(banner => ({
+    id: banner?.id,
+    image: banner?.image_desktop,
+    alt: banner?.title,
+    heading: banner?.title,
+    image_mobile: banner?.image_mobile
+
+  })) || slidesDummy
 
   useEffect(() => {
     const timer = setInterval(() => {

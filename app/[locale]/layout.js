@@ -7,8 +7,8 @@ import parse from 'html-react-parser';
 const HTMLDecoderEncoder = require("html-encoder-decoder");
 const locales = ['en', 'id'];
 
-async function getData() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_KEY}/api/v1/web-settings`, {
+async function getData(lang) {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_KEY}/api/v1/web-settings?lang=${lang ?? "en"}`, {
     // cache: 'no-store',
     next: { revalidate: 3600 * 24 },
     method: 'GET',
@@ -26,7 +26,7 @@ async function getData() {
 
 export default async function LocaleLayout({ children, params }) {
   const { locale } = await params ?? "en";
-  const { settings, navigation } = await getData()
+  const { settings, navigation } = await getData(locale)
   const headScript = settings?.before_close_head || ``;
     const bodyScript = settings?.before_close_body || ``;
 
@@ -35,19 +35,20 @@ export default async function LocaleLayout({ children, params }) {
   }
 
   return (
- <html>
-  <head>
-        {parse(HTMLDecoderEncoder.decode(headScript))}
-      </head>
-      <body>
+ 
       <NextIntlClientProvider locale={locale}>
+           {settings?.before_close_head && (
+        <>{parse(HTMLDecoderEncoder.decode(headScript))}</>
+      )}
+
           <Header navigation={navigation || []}/>
           {children}
           <Footer />
           <Toaster />
+          {settings?.before_close_body && (
+        <>{parse(HTMLDecoderEncoder.decode(bodyScript))}</>
+      )}
         </NextIntlClientProvider>
-      </body>
- </html>
      
    
   );

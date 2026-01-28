@@ -4,11 +4,12 @@ import { motion } from 'framer-motion';
 import ExperienceCard from '@/components/ExperienceCard';
 import { Button } from '@/components/ui/button';
 import { ChevronDown, ChevronUp } from 'lucide-react';
+import { mapActivitiesToExperiences } from '@/lib/utils';
 
-const Experiences = () => {
+const Experiences = ({activites}) => {
   const [showAll, setShowAll] = useState(false);
 
-  const experiences = [
+  const dummyExperiences = [
     {
       id: 6,
       name: 'Deer Feeding',
@@ -82,6 +83,11 @@ const Experiences = () => {
       whatsappMessage: 'Halo saya ingin mengetahui lebih lanjut tentang Dine Experience'
     }
   ];
+
+  const experiences = activites?.length
+  ? mapActivitiesToExperiences(activites)
+  : dummyExperiences;
+
 
   const displayedExperiences = showAll ? experiences : experiences.slice(0, 4);
 
