@@ -97,11 +97,11 @@ export default async function Home({params}) {
     {/* di div header bawah ini flex tidak bisa */}
       <main>
         <Hero banners={data?.banners || null}/>
-        <About/>
+        <About dataAbout={data?.settings[0] || null} />
         <Rooms accomodations={data?.featuredAccommodations || null}/>
         <Experiences activites={data?.activities || null}/>
         <Packages />
-        <Facilities />
+        <Facilities dataFacilities={data?.facilities || null} />
         {/* <FAQ /> */}
         <Awards />
         <MapSection />

@@ -1,7 +1,7 @@
 'use client'
 import React from 'react';
 import { motion } from 'framer-motion';
-const About = () => {
+const About = ({dataAbout}) => {
   return <section className="py-20 md:py-32 bg-white" id="about">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
@@ -42,7 +42,7 @@ const About = () => {
             <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{
             color: 'rgb(0,74,39)',
             fontFamily: 'Mikado, sans-serif'
-          }}>About Safari Resort</h2>
+          }}>{dataAbout?.value?.title || `About Safari Resort`}</h2>
             <div className="space-y-6 text-gray-700" style={{
             fontFamily: 'Gotham Rounded, sans-serif'
           }}>
@@ -51,7 +51,7 @@ const About = () => {
                 <p className="text-lg leading-relaxed italic">"Find peace and adventure in one stunning place."</p>
               </div>
 
-            <p className="leading-relaxed">Safari Resort is a 4-star resort with unique room types of Caravan & Treehouse, building rooms and spacious rooms of Bungalows in the highland of Puncak. Standing on 8 hectares of land on the slopes of Mount Gede Pangrango, sensation of staying in a resort surrounded by Pines Forest, and inside The Great Taman Safari Bogor.</p>
+            <p className="leading-relaxed">{dataAbout?.value?.desc || `Safari Resort is a 4-star resort with unique room types of Caravan & Treehouse, building rooms and spacious rooms of Bungalows in the highland of Puncak. Standing on 8 hectares of land on the slopes of Mount Gede Pangrango, sensation of staying in a resort surrounded by Pines Forest, and inside The Great Taman Safari Bogor.`}</p>
 
             {/* <p className="leading-relaxed">The resort features diverse accommodation options, including hotel rooms, cozy bungalows for families, couples, or groups, as well as Indonesia's only caravan style lodgings and exclusive tree houses.</p>
 

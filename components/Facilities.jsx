@@ -3,7 +3,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import FacilityCard from '@/components/FacilityCard';
 import { UtensilsCrossed, Users, Droplets, Coffee, UserSquare2, Sailboat, Trees, Bird, ShoppingBasket as Basketball, Sun } from 'lucide-react';
-const Facilities = () => {
+const Facilities = ({dataFacilities}) => {
   const facilities = [{
     id: 1,
     name: 'Swimming Pool',
@@ -72,7 +72,7 @@ const Facilities = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {facilities.map((facility, index) => <FacilityCard key={facility.id} facility={facility} index={index} />)}
+          {dataFacilities.map((facility, index) => <FacilityCard key={facility.id} facility={facility} index={index} />)}
         </div>
       </div>
     </section>;

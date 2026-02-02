@@ -52,7 +52,7 @@ const FacilityCard = ({
     y: -8
   }} className="bg-white rounded-none overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer group" onClick={handleLearnMore}>
       <div className="relative h-56 overflow-hidden">
-      <img name={facility.name} alt={facility.image} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src={getImageSrc(facility.name)} />
+      <img name={facility.name} alt={facility.image} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src={facility?.image || getImageSrc(facility?.name)} />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
         <div className="absolute top-4 left-4 p-3 rounded-none" style={{
         backgroundColor: facility.color
