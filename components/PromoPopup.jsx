@@ -2,12 +2,13 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { mapPromo } from '@/lib/utils';
 
-const PromoPopup = () => {
+const PromoPopup = ({dataPromo}) => {
   const [isVisible, setIsVisible] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const promos = [
+  const dummyPromos = [
     {
       id: 1,
       image: "https://horizons-cdn.hostinger.com/b05a0347-ff2a-4d3e-b189-510345403291/ccb7556c5dfe8b86de55a58dc7cf682f.png",
@@ -37,6 +38,8 @@ const PromoPopup = () => {
     }
   ];
 
+  const promos = dataPromo.length ? mapPromo(dataPromo) :  dummyPromos
+
   // Show popup after a short delay on mount
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -61,6 +64,39 @@ const PromoPopup = () => {
   };
 
   const currentPromo = promos[currentIndex];
+
+  function scopeGrapeJSCSS(css, scopeClass = ".grapejs-wrapper") {
+    const addScope = (selector) => {
+      // Kalau sudah ada scopeClass, jangan ditambah lagi
+      if (selector.includes(scopeClass)) return selector.trim();
+      return `${scopeClass} ${selector.trim()}`;
+    };
+  
+    // Tangani blok @media
+    css = css.replace(/@media[^{]+\{([\s\S]+?)\}\s*\}/g, (match, inner) => {
+      const scopedInner = inner.replace(/(^|\})\s*([^{\}]+)\s*\{/g, (m, p1, selector) => {
+        if (selector.startsWith("@")) return m;
+        const scopedSelectors = selector
+          .split(",")
+          .map(sel => addScope(sel))
+          .join(", ");
+        return `${p1} ${scopedSelectors} {`;
+      });
+      return match.replace(inner, scopedInner);
+    });
+  
+    // Tangani selector di luar @media
+    css = css.replace(/(^|\})\s*([^{\}]+)\s*\{/g, (match, p1, selector) => {
+      if (selector.startsWith("@")) return match;
+      const scopedSelectors = selector
+        .split(",")
+        .map(sel => addScope(sel))
+        .join(", ");
+      return `${p1} ${scopedSelectors} {`;
+    });
+  
+    return css;
+  }
 
   return (
     <AnimatePresence>
@@ -116,22 +152,37 @@ const PromoPopup = () => {
                     <h3 className="text-sm md:text-base font-bold text-[#7C3B1F] leading-tight mb-1 line-clamp-2" style={{ fontFamily: 'Mikado, sans-serif' }}>
                       {currentPromo.title}
                     </h3>
+
+                    {currentPromo?.content && typeof window !== "undefined"? (
+        <div className="grapejs-wrapper">
+          <div
+            dangerouslySetInnerHTML={{ __html: currentPromo?.content }}
+          />
+          <style
+            dangerouslySetInnerHTML={{
+              __html: scopeGrapeJSCSS(currentPromo?.content),
+            }}
+          />
+        </div>
+      ) : (
+        ""
+      )}
                     
-                    <p className="text-[10px] md:text-[11px] font-bold text-[#F06934] uppercase tracking-wide mb-1.5" style={{ fontFamily: 'Nunito, sans-serif' }}>
+                    {/* <p className="text-[10px] md:text-[11px] font-bold text-[#F06934] uppercase tracking-wide mb-1.5" style={{ fontFamily: 'Nunito, sans-serif' }}>
                       {currentPromo.subtitle}
                     </p>
                     
                     <p className="text-[11px] md:text-xs text-gray-500 leading-snug line-clamp-2 mb-3" style={{ fontFamily: 'Nunito, sans-serif' }}>
                       {currentPromo.description}
-                    </p>
+                    </p> */}
 
                     <div className="mt-auto flex items-center justify-between gap-2">
-                       <div className="flex flex-col">
+                       {/* <div className="flex flex-col">
                           <span className="text-[9px] text-gray-400 uppercase font-medium">From</span>
                           <span className="text-sm md:text-base font-bold text-[#7C3B1F] leading-none" style={{ fontFamily: 'Mikado, sans-serif' }}>
                              {currentPromo.price}
                           </span>
-                       </div>
+                       </div> */}
                        
                        <button
                         className="px-3 py-1.5 bg-[#F06934] hover:bg-[#d65523] text-white text-[10px] md:text-xs font-bold rounded-lg md:rounded-none transition-all duration-300 shadow-sm hover:shadow-md active:scale-95 whitespace-nowrap"

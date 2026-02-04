@@ -2,8 +2,38 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import FacilityCard from '@/components/FacilityCard';
-import { UtensilsCrossed, Users, Droplets, Coffee, UserSquare2, Sailboat, Trees, Bird, ShoppingBasket as Basketball, Sun } from 'lucide-react';
+import { UtensilsCrossed, Users, Droplets, Coffee, UserSquare2, Sailboat, Trees, Bird, HelpCircle, ShoppingBasket as Basketball, Sun } from 'lucide-react';
+
+const lucideMapping = {
+  'Droplets': Droplets,
+  'Sailboat': Sailboat,
+  'Trees': Trees,
+  'Bird': Bird,
+  'Basketball': Basketball,
+  'UserSquare2': UserSquare2,
+};
 const Facilities = ({dataFacilities}) => {
+
+  const processedFacilities = dataFacilities.map(facility => {
+    let IconComponent = null;
+    let isRemixIcon = false;
+
+    // Cek apakah ini Remix Icon (diawali 'ri-')
+    if (facility.icon.startsWith('ri-')) {
+      isRemixIcon = true;
+      IconComponent = facility.icon; // simpan string class-nya
+    } else {
+      // Jika Lucide, ambil dari mapping
+      IconComponent = lucideMapping[facility.icon] || HelpCircle;
+    }
+
+    return {
+      ...facility,
+      IconComponent, // Kita kirim komponennya
+      isRemixIcon    // Kita kasih tahu card cara merendernya
+    };
+  });
+  console.log(processedFacilities)
   const facilities = [{
     id: 1,
     name: 'Swimming Pool',
@@ -72,7 +102,7 @@ const Facilities = ({dataFacilities}) => {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {dataFacilities.map((facility, index) => <FacilityCard key={facility.id} facility={facility} index={index} />)}
+          {processedFacilities.map((facility, index) => <FacilityCard key={facility.id} facility={facility} index={index} />)}
         </div>
       </div>
     </section>;

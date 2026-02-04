@@ -101,7 +101,7 @@ export default function Footer() {
       <div className="container mx-auto px-4">
 
         {/* ================= Instagram Section ================= */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-16 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-1 gap-6 mb-16 max-w-7xl mx-auto">
           {/* Instagram Card */}
           <div
             onClick={handleInstagramClick}
@@ -121,7 +121,7 @@ export default function Footer() {
           </div>
 
           {/* Instagram Slider */}
-          <div className="lg:col-span-2 bg-white p-4 shadow-sm border border-gray-100 relative group">
+          {/* <div className="lg:col-span-2 bg-white p-4 shadow-sm border border-gray-100 relative group">
             <Button
               size="icon"
               variant="secondary"
@@ -163,7 +163,7 @@ export default function Footer() {
                 </motion.div>
               ))}
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* ================= Footer Content ================= */}

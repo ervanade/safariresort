@@ -92,22 +92,34 @@ async function getData(locale) {
 export default async function Home({params}) {
   const { locale } = await params ?? "en";
   const data = await getData(locale)
+
+  const dataAwards =
+  locale === "en"
+    ? data?.featuredPages?.[0] || {}
+    : data?.featuredPages?.[0] || {};
+
+    const targetKey = locale === "en" ? "home_packages" : "home_packages_id";
+    const targetKeyAbout = locale === "en" ? "home_about" : "home_about_id";
+
+// 2. Cari di dalam settings
+const homePackages = data?.settings?.find(item => item.key === targetKey)?.value || {};
+const homeAbout = data?.settings?.find(item => item.key === targetKeyAbout)?.value || {};
   return (
     <div className="min-h-screen relative pb-16 md:pb-0">
     {/* di div header bawah ini flex tidak bisa */}
       <main>
         <Hero banners={data?.banners || null}/>
-        <About dataAbout={data?.settings[0] || null} />
+        <About dataAbout={homeAbout || null} />
         <Rooms accomodations={data?.featuredAccommodations || null}/>
         <Experiences activites={data?.activities || null}/>
-        <Packages />
+        <Packages dataPackages={homePackages || null}/>
         <Facilities dataFacilities={data?.facilities || null} />
         {/* <FAQ /> */}
-        <Awards />
+        <Awards dataAwards={dataAwards || null}/>
         <MapSection />
       </main>
       {/* <MobileFooter onChatToggle={() => setIsChatOpen(!isChatOpen)} /> */}
-      <PromoPopup />
+      <PromoPopup dataPromo={data?.popupBanners || null} />
       <Chatbot />
     </div>
   );

@@ -10,7 +10,7 @@ const FacilityCard = ({
   const {
     toast
   } = useToast();
-  const Icon = facility.icon;
+  const Icon = facility.IconComponent;
   const handleLearnMore = () => {
     toast({
       title: "Facility Information",

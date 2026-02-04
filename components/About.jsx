@@ -42,7 +42,7 @@ const About = ({dataAbout}) => {
             <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{
             color: 'rgb(0,74,39)',
             fontFamily: 'Mikado, sans-serif'
-          }}>{dataAbout?.value?.title || `About Safari Resort`}</h2>
+          }}>{dataAbout?.title || `About Safari Resort`}</h2>
             <div className="space-y-6 text-gray-700" style={{
             fontFamily: 'Gotham Rounded, sans-serif'
           }}>
@@ -51,7 +51,7 @@ const About = ({dataAbout}) => {
                 <p className="text-lg leading-relaxed italic">"Find peace and adventure in one stunning place."</p>
               </div>
 
-            <p className="leading-relaxed">{dataAbout?.value?.desc || `Safari Resort is a 4-star resort with unique room types of Caravan & Treehouse, building rooms and spacious rooms of Bungalows in the highland of Puncak. Standing on 8 hectares of land on the slopes of Mount Gede Pangrango, sensation of staying in a resort surrounded by Pines Forest, and inside The Great Taman Safari Bogor.`}</p>
+            <p className="leading-relaxed">{dataAbout?.desc || `Safari Resort is a 4-star resort with unique room types of Caravan & Treehouse, building rooms and spacious rooms of Bungalows in the highland of Puncak. Standing on 8 hectares of land on the slopes of Mount Gede Pangrango, sensation of staying in a resort surrounded by Pines Forest, and inside The Great Taman Safari Bogor.`}</p>
 
             {/* <p className="leading-relaxed">The resort features diverse accommodation options, including hotel rooms, cozy bungalows for families, couples, or groups, as well as Indonesia's only caravan style lodgings and exclusive tree houses.</p>
 

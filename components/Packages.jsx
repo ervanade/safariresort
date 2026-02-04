@@ -4,11 +4,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
 
-const Packages = () => {
+const Packages = ({dataPackages}) => {
   const { toast } = useToast();
   const [activeTab, setActiveTab] = useState('gathering');
 
-  const tabs = [        
+  const dummyTabs = [        
     {
       id: 'gathering',
       label: 'Gathering Package',
@@ -43,6 +43,8 @@ const Packages = () => {
     // }
   ];
 
+  const tabs = dataPackages?.tabs?.length ? dataPackages?.tabs : dummyTabs
+
   // Ensure activeContent is never undefined by falling back to the first tab
   const activeContent = tabs.find(tab => tab.id === activeTab) || tabs[0];
 
@@ -67,7 +69,7 @@ const Packages = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-12"
         >
-        <span className="text-[#F06934] font-bold text-sm tracking-widest  mb-2 block">Package & Offers</span>
+        <span className="text-[#F06934] font-bold text-sm tracking-widest  mb-2 block">{dataPackages?.section || "Package & Offers"}</span>
           <h2 
             className="text-white text-4xl md:text-5xl font-bold mb-6" 
             style={{fontFamily: 'Mikado, sans-serif' }}
@@ -79,7 +81,7 @@ const Packages = () => {
             className="text-lg text-white max-w-3xl mx-auto"
             style={{ fontFamily: 'Nunito, sans-serif' }}
           >
-            Curated adventures that connect you with nature and create lasting memories
+            {dataPackages?.subtitle || "Curated adventures that connect you with nature and create lasting memories"}
           </p>
           
         </motion.div>

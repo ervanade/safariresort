@@ -2,7 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const Awards = () => {
+const Awards = ({dataAwards}) => {
   const awards = [
     {
       name: "CPSG",
@@ -30,9 +30,61 @@ const Awards = () => {
     }
   ];
 
+  function scopeGrapeJSCSS(css, scopeClass = ".grapejs-wrapper") {
+    const addScope = (selector) => {
+      // Kalau sudah ada scopeClass, jangan ditambah lagi
+      if (selector.includes(scopeClass)) return selector.trim();
+      return `${scopeClass} ${selector.trim()}`;
+    };
+  
+    // Tangani blok @media
+    css = css.replace(/@media[^{]+\{([\s\S]+?)\}\s*\}/g, (match, inner) => {
+      const scopedInner = inner.replace(
+        /(^|\})\s*([^{\}]+)\s*\{/g,
+        (m, p1, selector) => {
+          if (selector.startsWith("@")) return m;
+          const scopedSelectors = selector
+            .split(",")
+            .map((sel) => addScope(sel))
+            .join(", ");
+          return `${p1} ${scopedSelectors} {`;
+        },
+      );
+      return match.replace(inner, scopedInner);
+    });
+  
+    // Tangani selector di luar @media
+    css = css.replace(/(^|\})\s*([^{\}]+)\s*\{/g, (match, p1, selector) => {
+      if (selector.startsWith("@")) return match;
+      const scopedSelectors = selector
+        .split(",")
+        .map((sel) => addScope(sel))
+        .join(", ");
+      return `${p1} ${scopedSelectors} {`;
+    });
+  
+    return css;
+  }
+
+   
+
   return (
     <section className="py-12 bg-white border-t border-[#7C3B1F]/5">
-      <div className="container mx-auto px-4">
+      {dataAwards && typeof window !== "undefined"? (
+        <div className="grapejs-wrapper">
+          <div
+            dangerouslySetInnerHTML={{ __html: JSON.parse(dataAwards?.html) }}
+          />
+          <style
+            dangerouslySetInnerHTML={{
+              __html: scopeGrapeJSCSS(JSON.parse(dataAwards?.css)),
+            }}
+          />
+        </div>
+      ) : (
+        ""
+      )} 
+      {/* <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -67,7 +119,7 @@ const Awards = () => {
             </motion.div>
           ))}
         </div>
-      </div>
+      </div> */}
     </section>
   );
 };
