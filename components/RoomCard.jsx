@@ -139,7 +139,7 @@ const RoomCard = ({ room, ...props }) => {
         </div>
 
         <div className="mt-2">
-          <Link href={`/rooms/${room?.id}`} className="block w-full">
+          <Link href={`/rooms/${room?.slug}`} className="block w-full">
             <Button className="w-full h-9 text-xs font-bold bg-[#F06934] hover:bg-[#d65523] text-white transition-colors shadow-md ">
               <Calendar size={14} className="mr-2" />
               Book Now
