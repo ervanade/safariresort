@@ -7,7 +7,7 @@ export async function generateMetadata({ params }) {
   const { roomSlug } = await params; // Pastikan pakai roomSlug
   const { locale } = (await params) ?? "en";
 
-  const data = await fetchRoom(roomSlug);
+  const data = await fetchRoom(roomSlug, locale);
 
   // Fetch model name based on slug if needed
   const modelName = data?.name?.toUpperCase();
@@ -16,27 +16,34 @@ export async function generateMetadata({ params }) {
     id: {
       title: data?.meta_title
         ? data?.meta_title
-        : `GWM ${modelName} - Spesifikasi & Fitur Mobil GWM | GWM Indonesia`,
+        : `Tipe Kamar | Safari Resort Taman Safari Bogor`,
       description: data?.meta_description
         ? data?.meta_description
-        : `"GWM ${modelName}, ${data?.tipe}. Cek fitur lengkap, harga, lokasi dealer resmi, dan booking test drive di GWM Inchcape Indonesia.
-`,
+        : `Menginap di ${data?.name || "Safari Resort"}. Nikmati kesejukan alami pegunungan tanpa AC, pemandangan hutan tropis, dan akses langsung ke Taman Safari Bogor. Booking sekarang!`,
       keywords: [
-        modelName,
-        "SUV GWM",
-        "Mobil Hybrid",
-        "Spesifikasi",
-        "Mobil GWM",
+        data?.name,
+        "Safari Resort Bogor",
+        "Hotel Taman Safari",
+        "Penginapan Cisarua",
+        "Akomodasi Caravan",
+        "Treehouse Bogor",
       ],
     },
     en: {
       title: data?.meta_title
         ? data?.meta_title
-        : `GWM ${modelName} - GWM Car Specifications & Features | GWM Indonesia`,
+        : `Room Type | Safari Resort Taman Safari Bogor`,
       description: data?.meta_description
         ? data?.meta_description
-        : `GWM ${modelName}, ${data?.tipe}. View full specs, price, official dealer locations, and schedule a test drive with GWM Inchcape Indonesia.`,
-      keywords: [modelName, "GWM SUV", "Hybrid car", "Car specs", "GWM CAR"],
+        : `Stay at ${data?.name || "Safari Resort"}. Experience natural mountain coolness, tropical forest views, and direct access to Taman Safari Bogor. Book your unique stay today!`,
+      keywords: [
+        data?.name,
+        "Safari Resort Bogor",
+        "Taman Safari Hotel",
+        "Cisarua Accommodation",
+        "Caravan Stay",
+        "Treehouse Resort",
+      ],
     },
   };
 
@@ -47,10 +54,10 @@ export async function generateMetadata({ params }) {
   });
 }
 
-const fetchRoom = async (slug) => {
+const fetchRoom = async (slug, locale) => {
   // const res = await fetch(`http://10.29.101.99/api/news/slug/${slug}`, {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_KEY}/api/v1/accommodations/${slug}`,
+    `${process.env.NEXT_PUBLIC_API_KEY}/api/v1/accommodations/${slug}?lang=${locale}`,
     {
       next: { revalidate: 60 * 5 },
       // cache: 'no-store',
@@ -60,7 +67,6 @@ const fetchRoom = async (slug) => {
       },
     },
   );
-  console.log(res.status);
   if (res?.status === 404) {
     return notFound(); // Pastikan tidak menyebabkan error
   }
@@ -74,8 +80,9 @@ const fetchRoom = async (slug) => {
 };
 
 const page = async ({ params }) => {
+  const { locale } = (await params) ?? "en";
   const { roomSlug } = await params;
-  const data = await fetchRoom(roomSlug);
+  const data = await fetchRoom(roomSlug, locale);
 
   return (
     <div className="">

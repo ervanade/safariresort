@@ -51,7 +51,6 @@ const IconMap = {
  */
 /*******  972479ec-988f-42a3-88ac-55699e39c352  *******/
 const RoomDetail = ({ dataRoom, roomSlug }) => {
-  console.log(dataRoom);
   const { toast } = useToast();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [direction, setDirection] = useState(0);
@@ -240,7 +239,7 @@ const RoomDetail = ({ dataRoom, roomSlug }) => {
               </p> */}
 
               {/* Quick Info Grid */}
-              <div className="flex gap-6 mb-10 pb-6 border-b border-[#7C3B1F]/10">
+              {/* <div className="flex gap-6 mb-10 pb-6 border-b border-[#7C3B1F]/10">
                 <div className="flex items-center gap-3 text-[#7C3B1F]/80">
                   <BedDouble size={24} />
                   <span className="text-sm font-bold max-w-[120px] leading-tight">
@@ -253,7 +252,7 @@ const RoomDetail = ({ dataRoom, roomSlug }) => {
                     Coffee & Tea included
                   </span>
                 </div>
-              </div>
+              </div> */}
             </div>
 
             {/* Amenities */}
@@ -336,7 +335,7 @@ const RoomDetail = ({ dataRoom, roomSlug }) => {
                     Normal Price
                   </span>
                   <span className="text-gray-400 text-sm line-through">
-                    {room.originalPrice || "IDR 3.500.000"}
+                    {room.price || room.originalPrice || "IDR 3.500.000"}
                   </span>
                   <span className="text-gray-400 text-sm">2 Nights</span>
                 </div>
@@ -354,7 +353,7 @@ const RoomDetail = ({ dataRoom, roomSlug }) => {
                     Save Total
                   </span>
                   <span className="font-bold text-[#F06934] text-xl">
-                    {room.savings || "IDR 1.000.000"}
+                    {room.price - room.promoPrice || "IDR 1.000.000"}
                   </span>
                 </div>
               </div>

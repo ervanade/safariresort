@@ -1,119 +1,161 @@
-'use client'
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import MobileFooter from '@/components/MobileFooter';
-import Chatbot from '@/components/Chatbot';
-import RoomCard from '@/components/RoomCard';
+"use client";
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import MobileFooter from "@/components/MobileFooter";
+import Chatbot from "@/components/Chatbot";
+import RoomCard from "@/components/RoomCard";
 
-import { Home, Users, Coffee } from 'lucide-react';
-import { roomsData } from './data/roomsData';
+import { Home, Users, Coffee } from "lucide-react";
+import { roomsData } from "./data/roomsData";
+import { mapAccommodationsToRooms } from "@/lib/utils";
 
-const Bungalow = () => {
+const Bungalow = ({ dataRooms }) => {
   const [isChatOpen, setIsChatOpen] = useState(false);
-  
+
   // Filter only Bungalow type rooms
-  const bungalowRooms = roomsData.filter(room => 
-    room.name.toLowerCase().includes('bungalow')
-  );
+  const bungalowRooms = dataRooms?.length
+    ? mapAccommodationsToRooms(dataRooms)
+    : roomsData.filter((room) => room.name.toLowerCase().includes("bungalow"));
 
   return (
     <div className="min-h-screen bg-[#faf7f5]">
-      
       <main className="pt-20">
         {/* Hero Section */}
         <section className="relative h-[60vh] min-h-[500px] overflow-hidden">
-            <div className="absolute inset-0">
-                <img 
-                    src="/assets/bungalow/Zebra Lake View-1.jpg" 
-                    alt="Bungalow Stay" 
-                    className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-black/40" />
-            </div>
-            <div className="relative container mx-auto px-4 h-full flex flex-col justify-center text-white">
-                <motion.span 
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="text-[#F06934] font-bold tracking-widest uppercase mb-4 bg-black/50 w-fit px-4 py-1 rounded-full backdrop-blur-sm"
-                >
-                    Resort Collection
-                </motion.span>
-                <motion.h1 
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.1 }}
-                    className="text-5xl md:text-7xl font-bold mb-6 max-w-4xl leading-tight"
-                    style={{ fontFamily: 'Mikado, sans-serif' }}
-                >
-                    Bungalow
-                </motion.h1>
-                <motion.p 
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 }}
-                    className="text-lg md:text-2xl max-w-2xl font-medium text-white/90"
-                    style={{ fontFamily: 'Nunito, sans-serif' }}
-                >
-                    Your home away from home. Discover spacious living and modern comforts in the heart of nature, perfect for the whole family.
-                </motion.p>
-            </div>
+          <div className="absolute inset-0">
+            <img
+              src="/assets/bungalow/Zebra Lake View-1.jpg"
+              alt="Bungalow Stay"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black/40" />
+          </div>
+          <div className="relative container mx-auto px-4 h-full flex flex-col justify-center text-white">
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-[#F06934] font-bold tracking-widest uppercase mb-4 bg-black/50 w-fit px-4 py-1 rounded-full backdrop-blur-sm"
+            >
+              Resort Collection
+            </motion.span>
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="text-5xl md:text-7xl font-bold mb-6 max-w-4xl leading-tight"
+              style={{ fontFamily: "Mikado, sans-serif" }}
+            >
+              Bungalow
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="text-lg md:text-2xl max-w-2xl font-medium text-white/90"
+              style={{ fontFamily: "Nunito, sans-serif" }}
+            >
+              Your home away from home. Discover spacious living and modern
+              comforts in the heart of nature, perfect for the whole family.
+            </motion.p>
+          </div>
         </section>
 
         {/* Intro Section */}
         <section className="py-16 md:py-24 relative overflow-hidden">
-             <div className="container mx-auto px-4">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-                    <div className="bg-white p-8 shadow-sm border border-[#7C3B1F]/10 text-center group hover:bg-[#7C3B1F] transition-colors duration-300">
-                        <div className="bg-[#faf7f5] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-white/10 transition-colors">
-                            <Home className="text-[#7C3B1F] group-hover:text-white" size={32} />
-                        </div>
-                        <h3 className="text-xl font-bold text-[#7C3B1F] mb-3 group-hover:text-white" style={{ fontFamily: 'Mikado, sans-serif' }}>Spacious Living</h3>
-                        <p className="text-[#7C3B1F]/70 group-hover:text-white/80" style={{ fontFamily: 'Nunito, sans-serif' }}>
-                            Generous floor plans designed for families and groups to spread out and relax together in comfort.
-                        </p>
-                    </div>
-                    <div className="bg-white p-8 shadow-sm border border-[#7C3B1F]/10 text-center group hover:bg-[#7C3B1F] transition-colors duration-300">
-                        <div className="bg-[#faf7f5] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-white/10 transition-colors">
-                            <Users className="text-[#7C3B1F] group-hover:text-white" size={32} />
-                        </div>
-                        <h3 className="text-xl font-bold text-[#7C3B1F] mb-3 group-hover:text-white" style={{ fontFamily: 'Mikado, sans-serif' }}>Family Friendly</h3>
-                        <p className="text-[#7C3B1F]/70 group-hover:text-white/80" style={{ fontFamily: 'Nunito, sans-serif' }}>
-                            Multiple bedrooms and common areas foster connection while ensuring privacy for every guest.
-                        </p>
-                    </div>
-                    <div className="bg-white p-8 shadow-sm border border-[#7C3B1F]/10 text-center group hover:bg-[#7C3B1F] transition-colors duration-300">
-                        <div className="bg-[#faf7f5] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-white/10 transition-colors">
-                            <Coffee className="text-[#7C3B1F] group-hover:text-white" size={32} />
-                        </div>
-                        <h3 className="text-xl font-bold text-[#7C3B1F] mb-3 group-hover:text-white" style={{ fontFamily: 'Mikado, sans-serif' }}>Modern Comforts</h3>
-                        <p className="text-[#7C3B1F]/70 group-hover:text-white/80" style={{ fontFamily: 'Nunito, sans-serif' }}>
-                            Fully equipped with modern amenities, smart TVs, and refreshment facilities for a worry-free stay.
-                        </p>
-                    </div>
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+              <div className="bg-white p-8 shadow-sm border border-[#7C3B1F]/10 text-center group hover:bg-[#7C3B1F] transition-colors duration-300">
+                <div className="bg-[#faf7f5] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-white/10 transition-colors">
+                  <Home
+                    className="text-[#7C3B1F] group-hover:text-white"
+                    size={32}
+                  />
                 </div>
-
-                <div className="text-center mb-12">
-                    <span className="text-[#F06934] font-bold text-sm tracking-widest uppercase mb-3 block">Accommodations</span>
-                    <h2 className="text-4xl md:text-5xl font-bold text-[#7C3B1F]" style={{ fontFamily: 'Mikado, sans-serif' }}>
-                        Select Your Bungalow
-                    </h2>
+                <h3
+                  className="text-xl font-bold text-[#7C3B1F] mb-3 group-hover:text-white"
+                  style={{ fontFamily: "Mikado, sans-serif" }}
+                >
+                  Spacious Living
+                </h3>
+                <p
+                  className="text-[#7C3B1F]/70 group-hover:text-white/80"
+                  style={{ fontFamily: "Nunito, sans-serif" }}
+                >
+                  Generous floor plans designed for families and groups to
+                  spread out and relax together in comfort.
+                </p>
+              </div>
+              <div className="bg-white p-8 shadow-sm border border-[#7C3B1F]/10 text-center group hover:bg-[#7C3B1F] transition-colors duration-300">
+                <div className="bg-[#faf7f5] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-white/10 transition-colors">
+                  <Users
+                    className="text-[#7C3B1F] group-hover:text-white"
+                    size={32}
+                  />
                 </div>
-
-                {/* Room Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-                    {bungalowRooms.map((room, index) => (
-                        <motion.div
-                            key={room.id}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 }}
-                        >
-                            <RoomCard room={room} />
-                        </motion.div>
-                    ))}
+                <h3
+                  className="text-xl font-bold text-[#7C3B1F] mb-3 group-hover:text-white"
+                  style={{ fontFamily: "Mikado, sans-serif" }}
+                >
+                  Family Friendly
+                </h3>
+                <p
+                  className="text-[#7C3B1F]/70 group-hover:text-white/80"
+                  style={{ fontFamily: "Nunito, sans-serif" }}
+                >
+                  Multiple bedrooms and common areas foster connection while
+                  ensuring privacy for every guest.
+                </p>
+              </div>
+              <div className="bg-white p-8 shadow-sm border border-[#7C3B1F]/10 text-center group hover:bg-[#7C3B1F] transition-colors duration-300">
+                <div className="bg-[#faf7f5] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-white/10 transition-colors">
+                  <Coffee
+                    className="text-[#7C3B1F] group-hover:text-white"
+                    size={32}
+                  />
                 </div>
+                <h3
+                  className="text-xl font-bold text-[#7C3B1F] mb-3 group-hover:text-white"
+                  style={{ fontFamily: "Mikado, sans-serif" }}
+                >
+                  Modern Comforts
+                </h3>
+                <p
+                  className="text-[#7C3B1F]/70 group-hover:text-white/80"
+                  style={{ fontFamily: "Nunito, sans-serif" }}
+                >
+                  Fully equipped with modern amenities, smart TVs, and
+                  refreshment facilities for a worry-free stay.
+                </p>
+              </div>
             </div>
+
+            <div className="text-center mb-12">
+              <span className="text-[#F06934] font-bold text-sm tracking-widest uppercase mb-3 block">
+                Accommodations
+              </span>
+              <h2
+                className="text-4xl md:text-5xl font-bold text-[#7C3B1F]"
+                style={{ fontFamily: "Mikado, sans-serif" }}
+              >
+                Select Your Bungalow
+              </h2>
+            </div>
+
+            {/* Room Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+              {bungalowRooms.map((room, index) => (
+                <motion.div
+                  key={room.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <RoomCard room={room} />
+                </motion.div>
+              ))}
+            </div>
+          </div>
         </section>
       </main>
     </div>
