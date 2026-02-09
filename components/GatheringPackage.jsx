@@ -8,8 +8,11 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from '@/components/ui/button';
 import { Link } from '@/i18n/navigation';
 import { gatheringPackagesData } from './data/gatheringPackagesData';
+import { mapGatheringData } from '@/lib/utils';
 
-const GatheringPackage = () => {
+const GatheringPackage = ({dataGathering}) => {
+
+  const gatheringData = dataGathering?.length ? mapGatheringData(dataGathering) : gatheringPackagesData;
 
   const highlights = [
     {
@@ -69,7 +72,7 @@ const GatheringPackage = () => {
         {/* Packages Grid */}
         <section className="py-20 container mx-auto px-4 relative z-20">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {gatheringPackagesData.map((pkg, index) => (
+            {gatheringData.map((pkg, index) => (
               <motion.div
                 key={pkg.id}
                 initial={{ opacity: 0, y: 30 }}

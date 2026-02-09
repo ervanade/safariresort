@@ -375,7 +375,7 @@ const FAQPage = ({ dataFaq }) => {
                 </div>
               ) : (
                 <div className="text-center py-20 bg-white border border-dashed border-gray-300">
-                  <HelpCircle
+                  <Icon.HelpCircle
                     size={48}
                     className="mx-auto text-gray-300 mb-4"
                   />

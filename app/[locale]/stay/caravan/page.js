@@ -3,7 +3,7 @@ import { getBaseMeta } from "@/lib/seo";
 import React from "react";
 
 export async function generateMetadata({ params }) {
-  const { locale } = (await params) ?? "id";
+  const { locale } = (await params) ?? "en";
 
   const meta = {
     id: {
@@ -36,7 +36,7 @@ export async function generateMetadata({ params }) {
 
   return getBaseMeta({
     locale,
-    path: `/caravan`,
+    path: `/stay/caravan`,
     ...meta[locale],
   });
 }

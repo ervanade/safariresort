@@ -1,5 +1,43 @@
 import Dining from "@/components/Dining";
+import { getBaseMeta } from "@/lib/seo";
 import React from "react";
+
+export async function generateMetadata({ params }) {
+  const { locale } = (await params) ?? "en";
+
+  const meta = {
+    id: {
+      title: `Restoran & Kuliner Unik | Safari Resort Taman Safari Bogor`,
+      description: `Nikmati hidangan lokal dan internasional terbaik di Caravan Restaurant dan Panda Restaurant. Pengalaman makan unik dengan suasana hutan tropis yang asri.`,
+      keywords: [
+        "restoran taman safari",
+        "tempat makan di bogor",
+        "caravan restaurant",
+        "panda restaurant",
+        "kuliner puncak",
+        "farm to table bogor",
+      ],
+    },
+    en: {
+      title: `Dining Experience | Unique Restaurants at Safari Resort Bogor`,
+      description: `Savor exquisite local and international flavors at our signature restaurants. Experience unique farm-to-table dining set against a lush wilderness backdrop.`,
+      keywords: [
+        "dining safari resort",
+        "restaurants in bogor",
+        "caravan restaurant",
+        "panda restaurant",
+        "bogor culinary",
+        "wilderness dining",
+      ],
+    },
+  };
+
+  return getBaseMeta({
+    locale,
+    path: `/dining`,
+    ...meta[locale],
+  });
+}
 
 const fetchCategories = async (locale) => {
   const res = await fetch(
