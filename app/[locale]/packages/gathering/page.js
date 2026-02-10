@@ -1,11 +1,35 @@
-import GatheringPackage from '@/components/GatheringPackage';
-import PackageDetail from '@/components/PackageDetail';
-import { getBaseMeta } from '@/lib/seo';
-import React from 'react'
+import GatheringPackage from "@/components/GatheringPackage";
+import PackageDetail from "@/components/PackageDetail";
+import { getBaseMeta } from "@/lib/seo";
+import React from "react";
 
-const fetchPackages = async (locale) => {
+const fetchPackages = async (locale, gatheringSlug) => {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_KEY}/api/v1/packages?lang=${locale}`,
+    `${process.env.NEXT_PUBLIC_API_KEY}/api/v1/packages?category=${gatheringSlug}&lang=${locale}`,
+    {
+      next: { revalidate: 60 * 5 },
+      // cache: 'no-store',
+      method: "GET",
+      headers: {
+        "X-Api-Key": process.env.NEXT_PUBLIC_APP_X_API_KEY,
+      },
+    },
+  );
+  if (res?.status === 404) {
+    return notFound(); // Pastikan tidak menyebabkan error
+  }
+
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data");
+  }
+
+  return res.json();
+};
+
+const fetchCategory = async (locale, gatheringSlug) => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_KEY}/api/v1/categories/${gatheringSlug}?lang=${locale}`,
     {
       next: { revalidate: 60 * 5 },
       // cache: 'no-store',
@@ -62,19 +86,18 @@ export async function generateMetadata({ params }) {
   });
 }
 
-const page = async ({params}) => {
+const page = async ({ params }) => {
   const { locale } = (await params) ?? "en";
-  const data = await fetchPackages(locale);
-  const dataGathering = data?.filter((dining) =>
-    dining.category.toLowerCase()?.includes("gathering"),
+  const dataGathering = await fetchPackages(locale, "gathering-package");
+  const dataPackage = await fetchCategory(locale, "gathering-package");
+  return (
+    <div className="">
+      <GatheringPackage
+        dataGathering={dataGathering}
+        dataPackage={dataPackage}
+      />
+    </div>
   );
-  console.log(dataGathering)
-    return (
-      <div className=''>
-       <GatheringPackage dataGathering={dataGathering}/>
-  
-      </div>
-    )
-  }
+};
 
-export default page
+export default page;

@@ -27,7 +27,7 @@ function scopeGrapeJSCSS(css, scopeClass = ".grapejs-wrapper") {
           .map((sel) => addScope(sel))
           .join(", ");
         return `${p1} ${scopedSelectors} {`;
-      }
+      },
     );
     return match.replace(inner, scopedInner);
   });
@@ -45,23 +45,23 @@ function scopeGrapeJSCSS(css, scopeClass = ".grapejs-wrapper") {
   return css;
 }
 
-const ArticlesDetails = ({ article, related }) => {
+const ArticlesDetails = ({ article }) => {
   const locale = useLocale() || "id";
-
-  const title = locale === "en" ? article?.title_en : article?.title;
-  const content = locale === "en" ? article?.content_en : article?.content;
-  const excerpt = locale === "en" ? article?.excerpt_en : article?.excerpt;
+  console.log(article);
+  const title = locale === "en" ? article?.title : article?.title;
+  const content = locale === "en" ? article?.content : article?.content;
+  const excerpt = locale === "en" ? article?.excerpt : article?.excerpt;
 
   return (
-    <div className="w-full bg-gray-50 py-12 px-6 lg:px-12 text-textDark">
-      <div className="max-w-[1200px] mx-auto w-full overflow-hidden">
+    <div className="w-full min-h-screen bg-gray-50 py-12 px-6 lg:px-12 text-textDark">
+      <main className="max-w-[1200px] pt-24 pb-20 mx-auto w-full overflow-hidden ">
         <div className="news-content">
-          <h1 className="text-2xl xl:text-[32px] leading-tight font-bold mb-4 text-center">
+          <h1 className="text-2xl xl:text-[32px] leading-tight font-bold mb-4 text-center text-[#7C3B1F]">
             {title}
           </h1>
 
           <div className="flex flex-col items-center justify-center gap-2 sm:flex-row sm:gap-4 text-sm mb-4 text-gray-700">
-            {article.tags?.length > 0 && (
+            {/* {article.tags?.length > 0 && (
               <div className="text-center text-primary font-medium text-sm">
                 {article.tags.map((tag, i) => (
                   <span key={i}>
@@ -71,11 +71,10 @@ const ArticlesDetails = ({ article, related }) => {
                     >
                       #{tag.tag_name}
                     </Link>
-                    {/* {i < article.tags.length - 1 && ", "} */}
                   </span>
                 ))}
               </div>
-            )}
+            )} */}
             {article.published_at && (
               <p>{format(parseISO(article.published_at), "yyyy MMM dd")}</p>
             )}
@@ -83,11 +82,11 @@ const ArticlesDetails = ({ article, related }) => {
 
           <div className="flex flex-col lg:flex-row w-full mt-5 gap-8">
             <div className="flex-[3_3_0%]">
-              {article.cover_url && (
+              {article.thumbnail_url && (
                 <div className="aspect-[16/8] lg:aspect-[16/7] w-full overflow-hidden rounded-lg relative">
                   <Image
-                    src={article.cover_url || article.image}
-                    alt={article.alt_text || "Article GWM"}
+                    src={article.thumbnail_url || article.image}
+                    alt={article.alt_text || "Article Safari Resort"}
                     sizes="100vw"
                     fill
                     className="object-cover"
@@ -107,43 +106,9 @@ const ArticlesDetails = ({ article, related }) => {
                 )} */}
               </div>
             </div>
-
-            {related?.length > 0 && (
-              <div className="flex-1">
-                <h2 className="font-bold text-2xl mb-5">Artikel Terkait</h2>
-                {related.map((item, idx) => (
-                  <Link
-                    href={`/news/${item.slug}?lang=${locale}`}
-                    key={idx}
-                    className="block mb-4 group"
-                  >
-                    <div className="flex gap-4 h-[100px] sm:h-[150px] lg:h-[100px] items-center group-hover:cursor-pointer">
-                      <div className="flex-[1.35_1.35_0%]">
-                        <p className="text-[#6E6E6E] text-sm mb-1">
-                          {item.published_at &&
-                            format(parseISO(item.published_at), "yyyy MMM dd")}
-                        </p>
-                        <h3 className="font-bold text-sm line-clamp-3 group-hover:underline">
-                          {locale === "en" ? item.title_en : item.title}
-                        </h3>
-                      </div>
-                      <div className="h-full w-[30%] overflow-hidden rounded-lg">
-                        <Image
-                          src={item.cover}
-                          alt={item.alt_text || "GWM Article"}
-                          width={100}
-                          height={80}
-                          className="object-cover w-full h-full"
-                        />
-                      </div>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            )}
           </div>
         </div>
-      </div>
+      </main>
     </div>
   );
 };

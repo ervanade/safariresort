@@ -1,15 +1,92 @@
-import MeetingRoomDetail from '@/components/MeetingRoomDetail';
-import React from 'react'
+import MeetingRoomDetail from "@/components/MeetingRoomDetail";
+import { getBaseMeta } from "@/lib/seo";
+import React from "react";
 
-const page = async ({ params }) => {
-    const { meetingSlug } = await params;
-  
-    return (
-      <div className=''>
-       <MeetingRoomDetail meetingSlug={meetingSlug}/>
-  
-      </div>
-    )
+export async function generateMetadata({ params }) {
+  const { meetingSlug } = await params; // Pastikan pakai meetingSlug
+  const { locale } = (await params) ?? "en";
+
+  const data = await fetchPackages(locale, meetingSlug);
+
+  // Fetch model name based on slug if needed
+  const modelName = data?.name?.toUpperCase();
+
+  const meta = {
+    id: {
+      title: data?.meta_title
+        ? data?.meta_title
+        : `Tipe Paket Meeting | Safari Resort Taman Safari Bogor`,
+      description: data?.meta_description
+        ? data?.meta_description
+        : `Menginap di ${data?.name || "Safari Resort"}. Nikmati kesejukan alami pegunungan tanpa AC, pemandangan hutan tropis, dan akses langsung ke Taman Safari Bogor. Booking sekarang!`,
+      keywords: [
+        data?.name,
+        "Safari Resort Bogor",
+        "Hotel Taman Safari",
+        "Penginapan Cisarua",
+        "Akomodasi Caravan",
+        "Treehouse Bogor",
+      ],
+    },
+    en: {
+      title: data?.meta_title
+        ? data?.meta_title
+        : `Meeting Package Type | Safari Resort Taman Safari Bogor`,
+      description: data?.meta_description
+        ? data?.meta_description
+        : `Stay at ${data?.name || "Safari Resort"}. Experience natural mountain coolness, tropical forest views, and direct access to Taman Safari Bogor. Book your unique stay today!`,
+      keywords: [
+        data?.name,
+        "Safari Resort Bogor",
+        "Taman Safari Hotel",
+        "Cisarua Accommodation",
+        "Caravan Stay",
+        "Treehouse Resort",
+      ],
+    },
+  };
+
+  return getBaseMeta({
+    locale,
+    path: `/packages/meeting/${meetingSlug}`,
+    ...meta[locale],
+  });
+}
+
+const fetchPackages = async (locale, meetingSlug) => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_KEY}/api/v1/packages/${meetingSlug}?lang=${locale}`,
+    {
+      next: { revalidate: 60 * 5 },
+      // cache: 'no-store',
+      method: "GET",
+      headers: {
+        "X-Api-Key": process.env.NEXT_PUBLIC_APP_X_API_KEY,
+      },
+    },
+  );
+  if (res?.status === 404) {
+    return notFound(); // Pastikan tidak menyebabkan error
   }
 
-export default page
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data");
+  }
+
+  return res.json();
+};
+
+const page = async ({ params }) => {
+  const { meetingSlug } = await params;
+  const { locale } = (await params) ?? "en";
+  const dataMeeting = await fetchPackages(locale, meetingSlug);
+  console.log(dataMeeting);
+  return (
+    <div className="">
+      <MeetingRoomDetail meetingSlug={meetingSlug} dataMeeting={dataMeeting} />
+    </div>
+  );
+};
+
+export default page;
