@@ -117,17 +117,7 @@ const GatheringPackage = ({ dataGathering, dataPackage }) => {
                       {pkg.name}
                     </CardTitle>
                     <CardDescription className="line-clamp-2 font-nunito">
-                      {pkg?.description && typeof window !== "undefined" ? (
-                        <div className="grapejs-wrapper">
-                          <div
-                            dangerouslySetInnerHTML={{
-                              __html: pkg?.description,
-                            }}
-                          />
-                        </div>
-                      ) : (
-                        ""
-                      )}
+                      {pkg?.excerpt }
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="flex-grow">

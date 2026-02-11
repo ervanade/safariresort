@@ -116,7 +116,7 @@ const MeetingRoomDetail = ({ meetingSlug, dataMeeting }) => {
                 </div>
 
                 {/* Amenities Section */}
-                <div className="mb-10">
+                {/* <div className="mb-10">
                   <h3 className="text-2xl font-bold text-[#7C3B1F] mb-6 flex items-center gap-3">
                     <Coffee size={24} /> Included Amenities
                   </h3>
@@ -131,7 +131,7 @@ const MeetingRoomDetail = ({ meetingSlug, dataMeeting }) => {
                       </div>
                     ))}
                   </div>
-                </div>
+                </div> */}
               </motion.div>
             </div>
 

@@ -45,7 +45,7 @@ const GatheringPackageDetail = ({ gatheringSlug, dataGathering }) => {
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="rounded-3xl overflow-hidden shadow-2xl mb-10 h-[400px] md:h-[500px]"
+                className=" overflow-hidden shadow-2xl mb-10 h-[400px] md:h-[500px]"
               >
                 <img
                   src={pkg?.images[0]}
@@ -66,7 +66,7 @@ const GatheringPackageDetail = ({ gatheringSlug, dataGathering }) => {
                   >
                     {pkg.title}
                   </h1>
-                  <span className="bg-[#F06934]/10 text-[#F06934] px-4 py-2 rounded-full font-bold flex items-center gap-2">
+                  <span className="bg-[#F06934]/10 text-[#F06934] px-4 py-2 font-bold flex items-center gap-2">
                     <Users size={18} /> {pkg.capacity}
                   </span>
                 </div>
@@ -94,7 +94,7 @@ const GatheringPackageDetail = ({ gatheringSlug, dataGathering }) => {
                     {pkg?.features?.map((feature, idx) => (
                       <div
                         key={idx}
-                        className="flex items-center gap-3 p-4 bg-white rounded-xl shadow-sm border border-gray-100"
+                        className="flex items-center gap-3 p-4 bg-white  shadow-sm border border-gray-100"
                       >
                         <div className="text-[#F06934]">
                           <Check size={20} />
@@ -108,7 +108,7 @@ const GatheringPackageDetail = ({ gatheringSlug, dataGathering }) => {
                 </div>
 
                 {/* Amenities Section */}
-                <div className="mb-10">
+                {/* <div className="mb-10">
                   <h3 className="text-2xl font-bold text-[#7C3B1F] mb-6 flex items-center gap-3">
                     <LayoutGrid size={24} /> Included Amenities
                   </h3>
@@ -118,12 +118,12 @@ const GatheringPackageDetail = ({ gatheringSlug, dataGathering }) => {
                         key={idx}
                         className="flex items-center gap-3 text-gray-600"
                       >
-                        <div className="w-2 h-2 rounded-full bg-[#F06934]" />
+                        <div className="w-2 h-2 bg-[#F06934]" />
                         <span>{item}</span>
                       </div>
                     ))}
                   </div>
-                </div>
+                </div> */}
               </motion.div>
             </div>
 
@@ -133,7 +133,7 @@ const GatheringPackageDetail = ({ gatheringSlug, dataGathering }) => {
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.4 }}
-                className="bg-white p-8 rounded-3xl shadow-xl border border-orange-100 sticky top-28"
+                className="bg-white p-8  shadow-xl border border-orange-100 sticky top-28"
               >
                 <h3 className="text-xl font-bold text-gray-400 mb-2 uppercase tracking-wide">
                   Package Price
@@ -151,7 +151,7 @@ const GatheringPackageDetail = ({ gatheringSlug, dataGathering }) => {
 
                 <Button
                   onClick={handleBook}
-                  className="w-full bg-[#F06934] hover:bg-[#d65220] text-white py-6 text-lg rounded-xl shadow-lg hover:shadow-orange-200 transition-all"
+                  className="w-full bg-[#F06934] hover:bg-[#d65220] text-white py-6 text-lg  shadow-lg hover:shadow-orange-200 transition-all"
                 >
                   Get Custom Quote
                 </Button>

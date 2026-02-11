@@ -121,17 +121,7 @@ const MeetingPackage = ({ dataMeeting, dataPackage }) => {
                       {room.name}
                     </CardTitle>
                     <CardDescription className="line-clamp-2 font-nunito">
-                      {room?.description && typeof window !== "undefined" ? (
-                        <div className="grapejs-wrapper">
-                          <div
-                            dangerouslySetInnerHTML={{
-                              __html: room?.description,
-                            }}
-                          />
-                        </div>
-                      ) : (
-                        ""
-                      )}
+                      {room?.excerpt}
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="flex-grow">
