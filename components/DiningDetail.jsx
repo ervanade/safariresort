@@ -57,7 +57,7 @@ const DiningDetail = ({ diningSlug, dataDining, dataRestaurant }) => {
         </section>
 
         {/* Romantic Dinner Section */}
-        {restaurantsData[0]?.romanticDinnerPackage && (
+        {/* {restaurantsData[0]?.romanticDinnerPackage && (
           <section className="py-16 bg-white">
             <div className="container mx-auto px-4">
               <div className="bg-[#FAF7F5] overflow-hidden shadow-lg">
@@ -90,7 +90,7 @@ const DiningDetail = ({ diningSlug, dataDining, dataRestaurant }) => {
               </div>
             </div>
           </section>
-        )}
+        )} */}
 
         {/* Menu Highlights */}
         {dataDining && dataDining?.length > 0 && (
@@ -135,14 +135,14 @@ const DiningDetail = ({ diningSlug, dataDining, dataRestaurant }) => {
                 ))}
               </div>
 
-              <div className="mt-16 text-center">
+              {/* <div className="mt-16 text-center">
                 <Button
                   variant="outline"
                   className="border-2 border-[#7C3B1F] text-[#7C3B1F] hover:bg-[#7C3B1F] hover:text-white px-8 py-6 text-lg font-bold transition-all"
                 >
                   Download Full Menu
                 </Button>
-              </div>
+              </div> */}
             </div>
           </section>
         )}

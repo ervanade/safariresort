@@ -61,8 +61,8 @@ const MeetingPackage = ({ dataMeeting, dataPackage }) => {
           <div className="absolute inset-0 z-0">
             <img
               className="w-full h-full object-cover"
-              alt="Modern conference room with glass walls overlooking nature"
-              src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80"
+              alt={dataPackage?.title ||"Modern conference room with glass walls overlooking nature"}
+              src={dataPackage?.image_url ||"https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80"}
             />
             <div className="absolute inset-0 bg-black/50"></div>
           </div>
@@ -109,9 +109,9 @@ const MeetingPackage = ({ dataMeeting, dataPackage }) => {
                       alt={room.name}
                       src={room.mainImage}
                     />
-                    <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1  text-xs font-bold text-[#F06934] uppercase tracking-wider shadow-sm">
+                    {/* <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1  text-xs font-bold text-[#F06934] uppercase tracking-wider shadow-sm">
                       {room.capacity}
-                    </div>
+                    </div> */}
                   </div>
                   <CardHeader>
                     <CardTitle

@@ -36,7 +36,7 @@ const fetcher = (url) =>
     })
     .then((res) => res.data);
 
-const Articles = () => {
+const Articles = ({dataArticles}) => {
   const locale = useLocale();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -54,7 +54,6 @@ const Articles = () => {
   );
 
   const articles = useMemo(() => data || [], [data]);
-  console.log(data);
 
   return (
     <div className="min-h-screen bg-[#faf7f5]">
@@ -64,8 +63,8 @@ const Articles = () => {
           <div className="absolute inset-0 z-0">
             <img
               className="w-full h-full object-cover"
-              alt="Modern conference room with glass walls overlooking nature"
-              src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80"
+              alt={articles?.title || "Modern conference room with glass walls overlooking nature"}
+              src={dataArticles?.image_url || "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80"}
             />
             <div className="absolute inset-0 bg-black/50"></div>
           </div>
@@ -77,17 +76,17 @@ const Articles = () => {
               transition={{ duration: 0.8 }}
             >
               <span className="text-[#F06934] font-bold tracking-widest uppercase mb-4 block">
-                Articles & News
+               {dataArticles?.title || ` Articles & News`}
               </span>
               <h1
                 className="text-5xl md:text-7xl font-bold mb-6"
                 style={{ fontFamily: "Mikado, sans-serif" }}
               >
-                Articles Press Release
+                {dataArticles?.subtitle || `Articles Press Release`}
               </h1>
               <p className="text-xl md:text-2xl font-light font-nunito max-w-2xl mx-auto text-gray-200">
-                Elevate your corporate events in a setting that blends
-                professional excellence with the tranquility of nature.
+                {dataArticles?.excerpt || `Elevate your corporate events in a setting that blends
+                professional excellence with the tranquility of nature.`}
               </p>
             </motion.div>
           </div>

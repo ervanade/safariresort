@@ -105,9 +105,9 @@ const GatheringPackage = ({ dataGathering, dataPackage }) => {
                       alt={pkg.name}
                       src={pkg.mainImage}
                     />
-                    <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1  text-xs font-bold text-[#F06934] uppercase tracking-wider shadow-sm">
+                    {/* <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1  text-xs font-bold text-[#F06934] uppercase tracking-wider shadow-sm">
                       {pkg.capacity}
-                    </div>
+                    </div> */}
                   </div>
                   <CardHeader>
                     <CardTitle

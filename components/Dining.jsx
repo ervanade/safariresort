@@ -6,7 +6,7 @@ import { Link } from "@/i18n/navigation";
 import { restaurantsData } from "./data/restaurantsData";
 import { mapDiningData } from "@/lib/utils";
 
-const Dining = ({ dataDining }) => {
+const Dining = ({ dataDining, diningHero }) => {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const diningData = dataDining?.length
     ? mapDiningData(dataDining)
@@ -37,6 +37,7 @@ const Dining = ({ dataDining }) => {
         "Immersive dining experiences set against the backdrop of lush wilderness and wildlife.",
     },
   ];
+  console.log(diningHero.img)
 
   return (
     <div className="min-h-screen bg-[#faf7f5]">
@@ -45,7 +46,7 @@ const Dining = ({ dataDining }) => {
         <section className="relative h-screen min-h-[600px] overflow-hidden">
           <div className="absolute inset-0">
             <img
-              src="https://images.unsplash.com/photo-1657727114768-d5c79fbfa9bd"
+              src={diningHero?.img || "https://images.unsplash.com/photo-1657727114768-d5c79fbfa9bd"}
               alt="Dining at Safari Resort"
               className="w-full h-full object-cover"
             />
@@ -57,7 +58,7 @@ const Dining = ({ dataDining }) => {
               animate={{ opacity: 1, y: 0 }}
               className="text-[#F06934] font-bold tracking-[0.2em] uppercase mb-6 bg-black/40 px-6 py-2 backdrop-blur-md border border-white/10"
             >
-              Taste of Nature
+             {diningHero?.subtitle ||  `Taste of Nature`}
             </motion.span>
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
@@ -66,7 +67,7 @@ const Dining = ({ dataDining }) => {
               className="text-5xl md:text-7xl font-bold mb-8 tracking-tight drop-shadow-lg"
               style={{ fontFamily: "Mikado, sans-serif" }}
             >
-              Dining at Safari Resort
+              {diningHero?.title || `Dining at Safari Resort`}
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -75,8 +76,8 @@ const Dining = ({ dataDining }) => {
               className="text-lg md:text-2xl max-w-3xl font-medium text-white/95 leading-relaxed drop-shadow-md"
               style={{ fontFamily: "Nunito, sans-serif" }}
             >
-              Experience the perfect blend of exquisite flavors and breathtaking
-              natural surroundings.
+              {diningHero?.excerpt || `Experience the perfect blend of exquisite flavors and breathtaking
+              natural surroundings.`}
             </motion.p>
           </div>
         </section>

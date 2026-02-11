@@ -63,15 +63,39 @@ const fetchCategories = async (locale) => {
   return res.json();
 };
 
+async function getData(lang) {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_KEY}/api/v1/web-settings?lang=${lang ?? "en"}`, {
+    // cache: 'no-store',
+    next: { revalidate: 3600 },
+    method: 'GET',
+    headers: {
+      'X-Api-Key': process.env.NEXT_PUBLIC_APP_X_API_KEY,
+    },
+  })
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error('Failed to fetch data')
+  }
+
+  return res.json()
+}
+
 const page = async ({ params }) => {
   const { locale } = (await params) ?? "en";
   const data = await fetchCategories(locale);
   const dataDining = data?.filter((category) =>
     category.type.toLowerCase()?.includes("dining"),
   );
+
+  const { settings } = await getData(locale)
+
+  const targetKey = locale === "en" ? "dining_en" : "dining_id";
+
+// 2. Cari di dalam settings
+const diningHero = settings?.find(item => item.key === targetKey)?.value || {};
   return (
     <div className="">
-      <Dining dataDining={dataDining || []} />
+      <Dining dataDining={dataDining || []} diningHero={diningHero} />
     </div>
   );
 };
