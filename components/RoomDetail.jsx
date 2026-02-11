@@ -335,7 +335,7 @@ const RoomDetail = ({ dataRoom, roomSlug }) => {
                     Normal Price
                   </span>
                   <span className="text-gray-400 text-sm line-through">
-                    {room.price || room.originalPrice || "IDR 3.500.000"}
+                    {Number(room.price).toLocaleString("id-ID") || Number(room.originalPrice).toLocaleString("id-ID") || "IDR 3.500.000"}
                   </span>
                   <span className="text-gray-400 text-sm">2 Nights</span>
                 </div>
@@ -344,7 +344,7 @@ const RoomDetail = ({ dataRoom, roomSlug }) => {
                     Promo
                   </span>
                   <span className="font-bold text-[#7C3B1F] text-lg">
-                    {room.promoPrice || room.price}
+                    {Number(room.promoPrice).toLocaleString("id-ID") || Number(room.price).toLocaleString("id-ID")}
                   </span>
                   <span className="text-[#7C3B1F] text-sm">2 Nights</span>
                 </div>
@@ -353,7 +353,7 @@ const RoomDetail = ({ dataRoom, roomSlug }) => {
                     Save Total
                   </span>
                   <span className="font-bold text-[#F06934] text-xl">
-                    {room.price - room.promoPrice || "IDR 1.000.000"}
+                    {Number(room.price - room.promoPrice).toLocaleString("id-ID") || "IDR 1.000.000"}
                   </span>
                 </div>
               </div>

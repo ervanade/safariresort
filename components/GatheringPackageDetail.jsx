@@ -139,7 +139,7 @@ const GatheringPackageDetail = ({ gatheringSlug, dataGathering }) => {
                   Package Price
                 </h3>
                 <div className="text-3xl font-bold text-[#7C3B1F] mb-6 font-mikado">
-                  IDR {pkg.price}
+                  IDR {Number(pkg.price).toLocaleString("id-ID")}
                 </div>
 
                 <div className="space-y-4 mb-8">
