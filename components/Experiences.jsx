@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { mapActivitiesToExperiences } from "@/lib/utils";
 
-const Experiences = ({ activites }) => {
+const Experiences = ({ activites, homeActivity }) => {
   const [showAll, setShowAll] = useState(false);
 
   const dummyExperiences = [
@@ -111,20 +111,21 @@ const Experiences = ({ activites }) => {
           className="text-center mb-16"
         >
           <span className="text-[#F06934] font-bold text-sm tracking-widest uppercase mb-2 block">
-            Adventures
+            {homeActivity?.title || `Adventures`}
           </span>
           <h2
             className="text-4xl md:text-5xl font-bold mb-6"
             style={{ color: "#7C3B1F", fontFamily: "Mikado, sans-serif" }}
           >
-            Unforgettable Experiences
+            {homeActivity?.subtitle || `Unforgettable Experiences`}
           </h2>
           <p
             className="text-lg text-[#7C3B1F] max-w-3xl mx-auto"
             style={{ fontFamily: "Nunito, sans-serif" }}
           >
-            Curated adventures that connect you with nature and create lasting
-            memories
+            {homeActivity?.desc ||
+              `Curated adventures that connect you with nature and create lasting
+            memories`}
           </p>
         </motion.div>
 

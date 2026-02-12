@@ -117,7 +117,7 @@ const GatheringPackage = ({ dataGathering, dataPackage }) => {
                       {pkg.name}
                     </CardTitle>
                     <CardDescription className="line-clamp-2 font-nunito">
-                      {pkg?.excerpt }
+                      {pkg?.excerpt}
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="flex-grow">
@@ -150,7 +150,7 @@ const GatheringPackage = ({ dataGathering, dataPackage }) => {
         </section>
 
         {/* USP Highlights */}
-        <section className="py-20 bg-white">
+        {/* <section className="py-20 bg-white">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <h2
@@ -189,7 +189,7 @@ const GatheringPackage = ({ dataGathering, dataPackage }) => {
               ))}
             </div>
           </div>
-        </section>
+        </section> */}
       </main>
     </div>
   );

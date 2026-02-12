@@ -167,7 +167,7 @@ const RoomDetail = ({ dataRoom, roomSlug }) => {
           </AnimatePresence>
 
           {/* Navigation Overlays */}
-          <div className="absolute inset-0 flex items-center justify-between p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+          <div className="absolute z-[10] inset-0 flex items-center justify-between p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
             <button
               onClick={() => paginate(-1)}
               className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md hover:bg-white/40 flex items-center justify-center text-white transition-all pointer-events-auto shadow-lg"

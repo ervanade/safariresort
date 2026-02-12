@@ -1,4 +1,3 @@
-
 import About from "@/components/About";
 import Awards from "@/components/Awards";
 import Chatbot from "@/components/Chatbot";
@@ -16,7 +15,7 @@ import { Calendar } from "lucide-react";
 import Image from "next/image";
 
 export async function generateMetadata({ params }) {
-  const { locale } = await params ?? "en";
+  const { locale } = (await params) ?? "en";
 
   const meta = {
     id: {
@@ -67,7 +66,6 @@ export async function generateMetadata({ params }) {
   });
 }
 
-
 async function getData(locale) {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_API_KEY}/api/v1/home?lang=${locale}`,
@@ -79,7 +77,7 @@ async function getData(locale) {
         "X-Api-Key": process.env.NEXT_PUBLIC_APP_X_API_KEY,
         "Cache-Control": "max-age=300", // browser dan CDN cache 5 menit
       },
-    }
+    },
   );
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
@@ -89,33 +87,57 @@ async function getData(locale) {
   return res.json();
 }
 
-export default async function Home({params}) {
-  const { locale } = await params ?? "en";
-  const data = await getData(locale)
+export default async function Home({ params }) {
+  const { locale } = (await params) ?? "en";
+  const data = await getData(locale);
 
   const dataAwards =
-  locale === "en"
-    ? data?.featuredPages?.[0] || {}
-    : data?.featuredPages?.[0] || {};
+    locale === "en"
+      ? data?.featuredPages?.[0] || {}
+      : data?.featuredPages?.[0] || {};
 
-    const targetKey = locale === "en" ? "home_packages" : "home_packages_id";
-    const targetKeyAbout = locale === "en" ? "home_about" : "home_about_id";
+  const targetKey = locale === "en" ? "home_packages" : "home_packages_id";
+  const targetKeyAbout = locale === "en" ? "home_about" : "home_about_id";
+  const targetKeyAccommodations =
+    locale === "en" ? "home_accommodations_en" : "home_accommodations_id";
+  const targetKeyActivity =
+    locale === "en" ? "home_activity_en" : "home_activity_id";
+  const targetKeyFacility =
+    locale === "en" ? "home_facility_en" : "home_facility_id";
 
-// 2. Cari di dalam settings
-const homePackages = data?.settings?.find(item => item.key === targetKey)?.value || {};
-const homeAbout = data?.settings?.find(item => item.key === targetKeyAbout)?.value || {};
+  // 2. Cari di dalam settings
+  const homePackages =
+    data?.settings?.find((item) => item.key === targetKey)?.value || {};
+  const homeAbout =
+    data?.settings?.find((item) => item.key === targetKeyAbout)?.value || {};
+  const homeAccommodations =
+    data?.settings?.find((item) => item.key === targetKeyAccommodations)
+      ?.value || {};
+  const homeActivity =
+    data?.settings?.find((item) => item.key === targetKeyActivity)?.value || {};
+  const homeFacility =
+    data?.settings?.find((item) => item.key === targetKeyFacility)?.value || {};
   return (
     <div className="min-h-screen relative pb-16 md:pb-0">
-    {/* di div header bawah ini flex tidak bisa */}
+      {/* di div header bawah ini flex tidak bisa */}
       <main>
-        <Hero banners={data?.banners || null}/>
+        <Hero banners={data?.banners || null} />
         <About dataAbout={homeAbout || null} />
-        <Rooms accomodations={data?.featuredAccommodations || null}/>
-        <Experiences activites={data?.activities || null}/>
-        <Packages dataPackages={homePackages || null}/>
-        <Facilities dataFacilities={data?.facilities || null} />
+        <Rooms
+          accomodations={data?.featuredAccommodations || null}
+          dataAccommodations={homeAccommodations || null}
+        />
+        <Experiences
+          activites={data?.activities || null}
+          homeActivity={homeActivity || null}
+        />
+        <Packages dataPackages={homePackages || null} />
+        <Facilities
+          dataFacilities={data?.facilities || null}
+          homeFacility={homeFacility || null}
+        />
         {/* <FAQ /> */}
-        <Awards dataAwards={dataAwards || null}/>
+        <Awards dataAwards={dataAwards || null} />
         <MapSection />
       </main>
       {/* <MobileFooter onChatToggle={() => setIsChatOpen(!isChatOpen)} /> */}

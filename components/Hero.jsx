@@ -81,7 +81,7 @@ const Hero = ({ banners }) => {
 
     // 2. Buka di tab baru
     window.open(link, "_blank", "noopener,noreferrer");
-    setIsModalOpen(true);
+    // setIsModalOpen(true);
     // toast({
     //   title: "Reservation Form",
     //   description: "🚧 This feature isn't implemented yet—but don't worry! You can request it in your next prompt! 🚀"

@@ -74,10 +74,11 @@ const About = ({ dataAbout }) => {
             >
               <div className="bg-[#FAF7F5] p-6 border-l-4 border-[#F06934]">
                 <h3 className="text-xl font-bold mb-2 text-[#7C3B1F]">
-                  Welcome to Safari Resort
+                  {dataAbout?.subtitle || `Welcome to Safari Resort`}
                 </h3>
                 <p className="text-lg leading-relaxed italic">
-                  "Find peace and adventure in one stunning place."
+                  {dataAbout?.quote ||
+                    `"Find peace and adventure in one stunning place."`}
                 </p>
               </div>
 

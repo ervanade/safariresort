@@ -114,7 +114,7 @@ const Articles = ({ dataArticles }) => {
               [...Array(3)].map((_, index) => (
                 <div
                   key={index}
-                  className="animate-pulse flex flex-col space-y-4 rounded-xl shadow-md p-6 bg-gray-200"
+                  className="animate-pulse flex flex-col space-y-4 shadow-md p-6 bg-gray-200"
                 >
                   <div className="h-56 bg-gray-300 rounded-t-lg"></div>
                   <div className="h-6 w-3/4 bg-gray-300 rounded"></div>
@@ -126,7 +126,7 @@ const Articles = ({ dataArticles }) => {
               articles.map((item) => (
                 <div
                   key={item.slug}
-                  className="relative flex flex-col mt-6 bg-white shadow-md rounded-xl group"
+                  className="relative flex flex-col mt-6 bg-white shadow-md group"
                 >
                   <div className="relative h-56 -mt-6 overflow-hidden rounded-t-lg group-hover:scale-105">
                     <Image

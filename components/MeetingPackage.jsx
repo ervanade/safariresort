@@ -61,8 +61,14 @@ const MeetingPackage = ({ dataMeeting, dataPackage }) => {
           <div className="absolute inset-0 z-0">
             <img
               className="w-full h-full object-cover"
-              alt={dataPackage?.title ||"Modern conference room with glass walls overlooking nature"}
-              src={dataPackage?.image_url ||"https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80"}
+              alt={
+                dataPackage?.title ||
+                "Modern conference room with glass walls overlooking nature"
+              }
+              src={
+                dataPackage?.image_url ||
+                "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80"
+              }
             />
             <div className="absolute inset-0 bg-black/50"></div>
           </div>
@@ -154,7 +160,7 @@ const MeetingPackage = ({ dataMeeting, dataPackage }) => {
         </section>
 
         {/* USP Highlights */}
-        <section className="py-20 bg-white">
+        {/* <section className="py-20 bg-white">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <h2
@@ -193,7 +199,7 @@ const MeetingPackage = ({ dataMeeting, dataPackage }) => {
               ))}
             </div>
           </div>
-        </section>
+        </section> */}
       </main>
     </div>
   );

@@ -7,12 +7,12 @@ import { TreeDeciduous, Wind, CloudSun } from "lucide-react";
 import { roomsData } from "./data/roomsData";
 import { mapAccommodationsToRooms } from "@/lib/utils";
 
-const TreeHouse = ({ dataRooms }) => {
+const TreeHouse = ({ dataRooms, dataCategory }) => {
   // Filter only Treehouse type rooms
   const treehouseRooms = dataRooms?.length
     ? mapAccommodationsToRooms(dataRooms)
     : roomsData.filter((room) => room.name.toLowerCase().includes("treehouse"));
-
+  console.log(dataCategory);
   return (
     <div className="min-h-screen bg-[#faf7f5]">
       <main className="pt-20">
@@ -20,7 +20,10 @@ const TreeHouse = ({ dataRooms }) => {
         <section className="relative h-[60vh] min-h-[500px] overflow-hidden">
           <div className="absolute inset-0">
             <img
-              src="/assets/resort/Treehouse Slider-1.jpg"
+              src={
+                dataCategory?.image_url ||
+                "/assets/resort/Treehouse Slider-1.jpg"
+              }
               alt="Treehouse Experience"
               className="w-full h-full object-cover"
             />
@@ -32,7 +35,7 @@ const TreeHouse = ({ dataRooms }) => {
               animate={{ opacity: 1, y: 0 }}
               className="text-[#F06934] font-bold tracking-widest uppercase mb-4 bg-black/50 w-fit px-4 py-1 rounded-full backdrop-blur-sm"
             >
-              Nature Lodges
+              {dataCategory?.subtitle || `Nature Lodges`}
             </motion.span>
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
@@ -41,7 +44,7 @@ const TreeHouse = ({ dataRooms }) => {
               className="text-5xl md:text-7xl font-bold mb-6 max-w-4xl leading-tight"
               style={{ fontFamily: "Mikado, sans-serif" }}
             >
-              Treehouse Collection
+              {dataCategory?.title || `Treehouse Collection`}
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -50,8 +53,9 @@ const TreeHouse = ({ dataRooms }) => {
               className="text-lg md:text-2xl max-w-2xl font-medium text-white/90"
               style={{ fontFamily: "Nunito, sans-serif" }}
             >
-              Elevate your stay among the canopies. Experience the magic of
-              waking up to the sounds of nature in our signature treehouses.
+              {dataCategory?.excerpt ||
+                `Elevate your stay among the canopies. Experience the magic of
+              waking up to the sounds of nature in our signature treehouses.`}
             </motion.p>
           </div>
         </section>
@@ -59,7 +63,7 @@ const TreeHouse = ({ dataRooms }) => {
         {/* Intro Section */}
         <section className="py-16 md:py-24 relative overflow-hidden">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
               <div className="bg-white p-8 shadow-sm border border-[#7C3B1F]/10 text-center group hover:bg-[#7C3B1F] transition-colors duration-300">
                 <div className="bg-[#faf7f5] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-white/10 transition-colors">
                   <TreeDeciduous
@@ -123,7 +127,7 @@ const TreeHouse = ({ dataRooms }) => {
                   from your private balcony.
                 </p>
               </div>
-            </div>
+            </div> */}
 
             <div className="text-center mb-12">
               <span className="text-[#F06934] font-bold text-sm tracking-widest uppercase mb-3 block">
@@ -133,7 +137,7 @@ const TreeHouse = ({ dataRooms }) => {
                 className="text-4xl md:text-5xl font-bold text-[#7C3B1F]"
                 style={{ fontFamily: "Mikado, sans-serif" }}
               >
-                Choose Your Treehouse
+                Choose Your {dataCategory?.title || `Accommodation`}
               </h2>
             </div>
 

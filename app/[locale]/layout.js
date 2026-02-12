@@ -12,7 +12,7 @@ async function getData(lang) {
     `${process.env.NEXT_PUBLIC_API_KEY}/api/v1/web-settings?lang=${lang ?? "en"}`,
     {
       // cache: 'no-store',
-      next: { revalidate: 3600 * 24 },
+      next: { revalidate: 3600 },
       method: "GET",
       headers: {
         "X-Api-Key": process.env.NEXT_PUBLIC_APP_X_API_KEY,

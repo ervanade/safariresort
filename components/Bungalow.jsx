@@ -63,7 +63,7 @@ const Bungalow = ({ dataRooms }) => {
         {/* Intro Section */}
         <section className="py-16 md:py-24 relative overflow-hidden">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
               <div className="bg-white p-8 shadow-sm border border-[#7C3B1F]/10 text-center group hover:bg-[#7C3B1F] transition-colors duration-300">
                 <div className="bg-[#faf7f5] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-white/10 transition-colors">
                   <Home
@@ -127,7 +127,7 @@ const Bungalow = ({ dataRooms }) => {
                   refreshment facilities for a worry-free stay.
                 </p>
               </div>
-            </div>
+            </div> */}
 
             <div className="text-center mb-12">
               <span className="text-[#F06934] font-bold text-sm tracking-widest uppercase mb-3 block">
