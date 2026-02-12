@@ -22,6 +22,10 @@ const MeetingRoomDetail = ({ meetingSlug, dataMeeting }) => {
   const room = dataMeeting || meetingRoomsData[0];
 
   const handleBook = () => {
+    const link = `https://www.book-secure.com/index.php?s=results&property=idbog27674&arrival=2026-02-12&departure=2026-02-13&adults1=2&children1=0&locale=en_GB&currency=IDR&stid=cms52h5o8&showBestPriceFirst=1&showPromotions=3&langue=EN&Clusternames=ASIAIDTAMHTLSafariRe&cluster=ASIAIDTAMHTLSafariRe&Hotelnames=ASIAIDTAMHTLSafariRe&hname=ASIAIDTAMHTLSafariRe&nbNightsValue=1&adulteresa=2&nbAdultsValue=2&CurrencyLabel=IDR&redir=BIZ-so5523q0o4&rt=1770910934`;
+
+    // 2. Buka di tab baru
+    window.open(link, "_blank", "noopener,noreferrer");
     toast({
       title: "Inquiry Sent",
       description: `Thank you for your interest in ${room.name}. Our sales team will contact you shortly.`,
@@ -147,7 +151,8 @@ const MeetingRoomDetail = ({ meetingSlug, dataMeeting }) => {
                   Starting From
                 </h3>
                 <div className="text-3xl font-bold text-[#7C3B1F] mb-6 font-mikado">
-                  {Number(room.price).toLocaleString("id-ID") || Number(room.pricing).toLocaleString("id-ID")}
+                  {Number(room.price).toLocaleString("id-ID") ||
+                    Number(room.pricing).toLocaleString("id-ID")}
                 </div>
 
                 <div className="space-y-4 mb-8">

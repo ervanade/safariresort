@@ -21,6 +21,10 @@ const GatheringPackageDetail = ({ gatheringSlug, dataGathering }) => {
   const { toast } = useToast();
 
   const handleBook = () => {
+    const link = `https://www.book-secure.com/index.php?s=results&property=idbog27674&arrival=2026-02-12&departure=2026-02-13&adults1=2&children1=0&locale=en_GB&currency=IDR&stid=cms52h5o8&showBestPriceFirst=1&showPromotions=3&langue=EN&Clusternames=ASIAIDTAMHTLSafariRe&cluster=ASIAIDTAMHTLSafariRe&Hotelnames=ASIAIDTAMHTLSafariRe&hname=ASIAIDTAMHTLSafariRe&nbNightsValue=1&adulteresa=2&nbAdultsValue=2&CurrencyLabel=IDR&redir=BIZ-so5523q0o4&rt=1770910934`;
+
+    // 2. Buka di tab baru
+    window.open(link, "_blank", "noopener,noreferrer");
     toast({
       title: "Inquiry Sent",
       description: `Thank you for your interest in the ${pkg.name}. Our event planner will contact you shortly.`,

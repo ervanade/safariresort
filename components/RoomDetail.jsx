@@ -88,6 +88,10 @@ const RoomDetail = ({ dataRoom, roomSlug }) => {
   };
 
   const handleBook = () => {
+    const link = `https://www.book-secure.com/index.php?s=results&property=idbog27674&arrival=2026-02-12&departure=2026-02-13&adults1=2&children1=0&locale=en_GB&currency=IDR&stid=cms52h5o8&showBestPriceFirst=1&showPromotions=3&langue=EN&Clusternames=ASIAIDTAMHTLSafariRe&cluster=ASIAIDTAMHTLSafariRe&Hotelnames=ASIAIDTAMHTLSafariRe&hname=ASIAIDTAMHTLSafariRe&nbNightsValue=1&adulteresa=2&nbAdultsValue=2&CurrencyLabel=IDR&redir=BIZ-so5523q0o4&rt=1770910934`;
+
+    // 2. Buka di tab baru
+    window.open(link, "_blank", "noopener,noreferrer");
     toast({
       title: "Booking Initiated",
       description: `Starting booking process for ${room.name}`,
@@ -308,11 +312,12 @@ const RoomDetail = ({ dataRoom, roomSlug }) => {
               >
                 Cancellation Rules
               </h3>
-              <p className="text-gray-500 text-sm font-medium mb-3">
-                Free Cancellation until{" "}
-                <span className="text-[#7C3B1F] font-bold">22 October</span>
+              <p className="text-gray-500 text-sm font-medium mb-3 whitespace-pre-line">
+                {room?.cancellationRule}
+                {/* Free Cancellation until{" "}
+                <span className="text-[#7C3B1F] font-bold">22 October</span> */}
               </p>
-              <p className="text-xs text-gray-400 leading-relaxed">
+              {/* <p className="text-xs text-gray-400 leading-relaxed">
                 According to time at{" "}
                 <strong className="text-gray-600">the accommodation</strong>
                 <br />
@@ -324,7 +329,7 @@ const RoomDetail = ({ dataRoom, roomSlug }) => {
               </p>
               <p className="text-xs text-[#F06934] font-bold mt-2">
                 After 26 October 23:59 No Refund
-              </p>
+              </p> */}
             </div>
 
             {/* Footer / Pricing Action */}
@@ -335,7 +340,9 @@ const RoomDetail = ({ dataRoom, roomSlug }) => {
                     Normal Price
                   </span>
                   <span className="text-gray-400 text-sm line-through">
-                    {Number(room.price).toLocaleString("id-ID") || Number(room.originalPrice).toLocaleString("id-ID") || "IDR 3.500.000"}
+                    {Number(room.price).toLocaleString("id-ID") ||
+                      Number(room.originalPrice).toLocaleString("id-ID") ||
+                      "IDR 3.500.000"}
                   </span>
                   <span className="text-gray-400 text-sm">2 Nights</span>
                 </div>
@@ -344,7 +351,8 @@ const RoomDetail = ({ dataRoom, roomSlug }) => {
                     Promo
                   </span>
                   <span className="font-bold text-[#7C3B1F] text-lg">
-                    {Number(room.promoPrice).toLocaleString("id-ID") || Number(room.price).toLocaleString("id-ID")}
+                    {Number(room.promoPrice).toLocaleString("id-ID") ||
+                      Number(room.price).toLocaleString("id-ID")}
                   </span>
                   <span className="text-[#7C3B1F] text-sm">2 Nights</span>
                 </div>
@@ -353,7 +361,9 @@ const RoomDetail = ({ dataRoom, roomSlug }) => {
                     Save Total
                   </span>
                   <span className="font-bold text-[#F06934] text-xl">
-                    {Number(room.price - room.promoPrice).toLocaleString("id-ID") || "IDR 1.000.000"}
+                    {Number(room.price - room.promoPrice).toLocaleString(
+                      "id-ID",
+                    ) || "IDR 1.000.000"}
                   </span>
                 </div>
               </div>

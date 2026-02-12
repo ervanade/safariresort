@@ -36,7 +36,7 @@ const fetcher = (url) =>
     })
     .then((res) => res.data);
 
-const Articles = ({dataArticles}) => {
+const Articles = ({ dataArticles }) => {
   const locale = useLocale();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -60,7 +60,7 @@ const Articles = ({dataArticles}) => {
   const changePage = (pageNum) => {
     if (pageNum < 1 || pageNum > totalPages) return;
 
-    router.push(`/${locale}/news?page=${pageNum}`, { scroll: true });
+    router.push(`/${locale}/posts?page=${pageNum}`, { scroll: true });
   };
 
   return (
@@ -71,8 +71,14 @@ const Articles = ({dataArticles}) => {
           <div className="absolute inset-0 z-0">
             <img
               className="w-full h-full object-cover"
-              alt={articles?.title || "Modern conference room with glass walls overlooking nature"}
-              src={dataArticles?.image_url || "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80"}
+              alt={
+                articles?.title ||
+                "Modern conference room with glass walls overlooking nature"
+              }
+              src={
+                dataArticles?.image_url ||
+                "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80"
+              }
             />
             <div className="absolute inset-0 bg-black/50"></div>
           </div>
@@ -84,7 +90,7 @@ const Articles = ({dataArticles}) => {
               transition={{ duration: 0.8 }}
             >
               <span className="text-[#F06934] font-bold tracking-widest uppercase mb-4 block">
-               {dataArticles?.title || ` Articles & News`}
+                {dataArticles?.title || ` Articles & News`}
               </span>
               <h1
                 className="text-5xl md:text-7xl font-bold mb-6"
@@ -93,7 +99,8 @@ const Articles = ({dataArticles}) => {
                 {dataArticles?.subtitle || `Articles Press Release`}
               </h1>
               <p className="text-xl md:text-2xl font-light font-nunito max-w-2xl mx-auto text-gray-200">
-                {dataArticles?.excerpt || `Elevate your corporate events in a setting that blends
+                {dataArticles?.excerpt ||
+                  `Elevate your corporate events in a setting that blends
                 professional excellence with the tranquility of nature.`}
               </p>
             </motion.div>
@@ -164,41 +171,41 @@ const Articles = ({dataArticles}) => {
           </div>
 
           {totalPages > 1 && (
-        <div className="flex justify-center items-center gap-2 mt-12 flex-wrap">
-          <button
-            onClick={() => changePage(page - 1)}
-            disabled={page === 1}
-            className="px-4 py-2 border rounded disabled:opacity-50 cursor-pointer"
-          >
-            Prev
-          </button>
-
-          {Array.from({ length: totalPages }).map((_, i) => {
-            const p = i + 1;
-            return (
+            <div className="flex justify-center items-center gap-2 mt-12 flex-wrap">
               <button
-                key={p}
-                onClick={() => changePage(p)}
-                className={`px-4 py-2 border rounded cursor-pointer ${
-                  p === page
-                    ? "bg-primary text-white"
-                    : "bg-white text-black"
-                }`}
+                onClick={() => changePage(page - 1)}
+                disabled={page === 1}
+                className="px-4 py-2 border rounded disabled:opacity-50 cursor-pointer"
               >
-                {p}
+                Prev
               </button>
-            );
-          })}
 
-          <button
-            onClick={() => changePage(page + 1)}
-            disabled={page === totalPages}
-            className="px-4 py-2 border rounded cursor-pointer disabled:opacity-50"
-          >
-            Next
-          </button>
-        </div>
-      )}
+              {Array.from({ length: totalPages }).map((_, i) => {
+                const p = i + 1;
+                return (
+                  <button
+                    key={p}
+                    onClick={() => changePage(p)}
+                    className={`px-4 py-2 border rounded cursor-pointer ${
+                      p === page
+                        ? "bg-[#F06934] text-white"
+                        : "bg-white text-black"
+                    }`}
+                  >
+                    {p}
+                  </button>
+                );
+              })}
+
+              <button
+                onClick={() => changePage(page + 1)}
+                disabled={page === totalPages}
+                className="px-4 py-2 border rounded cursor-pointer disabled:opacity-50"
+              >
+                Next
+              </button>
+            </div>
+          )}
         </section>
       </main>
     </div>

@@ -1,77 +1,86 @@
-'use client'
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Calendar, Users, Home } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { useToast } from '@/components/ui/use-toast';
-import BookingModal from './BookingModal';
+"use client";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Calendar, Users, Home } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useToast } from "@/components/ui/use-toast";
+import BookingModal from "./BookingModal";
 
 const swipeConfidenceThreshold = 10000;
 const swipePower = (offset, velocity) => {
   return Math.abs(offset) * velocity;
 };
 
-const Hero = ({banners}) => {
+const Hero = ({ banners }) => {
   const { toast } = useToast();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({
-    checkIn: '',
-    checkOut: '',
-    guests: '2',
-    roomType: 'treehouse'
+    checkIn: "",
+    checkOut: "",
+    guests: "2",
+    roomType: "treehouse",
   });
 
   const slidesDummy = [
     {
       id: 1,
-      image: "https://horizons-cdn.hostinger.com/b05a0347-ff2a-4d3e-b189-510345403291/54630fb92081fec3b2304da74a9222c2.png", 
-      image_mobile: "https://horizons-cdn.hostinger.com/b05a0347-ff2a-4d3e-b189-510345403291/54630fb92081fec3b2304da74a9222c2.png", 
-      alt: "Family with an elephant on a wooden deck overlooking the forest", 
-      heading: "Find Your Wild Escape"
+      image:
+        "https://horizons-cdn.hostinger.com/b05a0347-ff2a-4d3e-b189-510345403291/54630fb92081fec3b2304da74a9222c2.png",
+      image_mobile:
+        "https://horizons-cdn.hostinger.com/b05a0347-ff2a-4d3e-b189-510345403291/54630fb92081fec3b2304da74a9222c2.png",
+      alt: "Family with an elephant on a wooden deck overlooking the forest",
+      heading: "Find Your Wild Escape",
     },
     {
       id: 2,
-      image: "https://horizons-cdn.hostinger.com/b05a0347-ff2a-4d3e-b189-510345403291/cd199248e24c139d05253e41c8651d47.png",
-      image_mobile: "https://horizons-cdn.hostinger.com/b05a0347-ff2a-4d3e-b189-510345403291/cd199248e24c139d05253e41c8651d47.png",
+      image:
+        "https://horizons-cdn.hostinger.com/b05a0347-ff2a-4d3e-b189-510345403291/cd199248e24c139d05253e41c8651d47.png",
+      image_mobile:
+        "https://horizons-cdn.hostinger.com/b05a0347-ff2a-4d3e-b189-510345403291/cd199248e24c139d05253e41c8651d47.png",
       alt: "Luxury resort bedroom with panoramic views",
-      heading: "Wake Up to Nature"
-    }
+      heading: "Wake Up to Nature",
+    },
   ];
 
-  const slides = banners.map(banner => ({
-    id: banner?.id,
-    image: banner?.image_desktop,
-    alt: banner?.title,
-    heading: banner?.title,
-    image_mobile: banner?.image_mobile
-
-  })) || slidesDummy
+  const slides =
+    banners.map((banner) => ({
+      id: banner?.id,
+      image: banner?.image_desktop,
+      alt: banner?.title,
+      heading: banner?.title,
+      image_mobile: banner?.image_mobile,
+    })) || slidesDummy;
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentSlide(prev => (prev + 1) % slides.length);
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 10000); // Auto-rotate every 10 seconds
     return () => clearInterval(timer);
   }, [currentSlide, slides.length]); // Reset timer on slide change
 
   const nextSlide = () => {
-    setCurrentSlide(prev => (prev + 1) % slides.length);
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
   };
 
   const prevSlide = () => {
-    setCurrentSlide(prev => (prev - 1 + slides.length) % slides.length);
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   };
 
-  const handleInputChange = e => {
+  const handleInputChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
+    // 1. Definisikan nomor WhatsApp dan pesan (opsional)
+    const link = `https://www.book-secure.com/index.php?s=results&property=idbog27674&arrival=2026-02-12&departure=2026-02-13&adults1=2&children1=0&locale=en_GB&currency=IDR&stid=cms52h5o8&showBestPriceFirst=1&showPromotions=3&langue=EN&Clusternames=ASIAIDTAMHTLSafariRe&cluster=ASIAIDTAMHTLSafariRe&Hotelnames=ASIAIDTAMHTLSafariRe&hname=ASIAIDTAMHTLSafariRe&nbNightsValue=1&adulteresa=2&nbAdultsValue=2&CurrencyLabel=IDR&redir=BIZ-so5523q0o4&rt=1770910934`;
+
+    // 2. Buka di tab baru
+    window.open(link, "_blank", "noopener,noreferrer");
     setIsModalOpen(true);
     // toast({
     //   title: "Reservation Form",
@@ -80,9 +89,12 @@ const Hero = ({banners}) => {
   };
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-end pb-12 md:pb-12 justify-center overflow-hidden">
+    <section
+      id="hero"
+      className="relative min-h-screen flex items-end pb-12 md:pb-12 justify-center overflow-hidden"
+    >
       {/* Slider Background */}
-      <BookingModal 
+      <BookingModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         adults={parseInt(formData.guests)} // Konversi string ke number
@@ -115,7 +127,10 @@ const Hero = ({banners}) => {
             src={slides[currentSlide].image}
           />
           {/* Light Brown Color Overlay */}
-          <div className="absolute inset-0 z-10 opacity-10 pointer-events-none" style={{ backgroundColor: '#7C3B1F' }}></div>
+          <div
+            className="absolute inset-0 z-10 opacity-10 pointer-events-none"
+            style={{ backgroundColor: "#7C3B1F" }}
+          ></div>
         </motion.div>
       </AnimatePresence>
 
@@ -125,7 +140,7 @@ const Hero = ({banners}) => {
           <button
             key={idx}
             onClick={() => setCurrentSlide(idx)}
-            className={`w-3 h-3 transition-all ${currentSlide === idx ? 'bg-white scale-110' : 'bg-white/50 hover:bg-white/80'}`}
+            className={`w-3 h-3 transition-all ${currentSlide === idx ? "bg-white scale-110" : "bg-white/50 hover:bg-white/80"}`}
             aria-label={`Go to slide ${idx + 1}`}
           />
         ))}
@@ -138,15 +153,27 @@ const Hero = ({banners}) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           className="max-w-5xl mx-auto backdrop-blur-md rounded-none shadow-2xl p-4 md:p-8"
-          style={{ backgroundColor: 'rgba(124, 59, 31, 0.25)', borderTop: '4px solid #F06934' }}
+          style={{
+            backgroundColor: "rgba(124, 59, 31, 0.25)",
+            borderTop: "4px solid #F06934",
+          }}
         >
-          <h2 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-center text-white" style={{ fontFamily: 'Mikado, sans-serif' }}>
+          <h2
+            className="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-center text-white"
+            style={{ fontFamily: "Mikado, sans-serif" }}
+          >
             {slides[currentSlide].heading}
           </h2>
           {/* Changed grid columns for mobile compactness */}
-          <form onSubmit={handleSubmit} className="grid grid-cols-2 lg:grid-cols-5 gap-3 md:gap-4">
+          <form
+            onSubmit={handleSubmit}
+            className="grid grid-cols-2 lg:grid-cols-5 gap-3 md:gap-4"
+          >
             <div className="flex flex-col gap-1 md:gap-2 col-span-1">
-              <label className="text-xs md:text-sm font-bold flex items-center gap-2 text-white" style={{ fontFamily: 'Nunito, sans-serif' }}>
+              <label
+                className="text-xs md:text-sm font-bold flex items-center gap-2 text-white"
+                style={{ fontFamily: "Nunito, sans-serif" }}
+              >
                 <Calendar size={14} className="md:w-4 md:h-4" />
                 Check-In
               </label>
@@ -156,13 +183,16 @@ const Hero = ({banners}) => {
                 value={formData.checkIn}
                 onChange={handleInputChange}
                 className="w-full px-2 md:px-4 py-2 md:py-3 text-xs md:text-base border-2 border-transparent rounded-none focus:outline-none focus:ring-2 focus:ring-[#F06934] transition-all bg-white/90"
-                style={{ fontFamily: 'Nunito, sans-serif' }}
+                style={{ fontFamily: "Nunito, sans-serif" }}
                 required
               />
             </div>
 
             <div className="flex flex-col gap-1 md:gap-2 col-span-1">
-              <label className="text-xs md:text-sm font-bold flex items-center gap-2 text-white" style={{ fontFamily: 'Nunito, sans-serif' }}>
+              <label
+                className="text-xs md:text-sm font-bold flex items-center gap-2 text-white"
+                style={{ fontFamily: "Nunito, sans-serif" }}
+              >
                 <Calendar size={14} className="md:w-4 md:h-4" />
                 Check-Out
               </label>
@@ -172,13 +202,16 @@ const Hero = ({banners}) => {
                 value={formData.checkOut}
                 onChange={handleInputChange}
                 className="w-full px-2 md:px-4 py-2 md:py-3 text-xs md:text-base border-2 border-transparent rounded-none focus:outline-none focus:ring-2 focus:ring-[#F06934] transition-all bg-white/90"
-                style={{ fontFamily: 'Nunito, sans-serif' }}
+                style={{ fontFamily: "Nunito, sans-serif" }}
                 required
               />
             </div>
 
             <div className="flex flex-col gap-1 md:gap-2 col-span-1">
-              <label className="text-xs md:text-sm font-bold flex items-center gap-2 text-white" style={{ fontFamily: 'Nunito, sans-serif' }}>
+              <label
+                className="text-xs md:text-sm font-bold flex items-center gap-2 text-white"
+                style={{ fontFamily: "Nunito, sans-serif" }}
+              >
                 <Users size={14} className="md:w-4 md:h-4" />
                 Guests
               </label>
@@ -187,16 +220,21 @@ const Hero = ({banners}) => {
                 value={formData.guests}
                 onChange={handleInputChange}
                 className="w-full px-2 md:px-4 py-2 md:py-3 text-xs md:text-base border-2 border-transparent rounded-none focus:outline-none focus:ring-2 focus:ring-[#F06934] transition-all bg-white/90"
-                style={{ fontFamily: 'Nunito, sans-serif' }}
+                style={{ fontFamily: "Nunito, sans-serif" }}
               >
-                {[1, 2, 3, 4, 5, 6, 7, 8].map(num => (
-                  <option key={num} value={num}>{num} Guest{num > 1 ? 's' : ''}</option>
+                {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
+                  <option key={num} value={num}>
+                    {num} Guest{num > 1 ? "s" : ""}
+                  </option>
                 ))}
               </select>
             </div>
 
             <div className="flex flex-col gap-1 md:gap-2 col-span-1">
-              <label className="text-xs md:text-sm font-bold flex items-center gap-2 text-white" style={{ fontFamily: 'Nunito, sans-serif' }}>
+              <label
+                className="text-xs md:text-sm font-bold flex items-center gap-2 text-white"
+                style={{ fontFamily: "Nunito, sans-serif" }}
+              >
                 <Home size={14} className="md:w-4 md:h-4" />
                 Room Type
               </label>
@@ -205,12 +243,12 @@ const Hero = ({banners}) => {
                 value={formData.roomType}
                 onChange={handleInputChange}
                 className="w-full px-2 md:px-4 py-2 md:py-3 text-xs md:text-base border-2 border-transparent rounded-none focus:outline-none focus:ring-2 focus:ring-[#F06934] transition-all bg-white/90"
-                style={{ fontFamily: 'Nunito, sans-serif' }}
+                style={{ fontFamily: "Nunito, sans-serif" }}
               >
                 <option value="hotels">Resort</option>
                 <option value="caravan">Caravan</option>
                 <option value="bungalow">Bungalow</option>
-                <option value="treehouse">Treehouse</option>                
+                <option value="treehouse">Treehouse</option>
               </select>
             </div>
 
@@ -218,7 +256,11 @@ const Hero = ({banners}) => {
               <Button
                 type="submit"
                 className="w-full p-3 md:p-8 rounded-none font-bold text-sm md:text-lg transition-all hover:shadow-xl hover:scale-105"
-                style={{ backgroundColor: '#F06934', color: 'white', fontFamily: 'Nunito, sans-serif' }}
+                style={{
+                  backgroundColor: "#F06934",
+                  color: "white",
+                  fontFamily: "Nunito, sans-serif",
+                }}
               >
                 Book Now
               </Button>
