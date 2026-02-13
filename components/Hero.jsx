@@ -152,14 +152,14 @@ const Hero = ({ banners }) => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="max-w-5xl mx-auto backdrop-blur-md rounded-none shadow-2xl p-4 md:p-8"
+          className="max-w-5xl mx-auto backdrop-blur-sm rounded-none shadow-2xl p-4 md:p-4"
           style={{
             backgroundColor: "rgba(124, 59, 31, 0.25)",
             borderTop: "4px solid #F06934",
           }}
         >
           <h2
-            className="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-center text-white"
+            className="text-xl md:text-2xl font-bold mb-4 md:mb-4 text-center text-white"
             style={{ fontFamily: "Mikado, sans-serif" }}
           >
             {slides[currentSlide].heading}
@@ -167,7 +167,7 @@ const Hero = ({ banners }) => {
           {/* Changed grid columns for mobile compactness */}
           <form
             onSubmit={handleSubmit}
-            className="grid grid-cols-2 lg:grid-cols-5 gap-3 md:gap-4"
+            className="grid grid-cols-2 lg:grid-cols-5 gap-3 md:gap-3"
           >
             <div className="flex flex-col gap-1 md:gap-2 col-span-1">
               <label

@@ -289,7 +289,7 @@ const RoomDetail = ({ dataRoom, roomSlug }) => {
             </div>
 
             {/* Bed Type */}
-            <div className="mb-10">
+            {/* <div className="mb-10">
               <h3
                 className="text-xl font-bold text-[#7C3B1F] mb-4"
                 style={{ fontFamily: "Mikado, sans-serif" }}
@@ -302,16 +302,16 @@ const RoomDetail = ({ dataRoom, roomSlug }) => {
                   {bedType}
                 </p>
               </div>
-            </div>
+            </div> */}
 
             {/* Cancellation Rules */}
             <div className="mb-12 p-6 bg-[#faf7f5] border border-[#7C3B1F]/10 ">
-              <h3
+              {/* <h3
                 className="text-xl font-bold text-[#7C3B1F] mb-4"
                 style={{ fontFamily: "Mikado, sans-serif" }}
               >
                 Cancellation Rules
-              </h3>
+              </h3> */}
               <p className="text-gray-500 text-sm font-medium mb-3 whitespace-pre-line">
                 {room?.cancellationRule}
                 {/* Free Cancellation until{" "}
