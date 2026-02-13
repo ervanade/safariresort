@@ -12,7 +12,6 @@ const TreeHouse = ({ dataRooms, dataCategory }) => {
   const treehouseRooms = dataRooms?.length
     ? mapAccommodationsToRooms(dataRooms)
     : roomsData.filter((room) => room.name.toLowerCase().includes("treehouse"));
-  console.log(dataCategory);
   return (
     <div className="min-h-screen bg-[#faf7f5]">
       <main className="pt-20">

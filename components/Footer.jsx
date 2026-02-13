@@ -12,11 +12,14 @@ import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Link } from '@/i18n/navigation';
 
-export default function Footer() {
+export default function Footer({settings}) {
   const { toast } = useToast();
   const router = useRouter();
   const scrollRef = useRef(null);
-
+  const link_ig = settings?.find((item) => item.key === "link_ig")?.value || "https://www.instagram.com/safariresort.id/?hl=en";
+  const link_fb = settings?.find((item) => item.key === "link_fb")?.value || "https://www.facebook.com/safariresort/?locale=id_ID";
+  const link_trip = settings?.find((item) => item.key === "link_trip")?.value || "https://www.tripadvisor.com/Hotel_Review-g844506-d2041188-Reviews-or40-Safari_Resort-Puncak_West_Java_Java.html";
+  const link_wa = settings?.find((item) => item.key === "whatsapp_number")?.value || "+6282125222756";
   /* ===== Navigation Handler ===== */
   const handleLinkClick = (e, link) => {
     e.preventDefault();
@@ -39,11 +42,17 @@ export default function Footer() {
   };
 
   const handleInstagramClick = () => {
-    window.open(
-      'https://www.instagram.com/safariresort.id/?hl=en',
-      '_blank',
-      'noopener,noreferrer'
-    );
+    if (typeof window !== 'undefined') {
+      const igUrl = link_ig || 'https://www.instagram.com/safariresort.id/?hl=en';
+      window.open(igUrl, '_blank', 'noopener,noreferrer');
+    }
+  };
+  
+  const handleSocmedClick = (link) => {
+    if (typeof window !== 'undefined') {
+      const url = link || 'https://www.instagram.com/safariresort.id/?hl=en';
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
   };
 
   /* ===== Horizontal Scroll ===== */
@@ -58,12 +67,12 @@ export default function Footer() {
   /* ===== Data ===== */
   const sitemapLinks = {
     Stay: [
-      { name: 'Standard Room', href: '/#rooms' },
-      { name: 'Deluxe Room', href: '/#rooms' },
-      { name: 'Suite Room', href: '/#rooms' },
-      { name: 'Treehouse', href: '/#rooms' },
-      { name: 'Caravan', href: '/#rooms' },
-      { name: 'Bungalow', href: '/#rooms' },
+      { name: 'Standard Twin', href: '/rooms/standard-room' },
+      { name: 'Deluxe Twin', href: '/rooms/deluxe-room' },
+      { name: 'Suite Room', href: '/rooms/junior-suite-rooms' },
+      { name: 'Treehouse', href: '/stay/treehouse' },
+      { name: 'Caravan', href: '/stay/caravan-resort' },
+      { name: 'Bungalow', href: '/stay/bungalow' },
     ],
     Experiences: [
       { name: 'Safari Journey', href: 'https://tamansafari.com/', external: true },
@@ -74,27 +83,26 @@ export default function Footer() {
       { name: 'Dine Experience', href: '/#experiences' },
     ],
     Dining: [
-      { name: 'Barbeque', href: '#' },
-      { name: 'Romantic Dinner', href: '/dining/romantic-dinner' },
-      { name: 'Jungle Hot Pot', href: '#' },
-      { name: 'Cafe', href: '#' },
+      { name: 'Caravan Restaurant', href: '/dining/caravan-restaurant' },
+      { name: 'Caravan Cafe', href: '/dining/caravan-cafe' },
     ],
     Info: [
-      { name: 'Press & Media', href: '/press-media' },
+      { name: 'Press & Media', href: '/articles' },
       { name: 'Maps', href: '/#map' },
       { name: 'FAQ', href: '/faq' },
       { name: 'Contact', href: '/#contact' },
-      { name: 'Site Map', href: '/site-map' },
     ],
   };
 
   const socialIcons = [
-    { Icon: FaFacebook, name: 'Facebook' },
+    { Icon: FaFacebook, name: 'Facebook', action: () => handleSocmedClick(link_fb) },
     { Icon: FaInstagram, name: 'Instagram', action: handleInstagramClick },
-    { Icon: FaTwitter, name: 'Twitter' },
-    { Icon: SiTripadvisor, name: 'TripAdvisor' },
-    { Icon: FaWhatsapp, name: 'WhatsApp' },
+    { Icon: FaTwitter, name: 'Twitter'},
+    { Icon: SiTripadvisor, name: 'TripAdvisor', action: () => handleSocmedClick(link_trip) },
+    { Icon: FaWhatsapp, name: 'WhatsApp', action: () => handleSocmedClick(`https://wa.me/${link_wa}?text=Hello%20Safari%20Resort%2C%20I%20have%20a%20question.`) },
   ];
+
+
 
   return (
     <footer className="bg-[#faf7f5] border-t-4 border-[#F06934] pt-16 pb-8">

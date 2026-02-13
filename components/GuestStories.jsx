@@ -20,7 +20,7 @@ const fetcher = (url) =>
     })
     .then((res) => res.data);
 
-const GuestStories = () => {
+const GuestStories = ({guestData}) => {
   const locale = useLocale();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -64,18 +64,18 @@ const GuestStories = () => {
             transition={{ duration: 0.6 }}
           >
             <span className="text-[#F06934] font-bold text-sm tracking-widest uppercase mb-3 block">
-              Guest Stories
+              {guestData?.title || `Guest Stories`}
             </span>
             <h1
               className="text-4xl md:text-5xl font-bold mb-6 text-[#7C3B1F]"
               style={{ fontFamily: "Mikado, sans-serif" }}
             >
-              Memories from the Wild
+              {guestData?.subtitle || `Memories from the Wild`}
             </h1>
             <p className="text-lg text-[#7C3B1F]/80 max-w-2xl mx-auto font-medium font-nunito">
-              Discover why travelers love their stay at Safari Resort. Real
+              {guestData?.desc || `Discover why travelers love their stay at Safari Resort. Real
               experiences from real guests who have explored the wilderness with
-              us.
+              us.`}
             </p>
           </motion.div>
         </section>
@@ -99,7 +99,7 @@ const GuestStories = () => {
                   Safari Resort
                 </h2>
                 <div className="flex items-center gap-1 justify-center md:justify-start mb-1">
-                  <span className="text-[#F06934] font-bold text-lg">4.5</span>
+                  <span className="text-[#F06934] font-bold text-lg">{guestData?.rating || `4.5`}</span>
                   <div className="flex text-[#FBC02D]">
                     {[1, 2, 3, 4].map((i) => (
                       <Star key={i} fill="currentColor" size={18} />
@@ -111,7 +111,7 @@ const GuestStories = () => {
                     />
                   </div>
                   <span className="text-gray-400 text-sm ml-1">
-                    (3,500+ reviews)
+                    ({guestData?.total_rating || `3,500+ reviews`})
                   </span>
                 </div>
                 <p className="text-gray-500 text-sm">

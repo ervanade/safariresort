@@ -44,7 +44,6 @@ const Facilities = ({ dataFacilities, homeFacility }) => {
       isRemixIcon, // Kita kasih tahu card cara merendernya
     };
   });
-  console.log(homeFacility);
   const facilities = [
     {
       id: 1,

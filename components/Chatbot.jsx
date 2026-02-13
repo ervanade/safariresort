@@ -6,10 +6,11 @@ import { FaWhatsapp } from 'react-icons/fa'; // Import WhatsApp icon
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
 
-const Chatbot = () => {
+const Chatbot = ({settings}) => {
   const [isOpen, setIsOpen] = useState(false);
   const { toast } = useToast();
-  const whatsappNumber = "+6282125222756"; // Placeholder WhatsApp number
+  const link_wa = settings?.find((item) => item.key === "whatsapp_number")?.value || "+6282125222756";
+  const whatsappNumber = link_wa || "+6282125222756"; // Placeholder WhatsApp number
 
   const handleToggleChat = () => {
     if (isOpen) {

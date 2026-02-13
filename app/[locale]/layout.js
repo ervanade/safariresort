@@ -45,7 +45,7 @@ export default async function LocaleLayout({ children, params }) {
 
       <Header navigation={navigation || []} />
       {children}
-      <Footer />
+      <Footer settings={settings}/>
       <Toaster />
       {settings?.before_close_body && (
         <>{parse(HTMLDecoderEncoder.decode(bodyScript))}</>

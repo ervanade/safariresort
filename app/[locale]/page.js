@@ -140,9 +140,9 @@ export default async function Home({ params }) {
         <Awards dataAwards={dataAwards || null} />
         <MapSection />
       </main>
-      {/* <MobileFooter onChatToggle={() => setIsChatOpen(!isChatOpen)} /> */}
+      <MobileFooter settings={data?.settings}/>
       <PromoPopup dataPromo={data?.popupBanners || null} />
-      <Chatbot />
+      <Chatbot settings={data?.settings}/>
     </div>
   );
 }

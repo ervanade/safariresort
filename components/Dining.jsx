@@ -37,7 +37,6 @@ const Dining = ({ dataDining, diningHero }) => {
         "Immersive dining experiences set against the backdrop of lush wilderness and wildlife.",
     },
   ];
-  console.log(diningHero.img)
 
   return (
     <div className="min-h-screen bg-[#faf7f5]">

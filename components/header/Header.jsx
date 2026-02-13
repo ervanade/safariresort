@@ -354,28 +354,45 @@ export default function Header({navigation}) {
                         </button>
 
                         <AnimatePresence>
-                          {expandedMobileItem === item.name && (
-                            <motion.div
-                              initial={{ height: 0, opacity: 0 }}
-                              animate={{ height: "auto", opacity: 1 }}
-                              exit={{ height: 0, opacity: 0 }}
-                              className="pl-4"
-                            >
-                              {(item.items || []).map((i) => (
-                                <a
-                                  key={i.name}
-                                  href={i.href}
-                                  onClick={(e) =>
-                                    handleItemClick(e, i.href, i.external)
-                                  }
-                                  className="block py-2 text-sm"
-                                >
-                                  {i.name}
-                                </a>
-                              ))}
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
+  {expandedMobileItem === item.name && (
+    <motion.div
+      initial={{ height: 0, opacity: 0 }}
+      animate={{ height: "auto", opacity: 1 }}
+      exit={{ height: 0, opacity: 0 }}
+      className="pl-4 border-l border-orange-100 ml-2"
+    >
+      {/* 1. Jika tipe MEGA: Iterasi melalui columns -> subcategories -> items */}
+      {item.type === "mega" && 
+        item.columns.flatMap(col => 
+          col.subcategories.flatMap(sub => sub.items)
+        ).map((s) => (
+          <Link
+            key={s.name}
+            href={s.href}
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="block py-2 text-sm text-gray-600 hover:text-[#F06934]"
+          >
+            {s.name}
+          </Link>
+        ))
+      }
+
+      {/* 2. Jika tipe DROPDOWN atau MEGA-GRID: Iterasi dari item.items */}
+      {(item.type === "dropdown" || item.type === "mega-grid") && 
+        (item.items || []).map((i) => (
+          <Link
+            key={i.name}
+            href={i.href}
+            onClick={(e) => handleItemClick(e, i.href, i.external)}
+            className="block py-2 text-sm text-gray-600 hover:text-[#F06934]"
+          >
+            {i.name}
+          </Link>
+        ))
+      }
+    </motion.div>
+  )}
+</AnimatePresence>
                       </>
                     )}
                   </div>

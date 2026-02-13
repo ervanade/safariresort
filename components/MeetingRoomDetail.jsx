@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowLeft,
   Users,
@@ -11,6 +11,8 @@ import {
   LayoutGrid,
   Coffee,
   PenTool,
+  ChevronLeft,
+  ChevronRight
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
@@ -20,6 +22,53 @@ import { Link, useRouter } from "@/i18n/navigation";
 const MeetingRoomDetail = ({ meetingSlug, dataMeeting }) => {
   const { toast } = useToast();
   const room = dataMeeting || meetingRoomsData[0];
+
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+const [direction, setDirection] = useState(0);
+
+const galleryImages =
+  room?.images?.length > 0
+    ? room.images
+    : [room.mainImage || "/assets/default-meeting.jpg"];
+
+const paginate = (newDirection) => {
+  const nextIndex = currentImageIndex + newDirection;
+
+  if (nextIndex >= 0 && nextIndex < galleryImages.length) {
+    setCurrentImageIndex(nextIndex);
+    setDirection(newDirection);
+  } else if (nextIndex < 0) {
+    setCurrentImageIndex(galleryImages.length - 1);
+    setDirection(newDirection);
+  } else {
+    setCurrentImageIndex(0);
+    setDirection(newDirection);
+  }
+};
+
+const variants = {
+  enter: (direction) => ({
+    x: direction > 0 ? "100%" : "-100%",
+    opacity: 0,
+  }),
+  center: {
+    zIndex: 1,
+    x: 0,
+    opacity: 1,
+  },
+  exit: (direction) => ({
+    zIndex: 0,
+    x: direction < 0 ? "100%" : "-100%",
+    opacity: 0,
+  }),
+};
+
+const swipeConfidenceThreshold = 10000;
+
+const swipePower = (offset, velocity) => {
+  return Math.abs(offset) * velocity;
+};
+
 
   const handleBook = () => {
     const link = `https://www.book-secure.com/index.php?s=results&property=idbog27674&arrival=2026-02-12&departure=2026-02-13&adults1=2&children1=0&locale=en_GB&currency=IDR&stid=cms52h5o8&showBestPriceFirst=1&showPromotions=3&langue=EN&Clusternames=ASIAIDTAMHTLSafariRe&cluster=ASIAIDTAMHTLSafariRe&Hotelnames=ASIAIDTAMHTLSafariRe&hname=ASIAIDTAMHTLSafariRe&nbNightsValue=1&adulteresa=2&nbAdultsValue=2&CurrencyLabel=IDR&redir=BIZ-so5523q0o4&rt=1770910934`;
@@ -61,11 +110,78 @@ const MeetingRoomDetail = ({ meetingSlug, dataMeeting }) => {
                 animate={{ opacity: 1, scale: 1 }}
                 className=" overflow-hidden shadow-2xl mb-10 h-[400px] md:h-[500px]"
               >
-                <img
-                  src={room.images[0] || room.mainImage}
-                  alt={room.title}
-                  className="w-full h-full object-cover"
-                />
+               <div className="relative w-full h-full group overflow-hidden">
+  <AnimatePresence initial={false} custom={direction}>
+    <motion.img
+      key={currentImageIndex}
+      src={galleryImages[currentImageIndex]}
+      custom={direction}
+      variants={variants}
+      initial="enter"
+      animate="center"
+      exit="exit"
+      transition={{
+        x: { type: "spring", stiffness: 300, damping: 30 },
+        opacity: { duration: 0.2 },
+      }}
+      drag="x"
+      dragConstraints={{ left: 0, right: 0 }}
+      dragElastic={1}
+      onDragEnd={(e, { offset, velocity }) => {
+        const swipe = swipePower(offset.x, velocity.x);
+
+        if (swipe < -swipeConfidenceThreshold) {
+          paginate(1);
+        } else if (swipe > swipeConfidenceThreshold) {
+          paginate(-1);
+        }
+      }}
+      className="absolute top-0 left-0 w-full h-full object-cover"
+      alt={`${room.title} ${currentImageIndex + 1}`}
+    />
+  </AnimatePresence>
+
+  {/* Navigation */}
+  {galleryImages.length > 1 && (
+    <>
+      {/* Arrows */}
+      <div className="absolute inset-0 z-20 flex items-center justify-between p-4">
+        <button
+          onClick={() => paginate(-1)}
+          className="w-10 h-10 rounded-full bg-black/40 hover:bg-black/60 flex items-center justify-center text-white transition-all shadow-lg"
+        >
+          <ChevronLeft className="w-5 h-5" />
+        </button>
+
+        <button
+          onClick={() => paginate(1)}
+          className="w-10 h-10 rounded-full bg-black/40 hover:bg-black/60 flex items-center justify-center text-white transition-all shadow-lg"
+        >
+          <ChevronRight className="w-5 h-5" />
+        </button>
+      </div>
+
+      {/* Dots */}
+      <div className="absolute bottom-4 left-0 right-0 z-20 flex justify-center gap-2">
+        {galleryImages.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => {
+              setDirection(idx > currentImageIndex ? 1 : -1);
+              setCurrentImageIndex(idx);
+            }}
+            className={`h-2 rounded-full transition-all duration-300 ${
+              idx === currentImageIndex
+                ? "w-6 bg-white"
+                : "w-2 bg-white/50"
+            }`}
+          />
+        ))}
+      </div>
+    </>
+  )}
+</div>
+
               </motion.div>
 
               <motion.div

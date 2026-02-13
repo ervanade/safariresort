@@ -81,7 +81,6 @@ const page = async ({ params }) => {
   const { meetingSlug } = await params;
   const { locale } = (await params) ?? "en";
   const dataMeeting = await fetchPackages(locale, meetingSlug);
-  console.log(dataMeeting);
   return (
     <div className="">
       <MeetingRoomDetail meetingSlug={meetingSlug} dataMeeting={dataMeeting} />

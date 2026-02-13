@@ -47,7 +47,6 @@ function scopeGrapeJSCSS(css, scopeClass = ".grapejs-wrapper") {
 
 const ArticlesDetails = ({ article }) => {
   const locale = useLocale() || "id";
-  console.log(article);
   const title = locale === "en" ? article?.title : article?.title;
   const content = locale === "en" ? article?.content : article?.content;
   const excerpt = locale === "en" ? article?.excerpt : article?.excerpt;

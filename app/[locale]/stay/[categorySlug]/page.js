@@ -4,13 +4,23 @@ import { notFound } from "next/navigation";
 import React from "react";
 
 export async function generateMetadata({ params }) {
+  const { categorySlug } = await params; // Pastikan pakai gatheringSlug
   const { locale } = (await params) ?? "en";
+
+  const data = await fetchCategory(locale, categorySlug);
+
+  // Fetch model name based on slug if needed
 
   const meta = {
     id: {
-      title: `Treehouse Collection | Penginapan Rumah Pohon Safari Resort Bogor`,
-      description: `Nikmati pengalaman menginap unik di Treehouse Collection Safari Resort Bogor. Bangun tidur di tengah rimbunnya hutan tropis dengan udara pegunungan yang segar dan asri.`,
+      title: data?.meta_title
+        ? data?.meta_title
+        : `${data?.title} | Penginapan Rumah Pohon Safari Resort Bogor`,
+      description: data?.meta_description
+        ? data?.meta_description
+        : `Nikmati pengalaman menginap unik di ${data?.title} Safari Resort Bogor. Bangun tidur di tengah rimbunnya hutan tropis dengan udara pegunungan yang segar dan asri.`,
       keywords: [
+        data?.title,
         "Treehouse Bogor",
         "Rumah Pohon Safari Resort",
         "Nature Lodges Bogor",
@@ -21,9 +31,14 @@ export async function generateMetadata({ params }) {
       ],
     },
     en: {
-      title: `Treehouse Collection | Signature Nature Lodges Safari Resort Bogor`,
-      description: `Elevate your stay at Safari Resort Bogor's Treehouse Collection. Wake up to the sounds of nature and immersive jungle views in our signature high-altitude lodges.`,
+      title: data?.meta_title
+        ? data?.meta_title
+        : `${data?.title} | Signature Nature Lodges Safari Resort Bogor`,
+      description: data?.meta_description
+        ? data?.meta_description
+        : `Elevate your stay at Safari Resort Bogor's ${data?.title}. Wake up to the sounds of nature and immersive jungle views in our signature high-altitude lodges.`,
       keywords: [
+        data?.title,
         "Treehouse Resort Bogor",
         "Safari Resort Treehouse",
         "Nature Lodges Indonesia",
@@ -37,7 +52,7 @@ export async function generateMetadata({ params }) {
 
   return getBaseMeta({
     locale,
-    path: `/stay/treehouse`,
+    path: `/stay/gathering/${categorySlug}`,
     ...meta[locale],
   });
 }

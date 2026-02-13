@@ -8,8 +8,6 @@ import { useRouter } from "@/i18n/navigation";
 const DiningDetail = ({ diningSlug, dataDining, dataRestaurant }) => {
   const [restaurant, setRestaurant] = useState(null);
   const router = useRouter();
-  console.log(dataDining);
-  console.log(dataRestaurant);
 
   // useEffect(() => {
   //   const found = restaurantsData.find((r) => r.slug === diningSlug);
